@@ -1,0 +1,15 @@
+<a class="nav-brand" href="javascript:void(0)">Awesome App</a>
+<div class="sections">
+    <%
+     _.forEach( sections, function(section){
+     if(section.enabled){
+    %>
+        <div data-tab="<%=section.tab%>" class="section-item">
+            <a href="javascript:void(0)">
+                <%=section.name%>
+            </a>
+        </div>
+    <%
+    }})
+    %>
+</div>

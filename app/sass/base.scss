@@ -1,0 +1,49 @@
+html {
+    font-size: 10px;
+}
+html,
+body,
+#workspace {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#workspace {
+    font-size: 1.5rem;
+}
+#navigation {
+    height: 4rem;
+    overflow: hidden;
+    background-color: black;
+}
+.nav-bar {
+    height: 100%;
+}
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+}
+.nav-bar .active a {
+    text-decoration: underline;
+}
+.nav-brand {
+    line-height: 4rem;
+    float: left;
+    margin: 0 2rem;
+    font-size: 1.8rem;
+}
+.sections {
+    display: inline-block;
+    margin: 0 3rem;
+}
+.section-item {
+    display: inline-block;
+    line-height: 4rem;
+    margin: 0 0.5rem;
+}
+#content {
+    height: calc( 100% - 4rem);
+    padding: 1rem;
+    box-sizing: border-box;
+}
