@@ -15,7 +15,13 @@
                     case 'home':
                         isEnabled && (contentView = Home);
                         break;
-                    case 'section':
+                    case 'pricing':
+                        isEnabled && (contentView = Section);
+                        break;
+                    case 'about':
+                        isEnabled && (contentView = Section);
+                        break;
+                    case 'terms':
                         isEnabled && (contentView = Section);
                         break;
                     default:

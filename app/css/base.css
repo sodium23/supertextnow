@@ -138,6 +138,106 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+#navigation {
+  position: fixed;
+  width: 100%;
+  height: 6rem;
+  overflow: hidden;
+  background: transparent; }
+
+.nav-bar {
+  height: 100%; }
+
+.nav-bar a {
+  color: white;
+  text-decoration: none; }
+
+.nav-bar .active a {
+  text-decoration: underline; }
+
+.nav-brand {
+  line-height: 6rem;
+  float: left;
+  margin: 0 2rem;
+  font-size: 1.8rem; }
+
+.sections {
+  display: inline-block;
+  float: right;
+  margin: 0 3rem; }
+
+.section-item {
+  display: inline-block;
+  line-height: 6rem;
+  margin: 0 1.5rem; }
+
+.home-cont input {
+  display: block;
+  margin: auto;
+  width: 40rem;
+  font-size: 2rem;
+  text-align: center;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-weight: 300;
+  line-height: 3.5rem;
+  outline: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transition: top 0.3s ease;
+  -khtml-transition: top 0.3s ease;
+  -moz-transition: top 0.3s ease;
+  -ms-transition: top 0.3s ease;
+  -o-transition: top 0.3s ease;
+  transition: top 0.3s ease;
+  -webkit-transform: translate(-50%, -50%);
+  -khtml-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+.home-cont.chat-activated input {
+  top: 70%; }
+.home-cont.chat-activated .chat-cont {
+  filter: alpha(opacity=100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  -webkit-opacity: 1;
+  -khtml-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+  opacity: 1; }
+.home-cont ::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5); }
+.home-cont :-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.5); }
+.home-cont ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.5); }
+.home-cont :-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5); }
+.home-cont .chat-cont {
+  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-opacity: 0;
+  -khtml-opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease 0.3s;
+  -khtml-transition: opacity 0.2s ease 0.3s;
+  -moz-transition: opacity 0.2s ease 0.3s;
+  -ms-transition: opacity 0.2s ease 0.3s;
+  -o-transition: opacity 0.2s ease 0.3s;
+  transition: opacity 0.2s ease 0.3s;
+  width: 40rem;
+  height: 70%;
+  margin: auto; }
+
 html,
 body {
   height: 100%;
@@ -155,39 +255,24 @@ html {
   height: 100%;
   font-size: 1.5rem; }
 
-#navigation {
-  height: 4rem;
-  overflow: hidden;
-  background-color: black; }
-
-.nav-bar {
+#content {
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #35b88f url("../resources/imgs/banner.svg") bottom center no-repeat;
   height: 100%; }
 
-.nav-bar a {
-  color: white;
-  text-decoration: none; }
-
-.nav-bar .active a {
-  text-decoration: underline; }
-
-.nav-brand {
-  line-height: 4rem;
-  float: left;
-  margin: 0 2rem;
-  font-size: 1.8rem; }
-
-.sections {
-  display: inline-block;
-  margin: 0 3rem; }
-
-.section-item {
-  display: inline-block;
-  line-height: 4rem;
-  margin: 0 0.5rem; }
-
-#content {
-  height: calc( 100% - 4rem);
-  padding: 1rem;
+.section-cont {
+  height: 100%;
+  padding-top: 6rem;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
   box-sizing: border-box; }
 
 /*# sourceMappingURL=base.css.map */

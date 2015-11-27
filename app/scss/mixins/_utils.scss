@@ -1,16 +1,30 @@
 //Verticaly center the element with respect to the nearest parent with relative position
-@mixin vc($top: 50%){
+@mixin vc($top: 50%) {
     @include transform(translateY(-50%));
     position: absolute;
     top: $top;
 }
-
-@mixin circle($size){
+@mixin circle($size) {
     @include square($size);
     border-radius: $size;
 }
-
-@mixin square($size){
+@mixin square($size) {
     height: $size;
     width: $size;
+}
+@mixin placeholderColor($color: black) {
+    ::-webkit-input-placeholder {
+        color: $color;
+    }
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: $color;
+    }
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: $color;
+    }
+    :-ms-input-placeholder {
+        color: $color;
+    }
 }

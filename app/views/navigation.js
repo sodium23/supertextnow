@@ -11,21 +11,26 @@
         var TRUE = true,
             NAV_SECTIONS = [
                 {
-                    tab: 'home',
-                    name: 'Home',
+                    tab: 'pricing',
+                    name: 'Pricing',
                     enabled: TRUE
                 },
                 {
-                    tab: 'section',
-                    name: 'Section',
+                    tab: 'about',
+                    name: 'About',
+                    enabled: TRUE
+                },
+                {
+                    tab: 'terms',
+                    name: 'Terms',
                     enabled: TRUE
                 }
             ],
             onChangeTab = function (e) {
                 var jTarget = e.target,
                     jTabEl = this.$(jTarget.closest('[data-tab]'));
+                this.$('[data-tab]').removeClass('active');
                 jTabEl.addClass('active');
-                jTabEl.siblings('[data-tab]').removeClass('active');
                 window.location.hash = jTabEl.data('tab');
             };
 

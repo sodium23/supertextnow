@@ -1,0 +1,34 @@
+@import "variables/_variables";
+#navigation {
+    position: fixed;
+    width: 100%;
+    height: $header-height;
+    overflow: hidden;
+    background: transparent;
+}
+.nav-bar {
+    height: 100%;
+}
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+}
+.nav-bar .active a {
+    text-decoration: underline;
+}
+.nav-brand {
+    line-height: $header-height;
+    float: left;
+    margin: 0 2rem;
+    font-size: 1.8rem;
+}
+.sections {
+    display: inline-block;
+    float: right;
+    margin: 0 3rem;
+}
+.section-item {
+    display: inline-block;
+    line-height: $header-height;
+    margin: 0 1.5rem;
+}
