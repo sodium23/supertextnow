@@ -1,15 +1,23 @@
-html {
-    font-size: 10px;
-}
+@import "mixins/_css3";
+@import "mixins/_utils";
+@import "variables/_variables";
+@import "_reset";
+$font-stack: 'Heiti SC';
 html,
-body,
-#workspace {
+body{
     height: 100%;
     width: 100%;
-    margin: 0;
-    padding: 0;
+    position: relative;
+}
+html{
+    font-family: $font-stack;
+    font-size: 10px;
+}
+.page-full-height{
+    height: 100%;
 }
 #workspace {
+    height: 100%;
     font-size: 1.5rem;
 }
 #navigation {

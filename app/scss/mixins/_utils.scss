@@ -1,0 +1,16 @@
+//Verticaly center the element with respect to the nearest parent with relative position
+@mixin vc($top: 50%){
+    @include transform(translateY(-50%));
+    position: absolute;
+    top: $top;
+}
+
+@mixin circle($size){
+    @include square($size);
+    border-radius: $size;
+}
+
+@mixin square($size){
+    height: $size;
+    width: $size;
+}
