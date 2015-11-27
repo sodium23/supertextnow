@@ -5,6 +5,7 @@
     height: $header-height;
     overflow: hidden;
     background: transparent;
+    z-index: $z-4;
 }
 .nav-bar {
     height: 100%;

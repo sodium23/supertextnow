@@ -1,3 +1,4 @@
+@import "chatContainer";
 .home-cont {
     input {
         display: block;
@@ -5,7 +6,7 @@
         width: 40rem;
         font-size: 2rem;
         text-align: center;
-        background: transparent;
+        background: rgba(0, 0, 0, 0.2);
         border: 1px solid white;
         color: white;
         font-weight: 300;
@@ -16,23 +17,37 @@
         left: 50%;
         @include transition(top 0.3s ease);
         @include transform(translate(-50%, -50%));
+        
     }
     &.chat-activated {
         input {
-            top: 70%;
+            top: 80%;
         }
-        .chat-cont{
+        .chat-cont {
             @include opacity(1);
         }
-        
     }
-    @include placeholderColor(rgba(255, 255, 255, 0.5));
+    @include placeholderColor(rgba(255,
+    255,
+    255,
+    0.5));
     .chat-cont {
         @include opacity(0);
         @include transition(opacity .2s ease 0.3s);
         width: 40rem;
         height: 70%;
         margin: auto;
-//        background: rgba(0, 0, 0, 0.2);
+        position: relative;
+        background: rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
+    video {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: $z-0;
+        @media screen and (max-width: $screen-th-1) {
+            display: none;
+        }
     }
 }

@@ -10,6 +10,7 @@ body{
     height: 100%;
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 html{
     font-family: $font-stack;
@@ -24,11 +25,20 @@ html{
 }
 #content {
     @include box-sizing();
-    background: #35b88f url('../resources/imgs/banner.svg') bottom center no-repeat;
     height: 100%;
+    background: #272787 url('../resources/imgs/banner.svg') bottom center no-repeat;
+    &.day-time {
+        background: #35b88f url('../resources/imgs/banner.svg') bottom center no-repeat;
+    }
 }
 .section-cont{
     height: 100%;
     padding-top: $header-height;
     @include box-sizing();
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
 }
