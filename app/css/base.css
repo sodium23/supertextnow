@@ -203,6 +203,7 @@ table {
       border: 2px solid #f0f; }
 
 .home-cont input {
+  max-width: 90%;
   display: block;
   margin: auto;
   width: 40rem;
@@ -265,6 +266,7 @@ table {
   -ms-transition: opacity 0.2s ease 0.3s;
   -o-transition: opacity 0.2s ease 0.3s;
   transition: opacity 0.2s ease 0.3s;
+  max-width: 90%;
   width: 40rem;
   height: 70%;
   margin: auto;
