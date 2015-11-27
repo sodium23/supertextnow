@@ -2,25 +2,26 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     @include box-sizing();
 }
 .chat-msg {
     color: white;
     font-size: 1.2rem;
     border-radius: 2rem 2rem 0rem 2rem;
-    margin: 1rem 0;
     clear: both;
     overflow: hidden;
     .msg-cont {
         padding: 1rem;
-        background: red;
+        border: 2px solid #f00;
         display: inline-block;
         border-radius: 2rem 2rem 0rem 2rem;
         max-width: 60%;
         word-break: break-all;
+        margin: 1rem;
         &.left {
-            background: magenta;
+            border-radius: 2rem 2rem 2rem 0rem;
+            border: 2px solid #f0f;
         }
     }
 }

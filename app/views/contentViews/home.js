@@ -72,7 +72,7 @@
             onDestroy: function () {
                 _.forEach(timeouts, clearTimeout);
                 timeouts = [];
-                that.chatContainerView.destroy();
+                this.chatContainerView.destroy();
             }
         });
     });
