@@ -271,7 +271,7 @@ table {
   height: 70%;
   margin: auto;
   position: relative;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5);
   overflow: hidden; }
 .home-cont video {
   width: 100%;
