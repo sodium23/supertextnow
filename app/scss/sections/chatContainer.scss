@@ -13,7 +13,7 @@
     overflow: hidden;
     .msg-cont {
         padding: 1rem;
-        border: 2px solid #f00;
+        border: 2px solid #b5e64e;
         display: inline-block;
         border-radius: 2rem 2rem 0rem 2rem;
         max-width: 60%;
@@ -21,7 +21,17 @@
         margin: 1rem;
         &.left {
             border-radius: 2rem 2rem 2rem 0rem;
-            border: 2px solid #f0f;
+            border: 2px solid #fc2dfc;
+        }
+    }
+}
+.day-time {
+    .msg-cont {
+        border-color: #35B88f;
+        background: #35B88f;
+        &.left {
+            border-color: #D96EDB;
+            background: #D96EDB;
         }
     }
 }

@@ -18,7 +18,6 @@
         left: 50%;
         @include transition(top 0.3s ease);
         @include transform(translate(-50%, -50%));
-        
     }
     &.chat-activated {
         input {
@@ -28,10 +27,7 @@
             @include opacity(1);
         }
     }
-    @include placeholderColor(rgba(255,
-    255,
-    255,
-    0.5));
+    @include placeholderColor(rgba(255, 255, 255, 0.5));
     .chat-cont {
         @include opacity(0);
         @include transition(opacity .2s ease 0.3s);
@@ -50,6 +46,13 @@
         z-index: $z-0;
         @media screen and (max-width: $screen-th-1) {
             display: none;
+        }
+    }
+}
+.day-time {
+    .home-cont {
+        input {
+            background: transparent;
         }
     }
 }

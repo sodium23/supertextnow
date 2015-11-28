@@ -192,7 +192,7 @@ table {
   overflow: hidden; }
   .chat-msg .msg-cont {
     padding: 1rem;
-    border: 2px solid #f00;
+    border: 2px solid #b5e64e;
     display: inline-block;
     border-radius: 2rem 2rem 0rem 2rem;
     max-width: 60%;
@@ -200,7 +200,14 @@ table {
     margin: 1rem; }
     .chat-msg .msg-cont.left {
       border-radius: 2rem 2rem 2rem 0rem;
-      border: 2px solid #f0f; }
+      border: 2px solid #fc2dfc; }
+
+.day-time .msg-cont {
+  border-color: #35B88f;
+  background: #35B88f; }
+  .day-time .msg-cont.left {
+    border-color: #D96EDB;
+    background: #D96EDB; }
 
 .home-cont input {
   max-width: 90%;
@@ -281,6 +288,9 @@ table {
   @media screen and (max-width: 1000px) {
     .home-cont video {
       display: none; } }
+
+.day-time .home-cont input {
+  background: transparent; }
 
 html,
 body {
