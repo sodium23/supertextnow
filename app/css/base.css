@@ -141,12 +141,13 @@ table {
 #navigation {
   position: fixed;
   width: 100%;
-  height: 6rem;
-  overflow: hidden;
+  height: 8rem;
   background: transparent;
-  z-index: 100; }
+  z-index: 100;
+  bottom: 0; }
 
 .nav-bar {
+  position: relative;
   height: 100%; }
 
 .nav-bar a {
@@ -157,20 +158,69 @@ table {
   text-decoration: underline; }
 
 .nav-brand {
-  line-height: 6rem;
+  display: none;
+  line-height: 8rem;
   float: left;
   margin: 0 2rem;
   font-size: 1.8rem; }
 
 .sections {
+  -webkit-transform: translateY(8rem);
+  -khtml-transform: translateY(8rem);
+  -moz-transform: translateY(8rem);
+  -ms-transform: translateY(8rem);
+  -o-transform: translateY(8rem);
+  transform: translateY(8rem);
+  -webkit-transition: transform 0.3s ease;
+  -khtml-transition: transform 0.3s ease;
+  -moz-transition: transform 0.3s ease;
+  -ms-transition: transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  text-align: center;
   display: inline-block;
-  float: right;
-  margin: 0 3rem; }
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.open-nav .sections {
+  -webkit-transform: translateY(0);
+  -khtml-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0); }
+.open-nav .nav-toggle {
+  -webkit-transform: translate(2rem, -4rem);
+  -khtml-transform: translate(2rem, -4rem);
+  -moz-transform: translate(2rem, -4rem);
+  -ms-transform: translate(2rem, -4rem);
+  -o-transform: translate(2rem, -4rem);
+  transform: translate(2rem, -4rem); }
 
 .section-item {
   display: inline-block;
-  line-height: 6rem;
+  line-height: 8rem;
   margin: 0 1.5rem; }
+
+.nav-toggle {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  height: 8rem;
+  padding: 1rem;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: transform 0.3s ease;
+  -khtml-transition: transform 0.3s ease;
+  -moz-transition: transform 0.3s ease;
+  -ms-transition: transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease; }
 
 .chat-msgs-box {
   position: absolute;
@@ -335,7 +385,7 @@ html {
 
 .section-cont {
   height: 100%;
-  padding-top: 6rem;
+  padding-bottom: 8rem;
   -webkit-box-sizing: border-box;
   -khtml-box-sizing: border-box;
   -moz-box-sizing: border-box;

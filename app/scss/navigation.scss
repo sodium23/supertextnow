@@ -3,11 +3,12 @@
     position: fixed;
     width: 100%;
     height: $header-height;
-    overflow: hidden;
     background: transparent;
     z-index: $z-4;
+    bottom: 0;
 }
 .nav-bar {
+    position: relative;
     height: 100%;
 }
 .nav-bar a {
@@ -18,18 +19,40 @@
     text-decoration: underline;
 }
 .nav-brand {
+    display: none;
     line-height: $header-height;
     float: left;
     margin: 0 2rem;
     font-size: 1.8rem;
 }
 .sections {
+    @include transform(translateY(8rem));
+    @include transition(transform 0.3s ease);
+    text-align: center;
     display: inline-block;
-    float: right;
-    margin: 0 3rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.open-nav {
+    .sections {
+        @include transform(translateY(0));
+    }
+    .nav-toggle {
+        @include transform(translate(2rem, -4rem));
+    }
 }
 .section-item {
     display: inline-block;
     line-height: $header-height;
     margin: 0 1.5rem;
+}
+.nav-toggle {
+    position: absolute;
+    left: 0;
+    z-index: $z-1;
+    height: 8rem;
+    padding: 1rem;
+    cursor: pointer;
+    @include box-sizing();
+    @include transition(transform 0.3s ease);
 }

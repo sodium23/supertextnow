@@ -11,8 +11,8 @@
         var TRUE = true,
             NAV_SECTIONS = [
                 {
-                    tab: 'pricing',
-                    name: 'Pricing',
+                    tab: 'home',
+                    name: 'Home',
                     enabled: TRUE
                 },
                 {
@@ -37,7 +37,10 @@
         return BaseView.extend({
             template: _.template(template),
             events: {
-                'click [data-tab]': onChangeTab
+                'click [data-tab]': onChangeTab,
+                'click .nav-toggle': function(){
+                    this.$el.toggleClass('open-nav');
+                }
             },
             className: 'nav-bar',
             render: function () {
