@@ -376,6 +376,7 @@ html {
 #workspace {
   height: 100%;
   font-size: 1.5rem;
+  background-color: #999;
   background-image: url("../resources/imgs/logo.svg"), url("../resources/imgs/banner.svg");
   background-repeat: no-repeat, no-repeat;
   background-position: center, bottom center;
