@@ -51,7 +51,6 @@
                 var that = this;
                 that.onBeforeShow();
                 that.controller.renderView();
-                ((new Date()).getHours() > 7 && (new Date()).getHours() < 18) && that.$('#content').addClass('day-time');
             }
         });
     });

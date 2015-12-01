@@ -375,7 +375,20 @@ html {
 
 #workspace {
   height: 100%;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  background-image: url("../resources/imgs/logo.svg"), url("../resources/imgs/banner.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, bottom center;
+  background-size: 8rem, auto;
+  transition: background 0.3s ease; }
+
+.day-time #content {
+  background: #35b88f url("../resources/imgs/banner.svg") bottom center no-repeat; }
+.day-time#workspace {
+  background-color: #35b88f; }
+
+.night-time#workspace {
+  background-color: #272787; }
 
 #content {
   -webkit-box-sizing: border-box;
@@ -386,8 +399,6 @@ html {
   box-sizing: border-box;
   height: 100%;
   background: #272787 url("../resources/imgs/banner.svg") bottom center no-repeat; }
-  #content.day-time {
-    background: #35b88f url("../resources/imgs/banner.svg") bottom center no-repeat; }
 
 #brand {
   color: white;
