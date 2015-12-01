@@ -9,6 +9,7 @@
         text-align: center;
         background: rgba(0, 0, 0, 0.2);
         border: 1px solid white;
+        border-radius: 0;
         color: white;
         font-weight: 300;
         line-height: 3.5rem;
@@ -33,21 +34,13 @@
         @include transition(opacity .2s ease 0.3s);
         max-width: 90%;
         width: 40rem;
-        height: 70%;
+        height: 60%;
         margin: auto;
         position: relative;
-        background: rgba(0, 0, 0, 0.5);
+        top: 10%;
+        @include background-gradient(transparent, rgba(255, 255, 255, 0.2));
         overflow: hidden;
     }
-//    video {
-//        width: 100%;
-//        position: absolute;
-//        top: 0;
-//        z-index: $z-0;
-//        @media screen and (max-width: $screen-th-1) {
-//            display: none;
-//        }
-//    }
     video {
         position: fixed;
         top: 50%;

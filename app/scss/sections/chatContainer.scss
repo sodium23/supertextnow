@@ -1,8 +1,10 @@
 .chat-msgs-box {
     position: absolute;
     bottom: 0;
-    width: 100%;
-    padding: 1rem;
+    width: 110%;
+    padding: 1rem calc( 10% + 1rem ) 1rem 1rem;
+    overflow-y: auto;
+    max-height: 100%;
     @include box-sizing();
 }
 .chat-msg {
@@ -12,8 +14,8 @@
     clear: both;
     overflow: hidden;
     .msg-cont {
-        padding: 1rem;
-        border: 2px solid #b5e64e;
+        padding: 1rem 1.2rem;
+        background-color: #ed3d95;
         display: inline-block;
         border-radius: 2rem 2rem 0rem 2rem;
         max-width: 60%;
@@ -21,7 +23,8 @@
         margin: 1rem;
         &.left {
             border-radius: 2rem 2rem 2rem 0rem;
-            border: 2px solid #fc2dfc;
+            background-color: white;
+            color: $grayCharcoal;
         }
     }
 }
@@ -29,9 +32,6 @@
     .msg-cont {
         border-color: #35B88f;
         background: #35B88f;
-        &.left {
-            border-color: #D96EDB;
-            background: #D96EDB;
-        }
+        &.left {}
     }
 }

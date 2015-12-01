@@ -46,12 +46,14 @@
                     this.jInput.val('');
                 },
                 'keyup input': function (e) {
-                    var jTarget = $(e.target),
+                    var that = this,
+                        jTarget = $(e.target),
                         msg = jTarget.val();
                     if (msg && e.keyCode == 13) {
                         Events.trigger('msg:send', msg);
                         jTarget.val('');
                         jTarget.attr('placeholder', 'Send a message');
+                        that.jChatBox.scrollTop(that.jChatBox[0].scrollHeight);
 
                     }
                 }
@@ -67,6 +69,7 @@
                 that.jInput = that.$('input');
                 nextLetter.call(that);
                 that.$('.chat-cont').html(that.chatContainerView.render().$el);
+                that.jChatBox = that.$('.chat-msgs-box');
 
             },
             onDestroy: function () {
