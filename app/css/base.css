@@ -200,7 +200,10 @@ table {
 .section-item {
   display: inline-block;
   line-height: 8rem;
-  margin: 0 1.5rem; }
+  margin: 0 3.5rem; }
+  @media screen and (max-width: 500px) {
+    .section-item {
+      margin: 0 1.5rem; } }
 
 .nav-toggle {
   position: absolute;
@@ -349,6 +352,9 @@ table {
   height: auto;
   z-index: 0;
   transform: translateX(-50%) translateY(-50%); }
+  @media screen and (max-width: 1000px) {
+    .home-cont video {
+      display: none; } }
 
 .day-time .home-cont input {
   background: transparent; }

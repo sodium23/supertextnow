@@ -44,7 +44,10 @@
 .section-item {
     display: inline-block;
     line-height: $header-height;
-    margin: 0 1.5rem;
+    margin: 0 3.5rem;
+    @media screen and (max-width: $screen-th-2) {
+        margin: 0 1.5rem;
+    }
 }
 .nav-toggle {
     position: absolute;
