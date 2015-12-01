@@ -289,7 +289,7 @@ table {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
 .home-cont.chat-activated input {
-  top: 80%; }
+  top: 70%; }
 .home-cont.chat-activated .chat-cont {
   filter: alpha(opacity=100);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -382,6 +382,17 @@ html {
   background: #272787 url("../resources/imgs/banner.svg") bottom center no-repeat; }
   #content.day-time {
     background: #35b88f url("../resources/imgs/banner.svg") bottom center no-repeat; }
+
+#brand {
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  font-size: 2.5rem;
+  text-decoration: none;
+  padding: 2rem;
+  text-transform: uppercase; }
 
 .section-cont {
   height: 100%;

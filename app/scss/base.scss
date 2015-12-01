@@ -6,17 +6,17 @@
 @import "sections/home";
 $font-stack: 'Heiti SC';
 html,
-body{
+body {
     height: 100%;
     width: 100%;
     position: relative;
     overflow: hidden;
 }
-html{
+html {
     font-family: $font-stack;
     font-size: 10px;
 }
-.page-full-height{
+.page-full-height {
     height: 100%;
 }
 #workspace {
@@ -31,14 +31,25 @@ html{
         background: #35b88f url('../resources/imgs/banner.svg') bottom center no-repeat;
     }
 }
-.section-cont{
+#brand {
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $z-1;
+    font-size: 2.5rem;
+    text-decoration: none;
+    padding: 2rem;
+    text-transform: uppercase;
+}
+.section-cont {
     height: 100%;
     padding-bottom: $header-height;
     @include box-sizing();
 }
-.right{
+.right {
     float: right;
 }
-.left{
+.left {
     float: left;
 }
