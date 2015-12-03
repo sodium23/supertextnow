@@ -32,11 +32,6 @@ html {
 #slide {
     @include transition(height 0.5s ease);
 }
-.info-open {
-    #slide {
-        background: rgba(0, 0, 0, 0.1)
-    }
-}
 .day-time {
     #content {
         background: #35b88f;
