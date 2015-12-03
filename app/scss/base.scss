@@ -27,18 +27,26 @@ html {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 8rem;
-    transition: background 0.3s ease;
+    @include transition(background 0.3s ease);
 }
-.day-time{
-    #content{
+#slide {
+    @include transition(height 0.5s ease);
+}
+.info-open {
+    #slide {
+        background: rgba(0, 0, 0, 0.1)
+    }
+}
+.day-time {
+    #content {
         background: #35b88f;
     }
-    &#workspace{
+    &#workspace {
         background-color: #35b88f;
     }
 }
-.night-time{ 
-    &#workspace{
+.night-time {
+    &#workspace {
         background-color: #272787;
     }
 }
@@ -47,17 +55,24 @@ html {
     height: 100%;
     background: #272787;
 }
+.info-open {
+    #content {
+        @include css3-prefix(filter,
+        blur(4px));
+    }
+}
 #brand {
     color: white;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: $z-1;
+    z-index: $z-6;
     font-size: 2.5rem;
     text-decoration: none;
     padding: 2rem;
     text-transform: uppercase;
-    img{
+    line-height: 4rem;
+    img {
         height: 2.5rem;
         width: 2.5rem;
     }

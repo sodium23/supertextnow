@@ -11,6 +11,9 @@
             renderView: function () {
                 Backbone.Events.trigger('tab:change');
             },
+            renderInfo: function (tab) {
+                Backbone.Events.trigger('info:open', tab);
+            },
 
             getView: function (tab, options) {
                 return (new ContentViewFactory).getView(tab, options);

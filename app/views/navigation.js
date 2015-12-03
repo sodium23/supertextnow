@@ -11,12 +11,12 @@
         var TRUE = true,
             NAV_SECTIONS = [
                 {
-                    tab: 'about',
+                    tab: 'info/about',
                     name: 'About',
                     enabled: TRUE
                 },
                 {
-                    tab: 'terms',
+                    tab: 'info/terms',
                     name: 'Terms',
                     enabled: TRUE
                 }

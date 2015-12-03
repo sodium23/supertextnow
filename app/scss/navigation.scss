@@ -1,5 +1,5 @@
 @import "variables/_variables";
-#navigation {
+#slide {
     position: fixed;
     width: 100%;
     height: $header-height;
@@ -36,6 +36,14 @@
 .night-time {
     .sections {
         background-color: #1f1f6c;
+    }
+}
+.info-open {
+    #slide {
+        height: 100%;
+    }
+    .sections {
+        @include transform(translateY(0));
     }
 }
 .open-nav {

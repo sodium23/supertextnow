@@ -22,7 +22,7 @@
                         isEnabled && (contentView = Section);
                         break;
                     default:
-                        W.location.hash = 'home';
+//                        W.location.hash = 'home';
                         break;
                 }
                 return new contentView(options);

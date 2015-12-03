@@ -7,6 +7,7 @@
         return Marionette.AppRouter.extend({
 
             appRoutes: {
+                'info/:tab': "renderInfo",
                 '*default': "renderView"
             }
         });

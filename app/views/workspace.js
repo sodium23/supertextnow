@@ -6,10 +6,11 @@
         'views/layout',
         'controllers/app',
         'routers/app',
-        'views/navigation',
+        'views/contentViews/slide',
         'text!templates/appWorkspace.html'
-    ], function (Backbone, LayoutView, Controller, Router, NavView, template) {
-        var DEFAULT_TAB = 'home',
+    ], function (Backbone, LayoutView, Controller, Router, SlideView, template) {
+        var Events = Backbone.Events,
+            DEFAULT_TAB = 'home',
 
             setContentView = function () {
                 var that = this,
@@ -18,20 +19,30 @@
                     tab = (hashArray && hashArray[length]) || DEFAULT_TAB,
                     contentView;
 
-                if (!( hashArray && hashArray[length] )) {
+                if (!(hashArray && hashArray[length])) {
                     tab = DEFAULT_TAB;
                     W.location.hash = DEFAULT_TAB;
                 }
                 that.contentView = contentView = that.controller.getView(tab);
                 that.showChildView('content', contentView);
-                Backbone.Events.trigger('tab:rendered', tab);
+                this.$el.removeClass('info-open');
+                Events.trigger('tab:rendered', tab);
+            },
+            openSlideView = function (tab) {
+                this.$el.addClass('info-open');
+                Events.trigger('info:tab:change', tab);
             };
 
         return LayoutView.extend({
             el: '#workspace',
             regions: {
-                navigation: {selector: '#navigation', regionView: NavView},
-                content: {selector: '#content'}
+                slide: {
+                    selector: '#slide',
+                    regionView: SlideView
+                },
+                content: {
+                    selector: '#content'
+                }
             },
             template: template,
 
@@ -41,16 +52,19 @@
 
                 LayoutView.prototype.initialize.call(that, options);
 
-                that.router = new Router({controller: that.controller = new Controller()});
-                that.navView = new NavView();
+                that.router = new Router({
+                    controller: that.controller = new Controller()
+                });
+                that.infoView = new SlideView();
 
-                that.listenTo(Backbone.Events, 'tab:change', setContentView);
+                that.listenTo(Events, 'tab:change', setContentView);
+                that.listenTo(Events, 'info:open', openSlideView);
             },
 
             onRender: function () {
                 var that = this;
                 that.onBeforeShow();
-                that.controller.renderView();
+                Backbone.history.loadUrl();
             }
         });
     });
