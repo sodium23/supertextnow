@@ -31,14 +31,19 @@
     text-align: center;
     display: inline-block;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #2a9373;
+}
+.night-time {
+    .sections {
+        background-color: #1f1f6c;
+    }
 }
 .open-nav {
     .sections {
         @include transform(translateY(0));
     }
     .nav-toggle {
-        @include transform(translate(2rem, -4rem));
+        @include transform(translateY(-4rem));
     }
 }
 .section-item {
@@ -51,10 +56,9 @@
 }
 .nav-toggle {
     position: absolute;
-    left: 0;
-    z-index: $z-1;
-    height: 8rem;
-    padding: 1rem;
+    left: calc( 50% - 4rem);
+    width: 8rem;
+    padding: 4rem 1rem 1.8rem 1rem;
     cursor: pointer;
     @include box-sizing();
     @include transition(transform 0.3s ease);

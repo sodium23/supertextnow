@@ -23,15 +23,15 @@ html {
     height: 100%;
     font-size: 1.5rem;
     background-color: $grayLight;
-    background-image: url('../resources/imgs/logo.svg'), url('../resources/imgs/banner.svg');
-    background-repeat: no-repeat, no-repeat;
-    background-position: center, bottom center;
-    background-size: 8rem, auto;
+    background-image: url('../resources/imgs/logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 8rem;
     transition: background 0.3s ease;
 }
 .day-time{
     #content{
-        background: #35b88f url('../resources/imgs/banner.svg') bottom center no-repeat;
+        background: #35b88f;
     }
     &#workspace{
         background-color: #35b88f;
@@ -45,7 +45,7 @@ html {
 #content {
     @include box-sizing();
     height: 100%;
-    background: #272787 url('../resources/imgs/banner.svg') bottom center no-repeat;
+    background: #272787;
 }
 #brand {
     color: white;
@@ -57,6 +57,10 @@ html {
     text-decoration: none;
     padding: 2rem;
     text-transform: uppercase;
+    img{
+        height: 2.5rem;
+        width: 2.5rem;
+    }
 }
 .section-cont {
     height: 100%;

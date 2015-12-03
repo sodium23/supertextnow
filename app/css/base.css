@@ -180,7 +180,10 @@ table {
   text-align: center;
   display: inline-block;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2); }
+  background-color: #2a9373; }
+
+.night-time .sections {
+  background-color: #1f1f6c; }
 
 .open-nav .sections {
   -webkit-transform: translateY(0);
@@ -190,12 +193,12 @@ table {
   -o-transform: translateY(0);
   transform: translateY(0); }
 .open-nav .nav-toggle {
-  -webkit-transform: translate(2rem, -4rem);
-  -khtml-transform: translate(2rem, -4rem);
-  -moz-transform: translate(2rem, -4rem);
-  -ms-transform: translate(2rem, -4rem);
-  -o-transform: translate(2rem, -4rem);
-  transform: translate(2rem, -4rem); }
+  -webkit-transform: translateY(-4rem);
+  -khtml-transform: translateY(-4rem);
+  -moz-transform: translateY(-4rem);
+  -ms-transform: translateY(-4rem);
+  -o-transform: translateY(-4rem);
+  transform: translateY(-4rem); }
 
 .section-item {
   display: inline-block;
@@ -207,10 +210,9 @@ table {
 
 .nav-toggle {
   position: absolute;
-  left: 0;
-  z-index: 1;
-  height: 8rem;
-  padding: 1rem;
+  left: calc( 50% - 4rem);
+  width: 8rem;
+  padding: 4rem 1rem 1.8rem 1rem;
   cursor: pointer;
   -webkit-box-sizing: border-box;
   -khtml-box-sizing: border-box;
@@ -377,14 +379,14 @@ html {
   height: 100%;
   font-size: 1.5rem;
   background-color: #999;
-  background-image: url("../resources/imgs/logo.svg"), url("../resources/imgs/banner.svg");
-  background-repeat: no-repeat, no-repeat;
-  background-position: center, bottom center;
-  background-size: 8rem, auto;
+  background-image: url("../resources/imgs/logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 8rem;
   transition: background 0.3s ease; }
 
 .day-time #content {
-  background: #35b88f url("../resources/imgs/banner.svg") bottom center no-repeat; }
+  background: #35b88f; }
 .day-time#workspace {
   background-color: #35b88f; }
 
@@ -399,7 +401,7 @@ html {
   -o-box-sizing: border-box;
   box-sizing: border-box;
   height: 100%;
-  background: #272787 url("../resources/imgs/banner.svg") bottom center no-repeat; }
+  background: #272787; }
 
 #brand {
   color: white;
@@ -411,6 +413,9 @@ html {
   text-decoration: none;
   padding: 2rem;
   text-transform: uppercase; }
+  #brand img {
+    height: 2.5rem;
+    width: 2.5rem; }
 
 .section-cont {
   height: 100%;

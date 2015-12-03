@@ -11,11 +11,6 @@
         var TRUE = true,
             NAV_SECTIONS = [
                 {
-                    tab: 'home',
-                    name: 'Home',
-                    enabled: TRUE
-                },
-                {
                     tab: 'about',
                     name: 'About',
                     enabled: TRUE
@@ -38,8 +33,11 @@
             template: _.template(template),
             events: {
                 'click [data-tab]': onChangeTab,
-                'click .nav-toggle': function(){
-                    this.$el.toggleClass('open-nav');
+                'mouseover': function(){
+                    this.$el.addClass('open-nav');
+                },
+                'mouseout': function(){
+                    this.$el.removeClass('open-nav');
                 }
             },
             className: 'nav-bar',
