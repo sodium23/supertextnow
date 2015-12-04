@@ -176,10 +176,11 @@ table {
   background: #35B88f; }
 
 #info {
-  height: calc( 100% - 8rem);
-  width: 60rem;
+  background: rgba(0, 0, 0, 0.5);
+  height: calc( 100% - 13rem);
+  width: 90rem;
   max-width: 90%;
-  margin: 0 auto;
+  margin: 5rem auto 0;
   color: white;
   -webkit-box-sizing: border-box;
   -khtml-box-sizing: border-box;
@@ -187,7 +188,7 @@ table {
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 5rem 0; }
+  padding: 3rem 3rem 7rem; }
 
 #slide-down-arrow {
   position: absolute;
@@ -240,6 +241,14 @@ table {
   -ms-opacity: 1;
   -o-opacity: 1;
   opacity: 1; }
+
+.info-section {
+  line-height: 2.5rem;
+  letter-spacing: 0px; }
+
+.info-cont {
+  height: 100%;
+  overflow-y: scroll; }
 
 #slide {
   position: fixed;
@@ -297,6 +306,9 @@ table {
   -ms-transform: translateY(0);
   -o-transform: translateY(0);
   transform: translateY(0); }
+  @media screen and (max-width: 500px) {
+    .info-open .sections {
+      text-align: right; } }
 
 .open-nav .sections {
   -webkit-transform: translateY(0);
@@ -501,6 +513,7 @@ html {
   filter: blur(4px); }
 
 #brand {
+  text-shadow: 0 0 1rem black;
   color: white;
   position: fixed;
   top: 0;

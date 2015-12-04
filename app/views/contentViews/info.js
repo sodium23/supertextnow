@@ -4,20 +4,23 @@
     define([
         'backbone',
         'views/base',
+        'text!templates/about.html',
+        'text!templates/terms.html',
         'text!templates/info.html'
-    ], function(Backbone, BaseView, template){
+    ], function(Backbone, BaseView, aboutHtml, termsHtml, template){
         return BaseView.extend({
+            className: 'info-cont',
             template: _.template(template),
             templateData: function(){
                 return{
                     sectionInfos: [
                         {
                             tab: 'about',
-                            info: 'This is About section'
+                            info: aboutHtml
                         },
                         {
                             tab: 'terms',
-                            info: 'This is Terms Section'
+                            info: termsHtml
                         },
                     ]
                 }
