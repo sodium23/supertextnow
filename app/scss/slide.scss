@@ -33,6 +33,9 @@
     display: inline-block;
     width: 100%;
     background-color: #2a9373;
+    @media screen and (max-width: $screen-th-2) {
+        text-align: right;
+    }
 }
 .night-time {
     .sections {
