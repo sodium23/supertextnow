@@ -60,7 +60,8 @@
             },
             templateData: function () {
                 return {
-                    isDay: isDay
+                    isDay: isDay,
+                    fileName: isDay ? 'day': 'night'
                 };
             },
             onRender: function () {

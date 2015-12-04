@@ -1,17 +1,5 @@
-<%if(isDay){%>
-<!--
-    <video autoplay loop preload="auto">
-        <source src="app/resources/videos/night.mp4" type="video/mp4">
-    </video>
-Define a Poster image for the video
--->
-<%}else{%>
-<!--
-    <video autoplay loop preload="auto" poster="app/resources/imgs/<%=isDay?'day':'night'%>_bg.png">
-        <source src="app/resources/videos/night.mp4"" type="video/mp4">
-    </video>
--->
-<%}%>
-
-            <div class="chat-cont"></div>
-            <input placeholder="Say Hi!!" type=text/>
+<video autoplay loop preload="auto" poster="app/resources/imgs/<%=fileName%>_bg.png">
+    <source src="app/resources/videos/<%=fileName%>.mp4" type="video/mp4 ">
+</video>
+<div class="chat-cont"></div>
+<input placeholder="Say Hi!! " type=text/>
