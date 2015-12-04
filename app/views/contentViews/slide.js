@@ -1,4 +1,4 @@
-(function(U){
+(function(W, U){
     'use strict';
     
     define([
@@ -13,7 +13,12 @@
                 navigation: {selector: '#navigation', regionView: NavView},
                 info: {selector: '#info', regionView: InfoView}
             },
-            template: _.template(template)
+            template: _.template(template),
+            events: {
+                'click #slide-down-arrow': function(){
+                    W.location.hash = 'home';
+                }
+            }
         });
     });
-})();
+})(window);

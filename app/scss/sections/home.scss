@@ -1,5 +1,5 @@
 @import "chatContainer";
-@import "info";
+@import "../slide";
 .home-cont {
     input {
         max-width: 90%;
@@ -59,8 +59,8 @@
 }
 .day-time {
     .home-cont {
-        input {
-            background: transparent;
+        .chat-cont {
+            background-color: rgba(0, 0, 0, 0.3);
         }
     }
 }

@@ -7,3 +7,23 @@
     @include box-sizing();
     padding: 5rem 0;
 }
+#slide-down-arrow {
+    position: absolute;
+    bottom: 0;
+    left: calc( 50% - 4rem);
+    width: 8rem;
+    padding: 1.8rem 1rem 4rem 1rem;
+    cursor: pointer;
+    pointer-events: none;
+    @include box-sizing();
+    @include transform(rotate(180deg));
+    @include opacity(0);
+    @include transition(opacity 0.3s ease 0.3s);
+    @include css3-prefix(transition-dalay, 0s);
+}
+.info-open{
+    #slide-down-arrow {
+        pointer-events: auto;
+        @include opacity(1);
+    }
+}
