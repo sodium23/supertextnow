@@ -3,7 +3,11 @@
 @import "variables/_variables";
 @import "_reset";
 @import "sections/home";
-$font-stack: 'Heiti SC';
+$font-stack: "Helvetica";
+@font-face{
+    font-family: "CurseCasual";
+    src: url("../resources/fonts/curseCasual.ttf");
+}
 html,
 body {
     height: 100%;
@@ -17,6 +21,10 @@ html {
 }
 .page-full-height {
     height: 100%;
+}
+.curse-style{
+    font-family: 'CurseCasual', 'Helvetica';
+    font-size: 2rem;
 }
 #workspace {
     height: 100%;
@@ -56,13 +64,14 @@ html {
     }
 }
 #brand {
+    @extend .curse-style;
     @include text-shadow(0, 0, 1rem, black);
     color: white;
     position: fixed;
     top: 0;
     left: 0;
     z-index: $z-6;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     text-decoration: none;
     padding: 2rem;
     text-transform: uppercase;

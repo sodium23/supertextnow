@@ -449,6 +449,9 @@ table {
 .day-time .home-cont .chat-cont {
   background-color: rgba(0, 0, 0, 0.3); }
 
+@font-face {
+  font-family: "CurseCasual";
+  src: url("../resources/fonts/curseCasual.ttf"); }
 html,
 body {
   height: 100%;
@@ -457,11 +460,15 @@ body {
   overflow: hidden; }
 
 html {
-  font-family: "Heiti SC";
+  font-family: "Helvetica";
   font-size: 10px; }
 
 .page-full-height {
   height: 100%; }
+
+.curse-style, .sections, #brand {
+  font-family: 'CurseCasual', 'Helvetica';
+  font-size: 2rem; }
 
 #workspace {
   height: 100%;
@@ -519,7 +526,7 @@ html {
   top: 0;
   left: 0;
   z-index: 500;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   text-decoration: none;
   padding: 2rem;
   text-transform: uppercase;
