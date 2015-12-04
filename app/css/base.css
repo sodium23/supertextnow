@@ -306,7 +306,7 @@ table {
   -ms-transform: translateY(0);
   -o-transform: translateY(0);
   transform: translateY(0); }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     .info-open .sections {
       text-align: right; } }
 
@@ -532,8 +532,20 @@ html {
   text-transform: uppercase;
   line-height: 4rem; }
   #brand img {
-    height: 2.5rem;
-    width: 2.5rem; }
+    height: 4rem;
+    padding-right: 1rem;
+    float: left; }
+  @media screen and (max-width: 1000px) {
+    #brand {
+      font-size: 2.5rem; }
+      #brand img {
+        -webkit-box-sizing: border-box;
+        -khtml-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 0.5rem; } }
 
 .section-cont {
   height: 100%;
