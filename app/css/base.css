@@ -274,6 +274,20 @@ table {
   border-color: #35B88f;
   background: #35B88f; }
 
+#info {
+  height: calc( 100% - 8rem);
+  width: 60rem;
+  max-width: 90%;
+  margin: 0 auto;
+  color: white;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5rem 0; }
+
 .home-cont input {
   max-width: 90%;
   display: block;
@@ -407,9 +421,6 @@ html {
   -ms-transition: height 0.5s ease;
   -o-transition: height 0.5s ease;
   transition: height 0.5s ease; }
-
-.info-open #slide {
-  background: rgba(0, 0, 0, 0.1); }
 
 .day-time #content {
   background: #35b88f; }
