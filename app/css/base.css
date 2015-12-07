@@ -264,7 +264,8 @@ table {
 
 .nav-bar a {
   color: white;
-  text-decoration: none; }
+  text-decoration: none;
+  text-shadow: 0px 0px 3px black; }
 
 .nav-bar .active a {
   text-decoration: underline; }
@@ -292,10 +293,16 @@ table {
   text-align: center;
   display: inline-block;
   width: 100%;
-  background-color: #2a9373; }
+  background-color: #feea9f;
+  -webkit-box-shadow: black 0 0 4rem -1rem;
+  -khtml-box-shadow: black 0 0 4rem -1rem;
+  -moz-box-shadow: black 0 0 4rem -1rem;
+  -ms-box-shadow: black 0 0 4rem -1rem;
+  -o-box-shadow: black 0 0 4rem -1rem;
+  box-shadow: black 0 0 4rem -1rem; }
 
 .night-time .sections {
-  background-color: #1f1f6c; }
+  background-color: #272787; }
 
 .info-open #slide {
   height: 100%; }
@@ -474,16 +481,46 @@ html {
   height: 100%;
   font-size: 1.5rem;
   background-color: #999;
-  background-image: url("../resources/imgs/logo.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 8rem;
   -webkit-transition: background 0.3s ease;
   -khtml-transition: background 0.3s ease;
   -moz-transition: background 0.3s ease;
   -ms-transition: background 0.3s ease;
   -o-transition: background 0.3s ease;
-  transition: background 0.3s ease; }
+  transition: background 0.3s ease;
+  position: relative; }
+
+.loader {
+  -webkit-transform: translate(-50%, -50%);
+  -khtml-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @inlcude square(8rem);
+  height: 8rem;
+  width: 8rem; }
+  .loader img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8rem; }
+
+.loader-glow {
+  background: red;
+  margin: 1rem;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 6rem;
+  top: 0;
+  -webkit-box-shadow: 0 0 4rem 2rem green;
+  -khtml-box-shadow: 0 0 4rem 2rem green;
+  -moz-box-shadow: 0 0 4rem 2rem green;
+  -ms-box-shadow: 0 0 4rem 2rem green;
+  -o-box-shadow: 0 0 4rem 2rem green;
+  box-shadow: 0 0 4rem 2rem green; }
 
 #slide {
   -webkit-transition: height 0.5s ease;
@@ -494,9 +531,9 @@ html {
   transition: height 0.5s ease; }
 
 .day-time #content {
-  background: #35b88f; }
+  background: #feea9f; }
 .day-time#workspace {
-  background-color: #35b88f; }
+  background-color: #feea9f; }
 
 .night-time#workspace {
   background-color: #272787; }

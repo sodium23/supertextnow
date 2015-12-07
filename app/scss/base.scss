@@ -4,7 +4,7 @@
 @import "_reset";
 @import "sections/home";
 $font-stack: "Helvetica";
-@font-face{
+@font-face {
     font-family: "CurseCasual";
     src: url("../resources/fonts/curseCasual.ttf");
 }
@@ -22,7 +22,7 @@ html {
 .page-full-height {
     height: 100%;
 }
-.curse-style{
+.curse-style {
     font-family: 'CurseCasual', 'Helvetica';
     font-size: 2rem;
 }
@@ -30,21 +30,40 @@ html {
     height: 100%;
     font-size: 1.5rem;
     background-color: $grayLight;
-    background-image: url('../resources/imgs/logo.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 8rem;
     @include transition(background 0.3s ease);
+    position: relative;
+}
+.loader {
+    @include hvc();
+    @inlcude square(8rem);
+    height: 8rem;
+    width: 8rem;
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 8rem;
+    }
+}
+.loader-glow {
+    background: red;
+    margin: 1rem;
+    @include circle(6rem);
+    top: 0;
+    @include box-shadow(0,
+    0,
+    4rem,
+    2rem green);
 }
 #slide {
     @include transition(height 0.5s ease);
 }
 .day-time {
     #content {
-        background: #35b88f;
+        background: $day-color;
     }
     &#workspace {
-        background-color: #35b88f;
+        background-color: $day-color;
     }
 }
 .night-time {
@@ -65,7 +84,10 @@ html {
 }
 #brand {
     @extend .curse-style;
-    @include text-shadow(0, 0, 1rem, black);
+    @include text-shadow(0,
+    0,
+    1rem,
+    black);
     color: white;
     position: fixed;
     top: 0;
@@ -83,7 +105,7 @@ html {
     }
     @media screen and (max-width: $screen-th-1) {
         font-size: 2.5rem;
-        img{
+        img {
             @include box-sizing();
             padding: 0.5rem;
         }

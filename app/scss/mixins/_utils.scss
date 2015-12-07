@@ -4,6 +4,12 @@
     position: absolute;
     top: $top;
 }
+@mixin hvc($top: 50%, $left: 50%) {
+    @include transform(translate(-50%, -50%));
+    position: absolute;
+    top: $top;
+    left: $left;
+}
 @mixin circle($size) {
     @include square($size);
     border-radius: $size;
