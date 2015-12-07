@@ -15,7 +15,8 @@
     font-family: "ItcLight";
     src: url("../resources/fonts/itc_light.otf");
 }
-$font-stack: "ItcMed", "Helvetica";
+$font-stack: "ItcMed",
+"Helvetica";
 html,
 body {
     height: 100%;
@@ -26,6 +27,13 @@ body {
 html {
     font-family: $font-stack;
     font-size: 10px;
+}
+h3 {
+    font-size: 1.8rem;
+    margin: 3rem 0 1rem;
+}
+p {
+    margin: 1rem 0;
 }
 .page-full-height {
     height: 100%;
@@ -61,14 +69,23 @@ html {
     animation: glow 2s infinite;
 }
 @keyframes glow {
-    0%{
-        @include box-shadow(0,0,4rem,-0.5rem #35b88f);
+    0% {
+        @include box-shadow(0,
+        0,
+        4rem,
+        -0.5rem #35b88f);
     }
     50% {
-        @include box-shadow(0,0,4rem,1rem #35b88f);
+        @include box-shadow(0,
+        0,
+        4rem,
+        1rem #35b88f);
     }
     100% {
-        @include box-shadow(0,0,4rem,-0.5rem #35b88f);
+        @include box-shadow(0,
+        0,
+        4rem,
+        -0.5rem #35b88f);
     }
 }
 #slide {
@@ -97,13 +114,19 @@ html {
     background-position-x: 20%;
 }
 .info-open {
-    video, .chat-cont, input {
-        @include css3-prefix(filter,blur(4px));
+    video {
+        @include css3-prefix(filter,
+        blur(0));
+    }
+    #content{
+        @include css3-prefix(filter,
+        blur(4px));
     }
 }
-.chat-activated{
-    video{
-        @include css3-prefix(filter,blur(4px));
+.chat-activated {
+    video {
+        @include css3-prefix(filter,
+        blur(4px));
     }
 }
 #brand {
@@ -137,7 +160,6 @@ html {
 }
 .section-cont {
     height: 100%;
-//    padding-bottom: $header-height;
     @include box-sizing();
 }
 .right {

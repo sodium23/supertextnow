@@ -6,7 +6,8 @@
     margin: 5rem auto 0;
     color: black;
     @include box-sizing();
-    padding: 3rem 3rem 7rem;
+    padding: 3rem 10rem 7rem;
+    text-align: center;
 }
 #slide-down-arrow {
     position: absolute;

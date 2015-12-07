@@ -188,7 +188,8 @@ table {
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 3rem 3rem 7rem; }
+  padding: 3rem 10rem 7rem;
+  text-align: center; }
 
 #slide-down-arrow {
   position: absolute;
@@ -488,6 +489,13 @@ html {
   font-family: "ItcMed", "Helvetica";
   font-size: 10px; }
 
+h3 {
+  font-size: 1.8rem;
+  margin: 3rem 0 1rem; }
+
+p {
+  margin: 1rem 0; }
+
 .page-full-height {
   height: 100%; }
 
@@ -587,7 +595,14 @@ html {
   background-size: cover;
   background-position-x: 20%; }
 
-.info-open video, .info-open .chat-cont, .info-open input {
+.info-open video {
+  -webkit-filter: blur(0);
+  -khtml-filter: blur(0);
+  -moz-filter: blur(0);
+  -ms-filter: blur(0);
+  -o-filter: blur(0);
+  filter: blur(0); }
+.info-open #content {
   -webkit-filter: blur(4px);
   -khtml-filter: blur(4px);
   -moz-filter: blur(4px);
