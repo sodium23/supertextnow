@@ -366,10 +366,10 @@ table {
   width: 40rem;
   font-size: 2rem;
   text-align: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid white;
   border-radius: 0;
-  color: white;
+  color: black;
   font-weight: 300;
   line-height: 3.5rem;
   outline: none;
@@ -400,15 +400,15 @@ table {
   -o-opacity: 1;
   opacity: 1; }
 .home-cont ::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5); }
+  color: rgba(0, 0, 0, 0.5); }
 .home-cont :-moz-placeholder {
   /* Firefox 18- */
-  color: rgba(255, 255, 255, 0.5); }
+  color: rgba(0, 0, 0, 0.5); }
 .home-cont ::-moz-placeholder {
   /* Firefox 19+ */
-  color: rgba(255, 255, 255, 0.5); }
+  color: rgba(0, 0, 0, 0.5); }
 .home-cont :-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5); }
+  color: rgba(0, 0, 0, 0.5); }
 .home-cont .chat-cont {
   filter: alpha(opacity=0);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";

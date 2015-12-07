@@ -8,10 +8,10 @@
         width: 40rem;
         font-size: 2rem;
         text-align: center;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.8);
         border: 1px solid white;
         border-radius: 0;
-        color: white;
+        color: black;
         font-weight: 300;
         line-height: 3.5rem;
         outline: none;
@@ -29,7 +29,7 @@
             @include opacity(1);
         }
     }
-    @include placeholderColor(rgba(255, 255, 255, 0.5));
+    @include placeholderColor(rgba(0, 0, 0, 0.5));
     .chat-cont {
         @include opacity(0);
         @include transition(opacity .2s ease 0.3s);
