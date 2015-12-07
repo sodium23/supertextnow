@@ -566,7 +566,9 @@ html {
   transition: height 0.5s ease; }
 
 .day-time #content {
-  background: #feea9f; }
+  background: url("../resources/imgs/day.png") no-repeat;
+  background-size: cover;
+  background-position-x: 10%; }
 .day-time#workspace {
   background-color: #feea9f; }
 
@@ -581,7 +583,9 @@ html {
   -o-box-sizing: border-box;
   box-sizing: border-box;
   height: 100%;
-  background: #272787; }
+  background: url("../resources/imgs/night.png") no-repeat;
+  background-size: cover;
+  background-position-x: 20%; }
 
 .info-open video, .info-open .chat-cont, .info-open input {
   -webkit-filter: blur(4px);

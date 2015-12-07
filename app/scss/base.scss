@@ -76,7 +76,9 @@ html {
 }
 .day-time {
     #content {
-        background: $day-color;
+        background: $day-img no-repeat;
+        background-size: cover;
+        background-position-x: 10%;
     }
     &#workspace {
         background-color: $day-color;
@@ -84,13 +86,15 @@ html {
 }
 .night-time {
     &#workspace {
-        background-color: #272787;
+        background-color: $night-color;
     }
 }
 #content {
     @include box-sizing();
     height: 100%;
-    background: #272787;
+    background: $night-img no-repeat;
+    background-size: cover;
+    background-position-x: 20%;
 }
 .info-open {
     video, .chat-cont, input {
