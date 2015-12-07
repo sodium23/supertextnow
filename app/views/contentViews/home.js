@@ -52,6 +52,8 @@
                     var that = this,
                         jTarget = $(e.target),
                         msg = jTarget.val();
+                    _.forEach(timeouts, clearTimeout);
+                    this.$el.addClass('chat-activated');
                     if (msg && e.keyCode == 13) {
                         Events.trigger('msg:send', msg);
                         jTarget.val('');
