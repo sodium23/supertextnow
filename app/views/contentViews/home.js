@@ -10,6 +10,7 @@
         var Events = Backbone.Events,
             textIndex = 0,
             counter = 0,
+            isChatActivated = false,
             sentences = [
                 "Hey I want a Biriyani",
                 "Hey, can you get my laptop screen fixed",
@@ -43,7 +44,8 @@
                 'click input': function () {
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
-//                    this.jInput.val('');
+                    //                    this.jInput.val('');
+                    isChatActivated = true;
                     this.jInput.attr('placeholder', 'Say Hi!');
                 },
                 'keyup input': function (e) {
@@ -62,17 +64,27 @@
             templateData: function () {
                 return {
                     isDay: isDay,
-                    fileName: isDay ? 'day': 'night'
+                    fileName: isDay ? 'day' : 'night'
                 };
             },
             onRender: function () {
-                var that = this;
+                var that = this,
+                    jInput;
                 that.chatContainerView = new ChatContainerView();
-                that.jInput = that.$('input');
-                nextLetter.call(that);
+                jInput = that.jInput = that.$('input');
+                if (isChatActivated) {
+                    this.$el.addClass('chat-activated');
+                    jInput.attr('placeholder', 'Send a message');
+                }
+                else {
+                    nextLetter.call(that);
+                }
+
                 that.$('.chat-cont').html(that.chatContainerView.render().$el);
                 that.jChatBox = that.$('.chat-msgs-box');
-                _.defer(function(){that.jInput.focus()});
+                _.defer(function () {
+                    jInput.focus()
+                });
 
             },
             onDestroy: function () {
