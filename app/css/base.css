@@ -575,7 +575,15 @@ html {
   height: 100%;
   background: #272787; }
 
-.info-open #content {
+.info-open video {
+  -webkit-filter: blur(4px);
+  -khtml-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -ms-filter: blur(4px);
+  -o-filter: blur(4px);
+  filter: blur(4px); }
+
+.chat-activated video {
   -webkit-filter: blur(4px);
   -khtml-filter: blur(4px);
   -moz-filter: blur(4px);

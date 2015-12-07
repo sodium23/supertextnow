@@ -85,9 +85,13 @@ html {
     background: #272787;
 }
 .info-open {
-    #content {
-        @include css3-prefix(filter,
-        blur(4px));
+    video {
+        @include css3-prefix(filter,blur(4px));
+    }
+}
+.chat-activated{
+    video{
+        @include css3-prefix(filter,blur(4px));
     }
 }
 #brand {
