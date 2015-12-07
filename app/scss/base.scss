@@ -54,13 +54,13 @@ html {
 }
 @keyframes glow {
     0%{
-        @include box-shadow(0,0,4rem,0rem #35b88f);
+        @include box-shadow(0,0,4rem,-0.5rem #35b88f);
     }
     50% {
-        @include box-shadow(0,0,4rem,2rem #35b88f);
+        @include box-shadow(0,0,4rem,1rem #35b88f);
     }
     100% {
-        @include box-shadow(0,0,4rem,0rem #35b88f);
+        @include box-shadow(0,0,4rem,-0.5rem #35b88f);
     }
 }
 #slide {
