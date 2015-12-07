@@ -515,13 +515,30 @@ html {
   width: 6rem;
   border-radius: 6rem;
   top: 0;
-  -webkit-box-shadow: 0 0 4rem 2rem green;
-  -khtml-box-shadow: 0 0 4rem 2rem green;
-  -moz-box-shadow: 0 0 4rem 2rem green;
-  -ms-box-shadow: 0 0 4rem 2rem green;
-  -o-box-shadow: 0 0 4rem 2rem green;
-  box-shadow: 0 0 4rem 2rem green; }
+  animation: glow 2s infinite; }
 
+@keyframes glow {
+  0% {
+    -webkit-box-shadow: 0 0 4rem 0rem #35b88f;
+    -khtml-box-shadow: 0 0 4rem 0rem #35b88f;
+    -moz-box-shadow: 0 0 4rem 0rem #35b88f;
+    -ms-box-shadow: 0 0 4rem 0rem #35b88f;
+    -o-box-shadow: 0 0 4rem 0rem #35b88f;
+    box-shadow: 0 0 4rem 0rem #35b88f; }
+  50% {
+    -webkit-box-shadow: 0 0 4rem 2rem #35b88f;
+    -khtml-box-shadow: 0 0 4rem 2rem #35b88f;
+    -moz-box-shadow: 0 0 4rem 2rem #35b88f;
+    -ms-box-shadow: 0 0 4rem 2rem #35b88f;
+    -o-box-shadow: 0 0 4rem 2rem #35b88f;
+    box-shadow: 0 0 4rem 2rem #35b88f; }
+  100% {
+    -webkit-box-shadow: 0 0 4rem 0rem #35b88f;
+    -khtml-box-shadow: 0 0 4rem 0rem #35b88f;
+    -moz-box-shadow: 0 0 4rem 0rem #35b88f;
+    -ms-box-shadow: 0 0 4rem 0rem #35b88f;
+    -o-box-shadow: 0 0 4rem 0rem #35b88f;
+    box-shadow: 0 0 4rem 0rem #35b88f; } }
 #slide {
   -webkit-transition: height 0.5s ease;
   -khtml-transition: height 0.5s ease;
