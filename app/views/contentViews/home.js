@@ -24,7 +24,8 @@
                     text = sentences[counter],
                     jInput = that.jInput;
                 if (textIndex <= text.length) {
-                    jInput.val(text.substr(0, textIndex++) + '|');
+//                    jInput.val(text.substr(0, textIndex++) + '|');
+                    jInput.attr('placeholder', text.substr(0, textIndex++));
                     timeouts.push(setTimeout(function () {
                         nextLetter.call(that);
                     }, 70));
@@ -51,7 +52,7 @@
                         msg = jTarget.val();
                     if (msg && e.keyCode == 13) {
                         Events.trigger('msg:send', msg);
-                        jTarget.val('');
+//                        jTarget.val('');
                         jTarget.attr('placeholder', 'Send a message');
                         that.jChatBox.scrollTop(that.jChatBox[0].scrollHeight);
 
@@ -71,6 +72,7 @@
                 nextLetter.call(that);
                 that.$('.chat-cont').html(that.chatContainerView.render().$el);
                 that.jChatBox = that.$('.chat-msgs-box');
+                _.defer(function(){that.jInput.focus()});
 
             },
             onDestroy: function () {
