@@ -362,11 +362,13 @@ table {
 .home-cont {
   position: relative; }
   .home-cont input {
+    font-family: inherit;
+    font-weight: 600;
     max-width: 90%;
     display: block;
     margin: auto;
     width: 40rem;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid white;
@@ -402,15 +404,15 @@ table {
     -o-opacity: 1;
     opacity: 1; }
   .home-cont ::-webkit-input-placeholder {
-    color: rgba(0, 0, 0, 0.5); }
+    color: rgba(0, 0, 0, 0.3); }
   .home-cont :-moz-placeholder {
     /* Firefox 18- */
-    color: rgba(0, 0, 0, 0.5); }
+    color: rgba(0, 0, 0, 0.3); }
   .home-cont ::-moz-placeholder {
     /* Firefox 19+ */
-    color: rgba(0, 0, 0, 0.5); }
+    color: rgba(0, 0, 0, 0.3); }
   .home-cont :-ms-input-placeholder {
-    color: rgba(0, 0, 0, 0.5); }
+    color: rgba(0, 0, 0, 0.3); }
   .home-cont .chat-cont {
     filter: alpha(opacity=0);
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -469,6 +471,12 @@ table {
 @font-face {
   font-family: "CurseCasual";
   src: url("../resources/fonts/curseCasual.ttf"); }
+@font-face {
+  font-family: "ItcMed";
+  src: url("../resources/fonts/itc_med.otf"); }
+@font-face {
+  font-family: "ItcLight";
+  src: url("../resources/fonts/itc_light.otf"); }
 html,
 body {
   height: 100%;
@@ -477,7 +485,7 @@ body {
   overflow: hidden; }
 
 html {
-  font-family: "Helvetica";
+  font-family: "ItcMed", "Helvetica";
   font-size: 10px; }
 
 .page-full-height {
@@ -575,7 +583,7 @@ html {
   height: 100%;
   background: #272787; }
 
-.info-open video {
+.info-open video, .info-open .chat-cont, .info-open input {
   -webkit-filter: blur(4px);
   -khtml-filter: blur(4px);
   -moz-filter: blur(4px);

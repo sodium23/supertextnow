@@ -3,11 +3,13 @@
 .home-cont {
     position: relative;
     input {
+        font-family: inherit;
+        font-weight: 600;
         max-width: 90%;
         display: block;
         margin: auto;
         width: 40rem;
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-align: center;
         background: rgba(255, 255, 255, 0.8);
         border: 1px solid white;
@@ -30,7 +32,7 @@
             @include opacity(1);
         }
     }
-    @include placeholderColor(rgba(0, 0, 0, 0.5));
+    @include placeholderColor(rgba(0, 0, 0, 0.3));
     .chat-cont {
         @include opacity(0);
         @include transition(opacity .2s ease 0.3s);

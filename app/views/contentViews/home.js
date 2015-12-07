@@ -24,7 +24,6 @@
                     text = sentences[counter],
                     jInput = that.jInput;
                 if (textIndex <= text.length) {
-//                    jInput.val(text.substr(0, textIndex++) + '|');
                     jInput.attr('placeholder', text.substr(0, textIndex++));
                     timeouts.push(setTimeout(function () {
                         nextLetter.call(that);
@@ -44,7 +43,8 @@
                 'click input': function () {
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
-                    this.jInput.val('');
+//                    this.jInput.val('');
+                    this.jInput.attr('placeholder', 'Say Hi!');
                 },
                 'keyup input': function (e) {
                     var that = this,
@@ -52,7 +52,7 @@
                         msg = jTarget.val();
                     if (msg && e.keyCode == 13) {
                         Events.trigger('msg:send', msg);
-//                        jTarget.val('');
+                        jTarget.val('');
                         jTarget.attr('placeholder', 'Send a message');
                         that.jChatBox.scrollTop(that.jChatBox[0].scrollHeight);
 

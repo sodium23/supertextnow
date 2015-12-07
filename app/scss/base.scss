@@ -3,11 +3,19 @@
 @import "variables/_variables";
 @import "_reset";
 @import "sections/home";
-$font-stack: "Helvetica";
 @font-face {
     font-family: "CurseCasual";
     src: url("../resources/fonts/curseCasual.ttf");
 }
+@font-face {
+    font-family: "ItcMed";
+    src: url("../resources/fonts/itc_med.otf");
+}
+@font-face {
+    font-family: "ItcLight";
+    src: url("../resources/fonts/itc_light.otf");
+}
+$font-stack: "ItcMed", "Helvetica";
 html,
 body {
     height: 100%;
@@ -85,7 +93,7 @@ html {
     background: #272787;
 }
 .info-open {
-    video {
+    video, .chat-cont, input {
         @include css3-prefix(filter,blur(4px));
     }
 }
