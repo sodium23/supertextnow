@@ -489,16 +489,6 @@ html {
   font-family: "ItcMed", "Helvetica";
   font-size: 10px; }
 
-body::-webkit-scrollbar {
-  width: 1em; }
-
-body::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
-
-body::-webkit-scrollbar-thumb {
-  background-color: red;
-  outline: 1px solid red; }
-
 h3 {
   font-size: 1.8rem;
   margin: 3rem 0 1rem; }
@@ -545,7 +535,6 @@ p {
     height: 8rem; }
 
 .loader-glow {
-  background: red;
   margin: 1rem;
   height: 6rem;
   width: 6rem;
