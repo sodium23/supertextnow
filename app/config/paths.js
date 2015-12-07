@@ -23,6 +23,8 @@
         controllers: 'app/controllers',
         routers: 'app/routers',
         factory: 'app/factory',
-        contentViews: 'app/views/contentViews'
+        contentViews: 'app/views/contentViews',
+        utils: 'app/utils',
+        api: 'app/api'
     });
 })();

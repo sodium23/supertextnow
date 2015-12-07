@@ -5,9 +5,11 @@
         'lodash',
         'jquery',
         'marionette',
-        'backbone'
-    ], function (_, $, Marionette, Backbone) {
+        'backbone',
+        'utils/layerSocket'
+    ], function (_, $, Marionette, Backbone, LayerSocket) {
         var App = new Marionette.Application();
+//        new LayerSocket();
         App.on('start', function () {
             var rootView;
             Backbone.history.start();
