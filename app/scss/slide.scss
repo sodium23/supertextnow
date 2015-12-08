@@ -28,7 +28,6 @@
     font-size: 1.8rem;
 }
 .sections {
-    @extend .curse-style;
     @include transform(translateY(8rem));
     @include transition(transform 0.3s ease);
     text-align: center;
