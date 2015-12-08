@@ -9,7 +9,7 @@
         'utils/layerSocket'
     ], function (_, $, Marionette, Backbone, LayerSocket) {
         var App = new Marionette.Application();
-//        new LayerSocket();
+        new LayerSocket();
         App.on('start', function () {
             var rootView;
             Backbone.history.start();

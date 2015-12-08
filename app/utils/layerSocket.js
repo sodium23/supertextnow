@@ -1,20 +1,43 @@
-(function (W) {
+(function (W, D) {
     'use strict';
     define([
         'backbone',
         'marionette',
-        'api/layer'
-    ], function (Backbone, Marionette, LayerAPI) {
+        'api/layer',
+        'cookie'
+    ], function (Backbone, Marionette, LayerAPI, Cookie) {
         var USER_ID = 'vipul_web',
             Events = Backbone.Events,
+            initiateAuthentication = function () {
+                var that = this;
+                _.forEach(that.timeouts, clearTimeout);
+                LayerAPI.getNonce()
+
+                // Use the nonce to get an identity token
+                .then(function (nonce) {
+                    return LayerAPI.getIdentityToken(nonce, USER_ID);
+                })
+
+                // Use the identity token to get a session
+                .then(function (identityToken) {
+                    return LayerAPI.getSession(identityToken);
+                })
+
+                .then(_.bind(createSocketConnection, that));
+            },
             createSocketConnection = function (sessionToken) {
-                var socket = new WebSocket('wss://api.layer.com/websocket?session_token=' + sessionToken, 'layer-1.0');
-                waitForSocketConnection.call(this, socket, onSocketConnection)
+                var that = this,
+                    socket = new WebSocket('wss://api.layer.com/websocket?session_token=' + sessionToken, 'layer-1.0');
+                socket.onerror = function (e) {
+                    Cookie.remove('layer_socket');
+                    initiateAuthentication.call(that);
+                };
+                waitForSocketConnection.call(this, socket, onSocketConnection);
             },
 
             waitForSocketConnection = function (socket, callback) {
                 var that = this;
-                setTimeout(
+                that.timeouts.push(setTimeout(
                     function () {
                         if (socket.readyState === 1) {
                             console.log("Chat Connected")
@@ -28,7 +51,7 @@
                             waitForSocketConnection.call(that, socket, callback);
                         }
 
-                    }, 500); // wait 500 milisecond for the connection...
+                    }, 500)); // wait 500 milisecond for the connection...
             },
 
             onSocketConnection = function (socket) {
@@ -93,22 +116,16 @@
             handleSignal = function (msg) {}
 
         return Marionette.Object.extend({
+            timeouts: [],
             initialize: function () {
-                var that = this;
-                LayerAPI.getNonce()
-
-                // Use the nonce to get an identity token
-                .then(function (nonce) {
-                    return LayerAPI.getIdentityToken(nonce, USER_ID);
-                })
-
-                // Use the identity token to get a session
-                .then(function (identityToken) {
-                    return LayerAPI.getSession(identityToken);
-                })
-
-                .then(_.bind(createSocketConnection, that));
+                var that = this,
+                    sessionToken = Cookie.get('layer_token');
+                if (false && sessionToken) {
+                    createSocketConnection.call(that, sessionToken);
+                } else {
+                    initiateAuthentication.call(that);
+                }
             }
         });
     });
-})(window)
+})(window, document)

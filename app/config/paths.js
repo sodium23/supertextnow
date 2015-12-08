@@ -6,6 +6,7 @@
     define({
         //Libraries
         jquery: BOWER_PATH + 'jquery/dist/jquery',
+        cookie: BOWER_PATH + 'js-cookie/src/js.cookie',
         backbone: BOWER_PATH + 'backbone/backbone',
         marionette: BOWER_PATH + 'marionette/lib/backbone.marionette',
         lodash: BOWER_PATH + 'lodash/lodash',
