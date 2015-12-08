@@ -12,10 +12,9 @@
             counter = 0,
             isChatActivated = false,
             sentences = [
-                "Hey I want a Biriyani",
-                "Hey, can you get my laptop screen fixed",
-                "Bring me a chocolate cake by 7:30pm",
-                "My door's broken, need a carpenter"
+                "Hey.",
+                "Whatsup",
+                "Tell me what you need today"
             ],
             timeouts = [],
             isDay = (new Date()).getHours() > 7 && (new Date()).getHours() < 18,
@@ -34,7 +33,7 @@
                     counter = ++counter % sentences.length;
                     timeouts.push(setTimeout(function () {
                         nextLetter.call(that);
-                    }, 1500));
+                    }, 2000));
                 }
             };
         return BaseView.extend({
