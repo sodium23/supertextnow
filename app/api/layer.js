@@ -28,20 +28,6 @@
             },
             getIdentityToken: function (nonce, userId) {
                 var d = new $.Deferred();
-//                $.ajax({
-//                        url: CONFIG.identityProviderUrl,
-//                        headers: {
-//                            "X_LAYER_APP_ID": CONFIG.appId,
-//                            "Content-type": "application/json",
-//                            "Accept": "application/json"
-//                        },
-//                        method: "POST",
-//                        data: JSON.stringify({
-//                            app_id: CONFIG.appId,
-//                            user_id: userId,
-//                            nonce: nonce
-//                        })
-//                    })
                 $.ajax({
                         url: CONFIG.localIdentityProviderUrl,
                         headers: {
@@ -50,7 +36,6 @@
                         },
                         method: "GET",
                         data: {
-//                            app_id: CONFIG.appId,
                             uId: userId,
                             nce: nonce
                         }
