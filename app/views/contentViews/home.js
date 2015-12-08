@@ -57,8 +57,6 @@
                         Events.trigger('msg:send', msg);
                         jTarget.val('');
                         jTarget.attr('placeholder', 'Send a message');
-                        that.jChatBox.scrollTop(that.jChatBox[0].scrollHeight);
-
                     }
                 }
             },
