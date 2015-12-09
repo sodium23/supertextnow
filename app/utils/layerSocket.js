@@ -146,7 +146,7 @@
             },
 
             sendMessage: function (msg) {
-                LayerAPI.sendMessage(msg.body);
+                LayerAPI.sendMessage(msg);
             }
         });
     });

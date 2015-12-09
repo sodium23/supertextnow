@@ -65,8 +65,9 @@
                     });
                 return d;
             },
-            setSessionTokenHeader: function (sessionToken) {
-                CONFIG.headers.Authorization = 'Layer session-token="' + sessionToken + '"';
+            setSessionTokenHeader: function (token) {
+                sessionToken = sessionToken;
+                CONFIG.headers.Authorization = 'Layer session-token="' + token + '"';
             },
             sendMessage: function (body, mimeType) {
                 console.log('Sending messsage' + body);
@@ -101,6 +102,20 @@
                     d.resolve();
                 });
 
+                return d;
+            },
+
+            logout: function () {
+                var d = $.Deferred();
+                $.ajax({
+                    url: CONFIG.serverUrl + "/sessions/" + (sessionToken || Cookie.get('layer_token', sessionToken)),
+                    method: "DELETE",
+                    headers: CONFIG.headers
+                }).then(function () {
+                    sessionToken = U;
+                    Cookie.remove('layer_token');
+                    d.resolve();
+                });
                 return d;
             }
         }
