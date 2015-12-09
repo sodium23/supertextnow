@@ -12,23 +12,21 @@
             renderReply = function (msg) {
                 var that = this,
                     userId;
-                if (that.liveChatInitiated) {
-                    //Handover chat to Layer
-                } else {
+                if (!that.liveChatInitiated) {
                     if (that.hasAskedForID) {
                         userId = extractUserId(msg);
                         that.hasAskedForID = true;
                         setTimeout(function () {
-                            addReply.call(that, userId ? 'Awesome, So whatsup?? '+userId : 'I didn\'t get it, Can you come again');
+                            addMsg.call(that, userId ? 'Awesome, So whatsup?? ' + userId : 'I didn\'t get it, Can you come again');
                         }, 1000);
                         userId && initiateLiveChat.call(that, userId);
 
                     } else {
                         setTimeout(function () {
-                            addReply.call(that, 'Hey');
+                            addMsg.call(that, 'Hey');
                         }, 500);
                         setTimeout(function () {
-                            addReply.call(that, 'Can I have your email id? Promise wont spam');
+                            addMsg.call(that, 'Can I have your email id? Promise wont spam');
                             that.hasAskedForID = true;
                         }, 2000);
                     }
@@ -41,15 +39,15 @@
                 email && (email = email.trim());
                 return re.test(email) && email;
             },
-            addReply = function (reply) {
+            addMsg = function (msg, dir) {
                 this.collection.add({
-                    msg: reply,
-                    dir: 'left'
+                    msg: msg,
+                    dir: dir || 'left'
                 });
             },
             initiateLiveChat = function (userId) {
                 var that = this;
-                //                new LayerSocket(userId);
+                new LayerSocket(userId);
                 that.liveChatInitiated = true;
             };
         return CollectionView.extend({
@@ -68,14 +66,18 @@
             },
             initialize: function (options) {
                 var that = this;
+                initiateLiveChat.call(that);
                 CollectionView.prototype.initialize.call(that, options);
                 that.listenTo(Events, 'msg:send', function (msg) {
-                    that.collection.add({
-                        msg: msg,
-                        dir: 'right'
-                    });
+                    !that.liveChatInitiated && addMsg.call(that, msg, 'right');
                     renderReply.call(that, msg);
-                })
+                });
+                that.listenTo(Events, 'socket:message:create', function (msg) {
+                    var dir = msg.isSelf ? 'right': 'left';
+                    _.forEach(msg.parts, function(part){
+                       addMsg.call(that, part.body, dir); 
+                    });
+                });
             }
         });
 

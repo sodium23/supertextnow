@@ -7,6 +7,7 @@
         'cookie'
     ], function (Backbone, Marionette, LayerAPI, Cookie) {
         var USER_ID = 'vipul_web',
+//        var USER_ID = 'frodo_the_dodo',
             Events = Backbone.Events,
             initiateAuthentication = function () {
                 var that = this;
@@ -40,7 +41,8 @@
                 that.timeouts.push(setTimeout(
                     function () {
                         if (socket.readyState === 1) {
-                            console.log("Chat Connected")
+                            Events.trigger('chat:connected');
+                            console.log("Chat Connected");
                             if (callback != null) {
                                 callback.call(that, socket);
                             }
@@ -80,15 +82,23 @@
                         break;
                 }
             },
+            initializeConversation = function () {
+                var that = this;
+                LayerAPI.createConversation(['vipul_web', 'frodo_the_dodo'], true).then(function () {
+                    that.listenTo(Events, 'msg:send', that.sendMessage);
+                });
+            },
             /*  Change Event Handler */
             handleChange = function (msg) {
                 //Events are also recieved for operations done by self
                 var changeObjectType = msg.object.type.toLowerCase(),
-                    operation = msg.operation;
+                    operation = msg.operation,
+                    msgData = msg.data;
                 //Cache Operation
                 switch (operation) {
                     case 'create':
                         //add to cache
+                        msgData.isSelf = msgData.sender.user_id === USER_ID; 
                         break;
                     case 'delete':
                         //destroy flag in data determines if deletion is local or global
@@ -97,14 +107,17 @@
                     case 'update':
                         //update in cache
                         break;
+                    case 'patch':
+                        //update in cache
+                        break;
                     default:
                         console.log('Invalid Change Response');
                         return;
                         break;
                 }
                 //Trigger Event
-                Events.trigger('socket:' + changeObjectType + ':' + operation, msg.data);
-                console.log(msg.data);
+                Events.trigger('socket:' + changeObjectType + ':' + operation, msgData);
+                console.log(msgData);
             },
             /*  Request Event Handler */
             handleRequest = function (msg) {},
@@ -120,11 +133,20 @@
             initialize: function () {
                 var that = this,
                     sessionToken = Cookie.get('layer_token');
+
+                that.listenTo(Events, 'chat:connected', function () {
+                    initializeConversation.call(that);
+                });
                 if (false && sessionToken) {
+                    LayerAPI.setSessionTokenHeader(sessionToken);
                     createSocketConnection.call(that, sessionToken);
                 } else {
                     initiateAuthentication.call(that);
                 }
+            },
+
+            sendMessage: function (msg) {
+                LayerAPI.sendMessage(msg);
             }
         });
     });
