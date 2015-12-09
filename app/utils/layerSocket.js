@@ -85,7 +85,7 @@
             initializeConversation = function () {
                 var that = this;
                 LayerAPI.createConversation(['vipul_web', 'frodo_the_dodo'], true).then(function () {
-                    that.listenTo(Events, 'msg:send', that.sendMessage);
+                    that.listenTo(Events, 'layer:send', that.sendMessage);
                     Events.trigger('chat:connected');
                 });
             },

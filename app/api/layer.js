@@ -59,7 +59,7 @@
                     })
                     .then(function (data, textStatus, xhr) {
                         sessionToken = data.session_token;
-//                        Cookie.set('layer_token', sessionToken);
+                        Cookie.set('layer_token', sessionToken);
                         CONFIG.headers.Authorization = 'Layer session-token="' + sessionToken + '"';
                         d.resolve(sessionToken);
                     });

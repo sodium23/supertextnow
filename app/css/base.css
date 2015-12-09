@@ -186,7 +186,8 @@ table {
     display: inline-block;
     border-radius: 2rem 2rem 0rem 2rem;
     max-width: 60%;
-    word-break: break-all;
+    word-break: break-word;
+    word-wrap: break-word;
     margin: 1rem; }
     .chat-msg .msg-cont.left {
       border-radius: 2rem 2rem 2rem 0rem;

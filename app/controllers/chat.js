@@ -23,13 +23,18 @@
                 },
                 logout: {
                     handler: function () {
-                        var d = $.Deferred();
-                        LayerApi.logout().then(function () {
-                            ContextService.chatConnected = false;
-                            ContextService.chatConnectionInitiated = false;
-                            ContextService.userIdentityRequest= false;
-                            d.resolve(['You are logged out']);
-                        });
+                        var d = $.Deferred(),
+                            isLoggedin = !!Cookie.get('layer_token');
+                        if (isLoggedin) {
+                            LayerApi.logout().then(function () {
+                                ContextService.chatConnected = false;
+                                ContextService.chatConnectionInitiated = false;
+                                ContextService.userIdentityRequest = false;
+                                d.resolve(['You are logged out']);
+                            });
+                        } else {
+                            d.resolve(['You are not logged in', 'Enter your email to login']);
+                        }
                         return d;
                     }
                 },
@@ -46,6 +51,7 @@
                     reply;
                 if (ContextService.chatConnected) {
                     //Send to layer
+                    Events.trigger('layer:send', msg);
                     return;
                 }
                 if (!ContextService.userIdentityRequest) {
@@ -61,10 +67,10 @@
                         ContextService.chatConnectionInitiated = true;
                         reply = ['Awesome', 'You can type /logout to logout anytime'];
                     } else {
-                        reply = ['I didn\'t get it, Can you come again'];
+                        reply = ['I didn\'t get it, Can you type your email again'];
                         ContextService.chatConnectionInitiated && (reply = 'Hold on a sec.. setting up the stage');
                     }
-                    return [reply];
+                    return reply;
 
                 }
             },
@@ -72,10 +78,11 @@
             processMessage = function (msg) {
                 var that = this,
                     parsedMsgObj = parseMsg(msg),
-                    operation = Operations[parsedMsgObj.operation],
+                    operationName = parsedMsgObj.operation,
+                    operation = Operations[operationName],
                     handlerReponse = operation && operation.handler.call(that, parsedMsgObj.data);
 
-                !ContextService.chatConnected && Events.trigger('msg:render', msg, 'right');
+                operationName === 'text' && !ContextService.chatConnected && Events.trigger('msg:render', msg, 'right');
                 $.when(handlerReponse).done(function (responses) {
                     !_.isEmpty(responses) && renderResponses.call(that, responses);
                 });
@@ -124,7 +131,7 @@
                 that.listenTo(Events, 'msg:send', processMessage);
                 that.listenTo(Events, 'chat:connected', function () {
                     ContextService.chatConnected = true;
-                    renderResponses.call(that, ['All set', 'So whatsup!!']);
+                    renderResponses.call(that, ['So whatsup!!']);
                 });
             }
         });
