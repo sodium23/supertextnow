@@ -44,6 +44,9 @@
                 that.listenTo(Events, 'msg:render', function(msg, dir){
                     addMsg.call(that, msg, dir);
                 });
+                that.listenTo(Events, 'typing', function(operation){
+                    that.$el.toggleClass('typing', operation === 'start');
+                });
                 that.listenTo(Events, 'socket:message:create', function (msg) {
                     var dir = msg.isSelf ? 'right' : 'left';
                     _.forEach(msg.parts, function (part) {

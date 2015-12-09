@@ -67,7 +67,7 @@
                     parsedMsgObj = parseMsg(msg),
                     operation = Operations[parsedMsgObj.operation],
                     handlerReponse = operation && operation.handler.call(that, parsedMsgObj.data);
-                
+
                 !ContextService.chatConnected && Events.trigger('msg:render', msg, 'right');
                 $.when(handlerReponse).done(function (responses) {
                     renderResponses.call(that, responses);
@@ -94,15 +94,15 @@
             },
 
             renderResponses = function (responses) {
-                _.forEach(responses, function (response) {
-                    //Start typing
-                    Events.trigger('typing', 'start');
+                //Start typing
+                responses.length && setTimeout(function(){Events.trigger('typing', 'start')}, 100);
+                _.forEach(responses, function (response, key) {
                     setTimeout(function () {
                         //stopTyping
-                        Events.trigger('typing');
+                        (key === responses.length - 1) && Events.trigger('typing', 'stop');
                         //render Message
                         Events.trigger('msg:render', response, 'left');
-                    }, response.length*100);
+                    }, response.length * 100);
                 });
 
             },

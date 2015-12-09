@@ -1,12 +1,29 @@
+.day-time {
+    .chat-msgs-box::after {
+        color: black;
+    }
+}
 .chat-msgs-box {
     position: absolute;
     bottom: 0;
     width: 110%;
-    padding: 1rem calc( 10% + 1rem ) 0rem 1rem;
+    padding: 1rem calc( 10% + 1rem) 1rem 1rem;
     margin-bottom: 5rem;
     overflow-y: auto;
     max-height: calc(100% - 5rem);
     @include box-sizing();
+    &::after {
+        visibility: hidden;
+        content: 'typing...';
+        color: white;
+        display: block;
+        font-size: 1.2rem;
+        padding: 1rem;
+        @include opacity(0.6);
+    }
+    &.typing::after {
+        visibility: visible;
+    }
 }
 .chat-msg {
     color: white;
