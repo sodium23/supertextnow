@@ -5,9 +5,10 @@
         'backbone',
         'collections/base',
         'utils/layerSocket',
+        'utils/sound',
         'views/collection',
         'views/sections/home/chatMsg'
-    ], function (Backbone, BaseCollection, LayerSocket, CollectionView, chatMsgView) {
+    ], function (Backbone, BaseCollection, LayerSocket, Sound, CollectionView, chatMsgView) {
         var Events = Backbone.Events,
             renderReply = function (msg) {
                 var that = this,
@@ -20,7 +21,7 @@
                             addMsg.call(that, userId ? 'Awesome, So whatsup?? ' + userId : 'I didn\'t get it, Can you come again');
                         }, 1000);
                         userId && initiateLiveChat.call(that, userId);
-                    
+
                     }
                     //Ask for ID if not yet asked
                     else {
@@ -76,9 +77,10 @@
                     renderReply.call(that, msg);
                 });
                 that.listenTo(Events, 'socket:message:create', function (msg) {
-                    var dir = msg.isSelf ? 'right': 'left';
-                    _.forEach(msg.parts, function(part){
-                       addMsg.call(that, part.body, dir); 
+                    var dir = msg.isSelf ? 'right' : 'left';
+                    dir === 'left' && Sound.playSound('NEW_MESSAGE');
+                    _.forEach(msg.parts, function (part) {
+                        addMsg.call(that, part.body, dir);
                     });
                 });
             }

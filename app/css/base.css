@@ -661,4 +661,7 @@ p {
 .left {
   float: left; }
 
+.hide {
+  display: none; }
+
 /*# sourceMappingURL=base.css.map */
