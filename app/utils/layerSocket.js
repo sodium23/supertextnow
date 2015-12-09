@@ -30,7 +30,6 @@
                 var that = this,
                     socket = new WebSocket('wss://api.layer.com/websocket?session_token=' + sessionToken, 'layer-1.0');
                 socket.onerror = function (e) {
-                    Cookie.remove('layer_socket');
                     initiateAuthentication.call(that);
                 };
                 waitForSocketConnection.call(this, socket, onSocketConnection);
@@ -84,7 +83,7 @@
             },
             initializeConversation = function () {
                 var that = this;
-                LayerAPI.createConversation(['vipul_web', 'frodo_the_dodo'], true).then(function () {
+                LayerAPI.createConversation(['vipul_web', 'supertext'], true).then(function () {
                     that.listenTo(Events, 'layer:send', that.sendMessage);
                     Events.trigger('chat:connected');
                 });
@@ -132,8 +131,8 @@
             timeouts: [],
             initialize: function (options) {
                 var that = this,
-                    sessionToken = Cookie.get('layer_token');
-                if (false && sessionToken) {
+                    sessionToken;
+                if (sessionToken) {
                     LayerAPI.setSessionTokenHeader(sessionToken);
                     createSocketConnection.call(that, sessionToken);
                 } else {

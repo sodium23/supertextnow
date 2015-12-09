@@ -23,14 +23,15 @@
                 },
                 logout: {
                     handler: function () {
-                        var d = $.Deferred(),
-                            isLoggedin = !!Cookie.get('layer_token');
-                        if (isLoggedin) {
+                        var that = this,
+                        d = $.Deferred();
+                        if (ContextService.chatConnected) {
                             LayerApi.logout().then(function () {
                                 ContextService.chatConnected = false;
                                 ContextService.chatConnectionInitiated = false;
                                 ContextService.userIdentityRequest = false;
                                 d.resolve(['You are logged out']);
+                                that.layerSocket.destroy();
                             });
                         } else {
                             d.resolve(['You are not logged in', 'Enter your email to login']);
@@ -56,7 +57,7 @@
                 }
                 if (!ContextService.userIdentityRequest) {
                     ContextService.userIdentityRequest = true;
-                    return ['Hey', 'Can I have your email id? Promise wont spam'];
+                    return ['Hey', 'Can I have your email id?'];
                 } else {
                     userId = isValidEmail(msg);
                     if (!ContextService.chatConnectionInitiated && userId) {
@@ -68,7 +69,7 @@
                         reply = ['Awesome', 'You can type /logout to logout anytime'];
                     } else {
                         reply = ['I didn\'t get it, Can you type your email again'];
-                        ContextService.chatConnectionInitiated && (reply = 'Hold on a sec.. setting up the stage');
+                        ContextService.chatConnectionInitiated && (reply = ['Hold on a sec.. setting up the stage']);
                     }
                     return reply;
 

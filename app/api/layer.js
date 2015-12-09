@@ -59,7 +59,6 @@
                     })
                     .then(function (data, textStatus, xhr) {
                         sessionToken = data.session_token;
-                        Cookie.set('layer_token', sessionToken);
                         CONFIG.headers.Authorization = 'Layer session-token="' + sessionToken + '"';
                         d.resolve(sessionToken);
                     });
@@ -107,12 +106,12 @@
             logout: function () {
                 var d = $.Deferred();
                 $.ajax({
-                    url: CONFIG.serverUrl + "/sessions/" + (sessionToken || Cookie.get('layer_token', sessionToken)),
+                    url: CONFIG.serverUrl + "/sessions/" + (sessionToken),
                     method: "DELETE",
                     headers: CONFIG.headers
                 }).then(function () {
                     sessionToken = U;
-                    Cookie.remove('layer_token');
+                    CONFIG.headers.Authorization = "";
                     d.resolve();
                 });
                 return d;

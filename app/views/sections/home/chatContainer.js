@@ -39,7 +39,6 @@
             initialize: function (options) {
                 var that = this;
                 that.chatController = new ChatController();
-//                initiateLiveChat.call(that);
                 CollectionView.prototype.initialize.call(that, options);
                 that.listenTo(Events, 'msg:render', function(msg, dir){
                     addMsg.call(that, msg, dir);
