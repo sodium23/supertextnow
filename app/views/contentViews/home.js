@@ -54,7 +54,7 @@
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
                     if (msg && e.keyCode == 13) {
-                        Events.trigger('msg:send', msg);
+                        Events.trigger('msg:send', {body:msg, isCommand: msg.charAt(0) === '/'});
                         jTarget.val('');
                         jTarget.attr('placeholder', 'Send a message');
                     }

@@ -2,9 +2,10 @@
     position: absolute;
     bottom: 0;
     width: 110%;
-    padding: 1rem calc( 10% + 1rem ) 6rem 1rem;
+    padding: 1rem calc( 10% + 1rem ) 0rem 1rem;
+    margin-bottom: 5rem;
     overflow-y: auto;
-    max-height: 100%;
+    max-height: calc(100% - 5rem);
     @include box-sizing();
 }
 .chat-msg {

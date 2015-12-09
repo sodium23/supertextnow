@@ -20,8 +20,10 @@
                             addMsg.call(that, userId ? 'Awesome, So whatsup?? ' + userId : 'I didn\'t get it, Can you come again');
                         }, 1000);
                         userId && initiateLiveChat.call(that, userId);
-
-                    } else {
+                    
+                    }
+                    //Ask for ID if not yet asked
+                    else {
                         setTimeout(function () {
                             addMsg.call(that, 'Hey');
                         }, 500);
@@ -68,7 +70,8 @@
                 var that = this;
                 initiateLiveChat.call(that);
                 CollectionView.prototype.initialize.call(that, options);
-                that.listenTo(Events, 'msg:send', function (msg) {
+                that.listenTo(Events, 'msg:send', function (data) {
+                    var msg = data.body;
                     !that.liveChatInitiated && addMsg.call(that, msg, 'right');
                     renderReply.call(that, msg);
                 });
