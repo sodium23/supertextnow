@@ -70,7 +70,6 @@
                 CONFIG.headers.Authorization = 'Layer session-token="' + token + '"';
             },
             sendMessage: function (body, mimeType) {
-                console.log('Sending messsage' + body);
                 return $.ajax({
                     url: CONFIG.conversation.url + "/messages",
                     method: "POST",

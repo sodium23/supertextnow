@@ -161,7 +161,7 @@ table {
     color: white;
     display: block;
     font-size: 1.2rem;
-    padding: 1rem;
+    padding: 0rem;
     filter: alpha(opacity=60);
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
     -webkit-opacity: 0.6;
@@ -171,7 +171,8 @@ table {
     -o-opacity: 0.6;
     opacity: 0.6; }
   .chat-msgs-box.typing::after {
-    visibility: visible; }
+    visibility: visible;
+    padding: 1rem; }
 
 .chat-msg {
   color: white;

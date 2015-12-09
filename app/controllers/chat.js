@@ -5,8 +5,9 @@
         'backbone',
         'marionette',
         'cookie',
-        'api/layer'
-    ], function (Backbone, Marionette, Cookie, LayerApi) {
+        'api/layer',
+        'utils/layerSocket'
+    ], function (Backbone, Marionette, Cookie, LayerApi, LayerSocket) {
         var Events = Backbone.Events,
             userId,
             ContextService = {
@@ -24,6 +25,9 @@
                     handler: function () {
                         var d = $.Deferred();
                         LayerApi.logout().then(function () {
+                            ContextService.chatConnected = false;
+                            ContextService.chatConnectionInitiated = false;
+                            ContextService.userIdentityRequest= false;
                             d.resolve(['You are logged out']);
                         });
                         return d;
@@ -49,12 +53,15 @@
                     return ['Hey', 'Can I have your email id? Promise wont spam'];
                 } else {
                     userId = isValidEmail(msg);
-                    if (userId) {
+                    if (!ContextService.chatConnectionInitiated && userId) {
                         //connect with chat
+                        that.layerSocket = new LayerSocket({
+                            userId: userId
+                        });
                         ContextService.chatConnectionInitiated = true;
-                        reply = 'Awesome ' + userId;
+                        reply = ['Awesome', 'You can type /logout to logout anytime'];
                     } else {
-                        reply = 'I didn\'t get it, Can you come again';
+                        reply = ['I didn\'t get it, Can you come again'];
                         ContextService.chatConnectionInitiated && (reply = 'Hold on a sec.. setting up the stage');
                     }
                     return [reply];
@@ -70,10 +77,7 @@
 
                 !ContextService.chatConnected && Events.trigger('msg:render', msg, 'right');
                 $.when(handlerReponse).done(function (responses) {
-                    renderResponses.call(that, responses);
-                    _.forEach(responses, function (response) {
-                        console.log(response);
-                    });
+                    !_.isEmpty(responses) && renderResponses.call(that, responses);
                 });
             },
 
@@ -95,14 +99,14 @@
 
             renderResponses = function (responses) {
                 //Start typing
-                responses.length && setTimeout(function(){Events.trigger('typing', 'start')}, 100);
+                Events.trigger('typing', 'start');
                 _.forEach(responses, function (response, key) {
                     setTimeout(function () {
                         //stopTyping
                         (key === responses.length - 1) && Events.trigger('typing', 'stop');
                         //render Message
                         Events.trigger('msg:render', response, 'left');
-                    }, response.length * 100);
+                    }, response.length * 50);
                 });
 
             },
@@ -118,6 +122,10 @@
             initialize: function (options) {
                 var that = this;
                 that.listenTo(Events, 'msg:send', processMessage);
+                that.listenTo(Events, 'chat:connected', function () {
+                    ContextService.chatConnected = true;
+                    renderResponses.call(that, ['All set', 'So whatsup!!']);
+                });
             }
         });
     });

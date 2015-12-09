@@ -7,7 +7,7 @@
         'cookie'
     ], function (Backbone, Marionette, LayerAPI, Cookie) {
         var USER_ID = 'vipul_web',
-//        var USER_ID = 'frodo_the_dodo',
+            //        var USER_ID = 'frodo_the_dodo',
             Events = Backbone.Events,
             initiateAuthentication = function () {
                 var that = this;
@@ -41,7 +41,7 @@
                 that.timeouts.push(setTimeout(
                     function () {
                         if (socket.readyState === 1) {
-                            Events.trigger('chat:connected');
+                            initializeConversation.call(that);
                             console.log("Chat Connected");
                             if (callback != null) {
                                 callback.call(that, socket);
@@ -86,6 +86,7 @@
                 var that = this;
                 LayerAPI.createConversation(['vipul_web', 'frodo_the_dodo'], true).then(function () {
                     that.listenTo(Events, 'msg:send', that.sendMessage);
+                    Events.trigger('chat:connected');
                 });
             },
             /*  Change Event Handler */
@@ -98,7 +99,7 @@
                 switch (operation) {
                     case 'create':
                         //add to cache
-                        msgData.isSelf = msgData.sender.user_id === USER_ID; 
+                        msgData.isSelf = msgData.sender.user_id === USER_ID;
                         break;
                     case 'delete':
                         //destroy flag in data determines if deletion is local or global
@@ -117,7 +118,6 @@
                 }
                 //Trigger Event
                 Events.trigger('socket:' + changeObjectType + ':' + operation, msgData);
-                console.log(msgData);
             },
             /*  Request Event Handler */
             handleRequest = function (msg) {},
@@ -130,13 +130,9 @@
 
         return Marionette.Object.extend({
             timeouts: [],
-            initialize: function () {
+            initialize: function (options) {
                 var that = this,
                     sessionToken = Cookie.get('layer_token');
-
-                that.listenTo(Events, 'chat:connected', function () {
-                    initializeConversation.call(that);
-                });
                 if (false && sessionToken) {
                     LayerAPI.setSessionTokenHeader(sessionToken);
                     createSocketConnection.call(that, sessionToken);
