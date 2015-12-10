@@ -17,11 +17,6 @@
                     msg: msg,
                     dir: dir || 'left'
                 });
-            },
-            initiateLiveChat = function (userId) {
-                var that = this;
-                new LayerSocket(userId);
-                that.liveChatInitiated = true;
             };
         return CollectionView.extend({
             className: 'chat-msgs-box',
@@ -38,8 +33,8 @@
             },
             initialize: function (options) {
                 var that = this;
-                that.chatController = new ChatController();
                 CollectionView.prototype.initialize.call(that, options);
+                that.chatController = new ChatController();
                 that.listenTo(Events, 'msg:render', function(msg, dir){
                     addMsg.call(that, msg, dir);
                 });

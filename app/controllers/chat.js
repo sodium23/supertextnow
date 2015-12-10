@@ -30,8 +30,8 @@
                                 ContextService.chatConnected = false;
                                 ContextService.chatConnectionInitiated = false;
                                 ContextService.userIdentityRequest = false;
-                                d.resolve(['You are logged out']);
                                 that.layerSocket.destroy();
+                                d.resolve(['You are logged out']);
                             });
                         } else {
                             d.resolve(['You are not logged in', 'Enter your email to login']);

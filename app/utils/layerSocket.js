@@ -83,7 +83,7 @@
             },
             initializeConversation = function () {
                 var that = this;
-                LayerAPI.createConversation(['vipul_web', 'supertext'], true).then(function () {
+                LayerAPI.createConversation([USER_ID, 'supertext'], true).then(function () {
                     that.listenTo(Events, 'layer:send', that.sendMessage);
                     Events.trigger('chat:connected');
                 });
@@ -131,7 +131,9 @@
             timeouts: [],
             initialize: function (options) {
                 var that = this,
+                    userId = (options || {}).userId,
                     sessionToken;
+//                USER_ID = userId || 'vipul_web';
                 if (sessionToken) {
                     LayerAPI.setSessionTokenHeader(sessionToken);
                     createSocketConnection.call(that, sessionToken);
