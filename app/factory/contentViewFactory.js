@@ -1,4 +1,4 @@
-(function (W) {
+(function (W, U) {
     'use strict';
     define([
         'views/base',
@@ -9,7 +9,7 @@
         return Base.extend({
             getView: function (tab, options) {
                 //Replace Home with some other view, Ex: Forbidden or 404, for changing the default view
-                var contentView = Home;
+                var contentView = U;
 
                 switch (tab) {
                     case 'home':
@@ -25,7 +25,7 @@
 //                        W.location.hash = 'home';
                         break;
                 }
-                return new contentView(options);
+                return contentView && new contentView(options);
             }
         });
     })

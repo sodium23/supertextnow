@@ -16,15 +16,15 @@
                 var that = this,
                     hashArray = W.location.hash.split('#'),
                     length = hashArray.length - 1,
-                    tab = (hashArray && hashArray[length]) || DEFAULT_TAB,
+                    tab = (hashArray && hashArray[length]),
                     contentView;
 
                 if (!(hashArray && hashArray[length])) {
-                    tab = DEFAULT_TAB;
+//                    tab = DEFAULT_TAB;
                     W.location.hash = DEFAULT_TAB;
                 }
-                that.contentView = contentView = that.controller.getView(tab);
-                that.showChildView('content', contentView);
+//                that.contentView = contentView = that.controller.getView(tab);
+//                contentView && that.showChildView('content', contentView);
                 this.$el.removeClass('info-open');
                 Events.trigger('tab:rendered', tab);
             },
@@ -63,6 +63,7 @@
 
             onRender: function () {
                 var that = this;
+                that.showChildView('content', that.controller.getView('home'));
                 that.onBeforeShow();
                 Backbone.history.loadUrl();
             }
