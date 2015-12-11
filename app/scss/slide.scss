@@ -28,7 +28,7 @@
     font-size: 1.8rem;
 }
 .sections {
-    @include transform(translateY(8rem));
+    @include transform(translateY($header-height));
     @include transition(transform 0.3s ease);
     text-align: center;
     display: inline-block;
