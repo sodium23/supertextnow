@@ -24,6 +24,16 @@
     &.typing::after {
         visibility: visible;
     }
+    .load-earlier {
+        display: block;
+        content: 'Load Earlier Messages';
+        width: 100%;
+        font-size: 1.2rem;
+        @include opacity(0.5);
+        cursor: pointer;
+        color: white;
+        text-align: center;
+    }
 }
 .chat-msg {
     color: white;
@@ -51,7 +61,7 @@
             height: 0;
         }
         &.right {
-            border-radius:  0.7rem 0.7rem 0rem 0.7rem;
+            border-radius: 0.7rem 0.7rem 0rem 0.7rem;
             &::before {
                 right: -1rem;
                 border-top: 1rem solid transparent;
@@ -59,7 +69,7 @@
             }
         }
         &.left {
-            border-radius:  0.7rem 0.7rem 0.7rem 0rem;
+            border-radius: 0.7rem 0.7rem 0.7rem 0rem;
             background-color: white;
             color: $grayCharcoal;
             &::before {
@@ -73,20 +83,20 @@
 .day-time {
     .msg-cont {
         background: #428efc;
-        &.right::before{
+        &.right::before {
             border-left: 1rem solid #428efc;
         }
-        &.left::before{
+        &.left::before {
             border-right: 1rem solid white;
         }
     }
 }
-.night-time{
-    .msg-cont{
-        &.right::before{
+.night-time {
+    .msg-cont {
+        &.right::before {
             border-left: 1rem solid #ed3d95;
         }
-        &.left::before{
+        &.left::before {
             border-right: 1rem solid white;
         }
     }

@@ -13,7 +13,11 @@
                 localIdentityProviderUrl: 'http://localhost:8080/rest/medium/layer/identity_token',
                 conversation: U,
             },
-            sessionToken;
+            sessionToken,
+
+            getUUID = function (id) {
+                return id && _.last(id.split('/'));
+            };
         return {
             getNonce: function () {
                 var d = new $.Deferred();
@@ -85,7 +89,8 @@
             },
 
             createConversation: function (participants, distinct) {
-                var d = $.Deferred();
+                var that = this,
+                    d = $.Deferred();
                 $.ajax({
                     url: CONFIG.serverUrl + "/conversations",
                     method: "POST",
@@ -115,6 +120,21 @@
                     d.resolve();
                 });
                 return d;
+            },
+
+            loadMessages: function (lastMsgId, pageSize) {
+                var conversation = CONFIG.conversation;
+                lastMsgId = lastMsgId || getUUID((conversation.last_message || {}).id);
+                pageSize = pageSize || 10;
+                return $.ajax({
+                    url: CONFIG.serverUrl + '/conversations/' + getUUID(CONFIG.conversation.id) + '/messages',
+                    method: 'GET',
+                    headers: CONFIG.headers,
+                    data: {
+                        page_size: pageSize,
+                        from_id: lastMsgId
+                    }
+                });
             }
         }
     });
