@@ -529,7 +529,12 @@ p {
 #workspace {
   height: 100%;
   font-size: 1.5rem;
-  background-color: #999;
+  background: -moz-radial-gradient(center, ellipse cover, #4a0d7d 0%, #37075b 80%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #4a0d7d), color-stop(80%, #37075b));
+  background: -webkit-radial-gradient(center, ellipse cover, #4a0d7d 0%, #37075b 80%);
+  background: -o-radial-gradient(center, ellipse cover, #4a0d7d 0%, #37075b 80%);
+  background: -ms-radial-gradient(center, ellipse cover, #4a0d7d 0%, #37075b 80%);
+  background: radial-gradient(ellipse at center, #4a0d7d 0%, #37075b 80%);
   -webkit-transition: background 0.3s ease;
   -khtml-transition: background 0.3s ease;
   -moz-transition: background 0.3s ease;
@@ -599,11 +604,6 @@ p {
   background: url("../resources/imgs/day.png") no-repeat;
   background-size: cover;
   background-position-x: 10%; }
-.day-time#workspace {
-  background-color: #feea9f; }
-
-.night-time#workspace {
-  background-color: #272787; }
 
 #content {
   -webkit-box-sizing: border-box;

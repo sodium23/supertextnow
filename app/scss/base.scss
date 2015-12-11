@@ -45,7 +45,7 @@ p {
 #workspace {
     height: 100%;
     font-size: 1.5rem;
-    background-color: $grayLight;
+    @include background-radial(#4a0d7d, 0%, #37075b, 80%);
     @include transition(background 0.3s ease);
     position: relative;
 }
@@ -96,14 +96,14 @@ p {
         background-size: cover;
         background-position-x: 10%;
     }
-    &#workspace {
-        background-color: $day-color;
-    }
+//    &#workspace {
+//        background-color: $day-color;
+//    }
 }
 .night-time {
-    &#workspace {
-        background-color: $night-color;
-    }
+//    &#workspace {
+//        background-color: $night-color;
+//    }
 }
 #content {
     @include box-sizing();
