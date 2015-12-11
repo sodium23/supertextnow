@@ -19,6 +19,11 @@
                     tab: 'info/terms',
                     name: 'Terms',
                     enabled: TRUE
+                },
+                {
+                    tab: 'info/faq',
+                    name: 'FAQ',
+                    enabled: TRUE
                 }
             ],
             onChangeTab = function (e) {

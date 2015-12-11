@@ -6,8 +6,9 @@
         'views/base',
         'text!templates/about.html',
         'text!templates/terms.html',
-        'text!templates/info.html'
-    ], function(Backbone, BaseView, aboutHtml, termsHtml, template){
+        'text!templates/info.html',
+        'text!templates/faq.html'
+    ], function(Backbone, BaseView, aboutHtml, termsHtml, faqHtml, template){
         return BaseView.extend({
             className: 'info-cont',
             template: _.template(template),
@@ -21,6 +22,10 @@
                         {
                             tab: 'terms',
                             info: termsHtml
+                        },
+                        {
+                            tab: 'faq',
+                            info: faqHtml
                         },
                     ]
                 }
