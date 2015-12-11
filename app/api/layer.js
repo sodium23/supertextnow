@@ -124,7 +124,6 @@
 
             loadMessages: function (lastMsgId, pageSize) {
                 var conversation = CONFIG.conversation;
-                lastMsgId = lastMsgId || getUUID((conversation.last_message || {}).id);
                 pageSize = pageSize || 10;
                 return $.ajax({
                     url: CONFIG.serverUrl + '/conversations/' + getUUID(CONFIG.conversation.id) + '/messages',
