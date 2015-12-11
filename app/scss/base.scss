@@ -45,7 +45,10 @@ p {
 #workspace {
     height: 100%;
     font-size: 1.5rem;
-    @include background-radial(#4a0d7d, 0%, #37075b, 80%);
+    @include background-radial(#4a0d7d,
+    0%,
+    #37075b,
+    80%);
     @include transition(background 0.3s ease);
     position: relative;
 }
@@ -96,14 +99,14 @@ p {
         background-size: cover;
         background-position-x: 10%;
     }
-//    &#workspace {
-//        background-color: $day-color;
-//    }
+    //    &#workspace {
+    //        background-color: $day-color;
+    //    }
 }
 .night-time {
-//    &#workspace {
-//        background-color: $night-color;
-//    }
+    //    &#workspace {
+    //        background-color: $night-color;
+    //    }
 }
 #content {
     @include box-sizing();
@@ -117,9 +120,16 @@ p {
         @include css3-prefix(filter,
         blur(0));
     }
-    #content{
+    #content {
         @include css3-prefix(filter,
         blur(4px));
+    }
+    #brand {
+        color: black;
+        @include text-shadow(0,
+        0,
+        0,
+        black);
     }
 }
 .chat-activated {
@@ -134,27 +144,31 @@ p {
     0,
     1rem,
     black);
+    text-align: center;
     color: white;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: $z-6;
-    font-size: 3.5rem;
+    z-index: 500;
+    font-size: 2rem;
     text-decoration: none;
-    padding: 2rem;
+    padding: 0rem 1rem;
     text-transform: uppercase;
-    line-height: 4rem;
+    line-height: 1rem;
+    @include transition(color 0.3s ease);
     img {
-        height: 4rem;
-        padding-right: 1rem;
-        float: left;
+        height: 5rem;
+        padding-right: 0rem;
+        padding-bottom: 1.2rem;
+        display: block;
+        margin: 0 auto;
     }
     @media screen and (max-width: $screen-th-1) {
-        font-size: 2.5rem;
-        img {
-            @include box-sizing();
-            padding: 0.5rem;
-        }
+        //        font-size: 2.5rem;
+        //        img {
+        //            @include box-sizing();
+        //            padding: 0.5rem;
+        //        }
     }
 }
 .section-cont {
@@ -167,6 +181,6 @@ p {
 .left {
     float: left;
 }
-.hide{
+.hide {
     display: none;
 }

@@ -287,9 +287,8 @@ table {
   height: 100%; }
 
 .nav-bar a {
-  color: white;
-  text-decoration: none;
-  text-shadow: 0px 0px 3px black; }
+  color: black;
+  text-decoration: none; }
 
 .nav-bar .active a {
   text-decoration: underline; }
@@ -317,16 +316,13 @@ table {
   text-align: center;
   display: inline-block;
   width: 100%;
-  background-color: #feea9f;
+  background-color: rgba(255, 255, 255, 0.7);
   -webkit-box-shadow: black 0 0 4rem -1rem;
   -khtml-box-shadow: black 0 0 4rem -1rem;
   -moz-box-shadow: black 0 0 4rem -1rem;
   -ms-box-shadow: black 0 0 4rem -1rem;
   -o-box-shadow: black 0 0 4rem -1rem;
   box-shadow: black 0 0 4rem -1rem; }
-
-.night-time .sections {
-  background-color: #272787; }
 
 .info-open #slide {
   height: 100%; }
@@ -340,6 +336,15 @@ table {
   @media screen and (max-width: 600px) {
     .info-open .sections {
       text-align: right; } }
+.info-open .nav-toggle {
+  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-opacity: 0;
+  -khtml-opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+  opacity: 0; }
 
 .open-nav .sections {
   -webkit-transform: translateY(0);
@@ -354,7 +359,15 @@ table {
   -moz-transform: translateY(-4rem);
   -ms-transform: translateY(-4rem);
   -o-transform: translateY(-4rem);
-  transform: translateY(-4rem); }
+  transform: translateY(-4rem);
+  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-opacity: 0;
+  -khtml-opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -o-opacity: 0;
+  opacity: 0; }
 
 .section-item {
   display: inline-block;
@@ -370,18 +383,26 @@ table {
   width: 8rem;
   padding: 4rem 1rem 1.8rem 1rem;
   cursor: pointer;
+  filter: alpha(opacity=100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  -webkit-opacity: 1;
+  -khtml-opacity: 1;
+  -moz-opacity: 1;
+  -ms-opacity: 1;
+  -o-opacity: 1;
+  opacity: 1;
   -webkit-box-sizing: border-box;
   -khtml-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-transition: transform 0.3s ease;
-  -khtml-transition: transform 0.3s ease;
-  -moz-transition: transform 0.3s ease;
-  -ms-transition: transform 0.3s ease;
-  -o-transition: transform 0.3s ease;
-  transition: transform 0.3s ease; }
+  -webkit-transition: transform 0.3s ease, opacity 0.2s ease;
+  -khtml-transition: transform 0.3s ease, opacity 0.2s ease;
+  -moz-transition: transform 0.3s ease, opacity 0.2s ease;
+  -ms-transition: transform 0.3s ease, opacity 0.2s ease;
+  -o-transition: transform 0.3s ease, opacity 0.2s ease;
+  transition: transform 0.3s ease, opacity 0.2s ease; }
 
 .home-cont {
   position: relative; }
@@ -631,6 +652,9 @@ p {
   -ms-filter: blur(4px);
   -o-filter: blur(4px);
   filter: blur(4px); }
+.info-open #brand {
+  color: black;
+  text-shadow: 0 0 0 black; }
 
 .chat-activated video {
   -webkit-filter: blur(4px);
@@ -642,31 +666,29 @@ p {
 
 #brand {
   text-shadow: 0 0 1rem black;
+  text-align: center;
   color: white;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 500;
-  font-size: 3.5rem;
+  font-size: 2rem;
   text-decoration: none;
-  padding: 2rem;
+  padding: 0rem 1rem;
   text-transform: uppercase;
-  line-height: 4rem; }
+  line-height: 1rem;
+  -webkit-transition: color 0.3s ease;
+  -khtml-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease; }
   #brand img {
-    height: 4rem;
-    padding-right: 1rem;
-    float: left; }
-  @media screen and (max-width: 1000px) {
-    #brand {
-      font-size: 2.5rem; }
-      #brand img {
-        -webkit-box-sizing: border-box;
-        -khtml-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
-        -o-box-sizing: border-box;
-        box-sizing: border-box;
-        padding: 0.5rem; } }
+    height: 5rem;
+    padding-right: 0rem;
+    padding-bottom: 1.2rem;
+    display: block;
+    margin: 0 auto; }
 
 .section-cont {
   height: 100%;
