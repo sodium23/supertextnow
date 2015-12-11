@@ -7,6 +7,8 @@
         'cookie'
     ], function (Backbone, Marionette, LayerAPI, Cookie) {
         var USER_ID = 'vipul_web',
+            PING_PONG_TIME = 30000,
+            changeCounter = -1,
             //        var USER_ID = 'frodo_the_dodo',
             Events = Backbone.Events,
             initiateAuthentication = function () {
@@ -57,7 +59,20 @@
 
             onSocketConnection = function (socket) {
                 socket.addEventListener('message', onMessage);
+                startPingPong.call(this, socket);
                 Events.trigger('socket:connected');
+            },
+
+            startPingPong = function (socket) {
+                W.setInterval(function () {
+                    socket.send(JSON.stringify({
+                        "type": "request",
+                        "body": {
+                            "method": "Counter.read",
+                            "request_id": "supertext_ping_pong"
+                        }
+                    }));
+                }, PING_PONG_TIME);
             },
             /*  Websocket Message Handler */
             onMessage = function (event) {
@@ -94,6 +109,8 @@
                 var changeObjectType = msg.object.type.toLowerCase(),
                     operation = msg.operation,
                     msgData = msg.data;
+                changeCounter++;
+                console.log(msg);
                 //Cache Operation
                 switch (operation) {
                     case 'create':
@@ -122,7 +139,11 @@
             handleRequest = function (msg) {},
             /*  Response Event Handler */
             handleResponse = function (msg) {
-
+                if(changeCounter<0){
+                    changeCounter++;
+                    return;
+                }
+                msg.data.counter !== changeCounter++ && console.log('Missing packets');
             },
             /*  Signal Event Handler */
             handleSignal = function (msg) {}
@@ -133,7 +154,7 @@
                 var that = this,
                     userId = (options || {}).userId,
                     sessionToken;
-//                USER_ID = userId || 'vipul_web';
+                //                USER_ID = userId || 'vipul_web';
                 if (sessionToken) {
                     LayerAPI.setSessionTokenHeader(sessionToken);
                     createSocketConnection.call(that, sessionToken);
