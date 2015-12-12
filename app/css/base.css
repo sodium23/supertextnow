@@ -316,6 +316,9 @@ table {
   height: 100%;
   overflow-y: scroll; }
 
+.terms-section {
+  text-align: left; }
+
 #slide {
   position: fixed;
   width: 100%;
