@@ -66,7 +66,7 @@
                 'click input': function () {
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
-                    //                    this.jInput.val('');
+                    !isChatActivated && Events.trigger('msg:send', '/activate');
                     isChatActivated = true;
                     this.jInput.attr('placeholder', 'Say Hi!');
                     changeUnread.call(this, 'reset');
@@ -75,6 +75,8 @@
                     var that = this,
                         jTarget = $(e.target),
                         msg = jTarget.val();
+                    !isChatActivated && Events.trigger('msg:send', '/activate');
+                    isChatActivated  = true;
                     changeUnread.call(that, 'reset');
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');

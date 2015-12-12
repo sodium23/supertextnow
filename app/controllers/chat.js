@@ -43,6 +43,11 @@
                     handler: function (data) {
                         return getResponse.call(this, data)
                     }
+                },
+                activate: {
+                    handler: function () {
+                        return ['Hey'];
+                    }
                 }
             },
 
@@ -57,7 +62,7 @@
                 }
                 if (!ContextService.userIdentityRequest) {
                     ContextService.userIdentityRequest = true;
-                    return ['Hey', 'Can I have your email id?'];
+                    return ['Can I have your email id?'];
                 } else {
                     userId = isValidEmail(msg);
                     if (!ContextService.chatConnectionInitiated && userId) {
