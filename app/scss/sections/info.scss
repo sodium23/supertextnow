@@ -8,6 +8,9 @@
     @include box-sizing();
     padding: 3rem 10rem 7rem;
     text-align: center;
+    @media screen and (max-width: $screen-th-2) {
+        padding: 3rem 3rem 7rem;
+    }
 }
 #slide-down-arrow {
     position: absolute;

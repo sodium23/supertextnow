@@ -15,7 +15,7 @@
             },
             template: _.template(template),
             events: {
-                'click #slide-down-arrow': function(){
+                'click #slide-down-arrow, .overlay': function(){
                     W.location.hash = 'home';
                 }
             }

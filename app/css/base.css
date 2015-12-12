@@ -255,6 +255,9 @@ table {
   box-sizing: border-box;
   padding: 3rem 10rem 7rem;
   text-align: center; }
+  @media screen and (max-width: 500px) {
+    #info {
+      padding: 3rem 3rem 7rem; } }
 
 #slide-down-arrow {
   position: absolute;
@@ -326,6 +329,20 @@ table {
   background: transparent;
   z-index: 100;
   bottom: 0; }
+  #slide .page-full-height {
+    position: relative; }
+
+.overlay {
+  display: inline-block;
+  width: calc(50% - 45rem);
+  height: 100%;
+  background: transparent;
+  left: 0;
+  top: 9rem;
+  position: absolute; }
+  .overlay.overlay-right {
+    right: 0;
+    left: auto; }
 
 .nav-bar {
   position: relative;
