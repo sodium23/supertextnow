@@ -37,8 +37,11 @@
                 }
             },
             changeUnread = function (changeType) {
-                var title = document.title,
-                    curUnread = +(title.split('(')[1] || '0)').split(')')[0]
+                var that = this,
+                    title = document.title,
+                    curUnread = +(title.split('(')[1] || '0)').split(')')[0],
+                    jChatCont = that.$('.chat-msgs-box'),
+                    allMsgsSeen = jChatCont.scrollTop() + jChatCont.height() >= jChatCont[0].scrollHeight - 25;
                 switch (changeType) {
                     case 'reset':
                         curUnread = 0;
@@ -53,6 +56,8 @@
                         break;
                 }
                 document.title = (curUnread ? '(' + curUnread + ') ' : '') + 'Supertext';
+                that.$el.toggleClass('unread', curUnread>0 && !allMsgsSeen);
+
             };
         return BaseView.extend({
             template: _.template(template),
@@ -64,13 +69,13 @@
                     //                    this.jInput.val('');
                     isChatActivated = true;
                     this.jInput.attr('placeholder', 'Say Hi!');
-                    changeUnread('reset');
+                    changeUnread.call(this, 'reset');
                 },
                 'keyup input': function (e) {
                     var that = this,
                         jTarget = $(e.target),
                         msg = jTarget.val();
-                    changeUnread('reset');
+                    changeUnread.call(that, 'reset');
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
                     if (msg && e.keyCode == 13) {

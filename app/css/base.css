@@ -534,6 +534,29 @@ table {
     background-image: linear-gradient(top, transparent, rgba(255, 255, 255, 0.3));
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='transparent', endColorStr='rgba(255, 255, 255, 0.3)');
     overflow: hidden; }
+    .home-cont .chat-cont::before {
+      display: none; }
+  .home-cont.unread .chat-cont::before {
+    content: 'Scroll down for new Messages';
+    display: block;
+    width: calc(100% - 16rem);
+    margin: 0 8rem;
+    font-size: 1.2rem;
+    text-align: center;
+    position: absolute;
+    bottom: 5.5rem;
+    line-height: 2rem;
+    border-radius: 0.7rem;
+    z-index: 1;
+    background: orange;
+    color: #4d4d4d;
+    color: white;
+    -webkit-box-shadow: black 0px 2px 18px -5px;
+    -khtml-box-shadow: black 0px 2px 18px -5px;
+    -moz-box-shadow: black 0px 2px 18px -5px;
+    -ms-box-shadow: black 0px 2px 18px -5px;
+    -o-box-shadow: black 0px 2px 18px -5px;
+    box-shadow: black 0px 2px 18px -5px; }
   .home-cont video {
     position: fixed;
     top: 50%;

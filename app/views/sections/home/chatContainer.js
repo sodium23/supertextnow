@@ -18,16 +18,18 @@
             addMsg = function (msg, dir) {
                 var that = this,
                     isUserFocused = $('input').is(':focus');
-                if (dir === 'left' && !isUserFocused) {
-                    Sound.playSound('NEW_MESSAGE');
-                    Events.trigger('msg:unread:change');
-                };
 
                 this.collection.add({
                     msg: msg,
                     dir: dir || 'left'
                 });
-                _.defer(function () {
+
+                if (dir === 'left' && !isUserFocused) {
+                    Sound.playSound('NEW_MESSAGE');
+                    Events.trigger('msg:unread:change');
+                };
+
+                isUserFocused && _.defer(function () {
                     that.$el.scrollTop(that.el.scrollHeight)
                 });
             },
@@ -60,7 +62,11 @@
                         }
                         addOlderMessages.call(that, messages)
                     });
-                }
+                },
+                'scroll': _.debounce(function (e) {
+                    var jChatCont = this.$el;
+                    (jChatCont.scrollTop() + jChatCont.height() >= jChatCont[0].scrollHeight - 70) && Events.trigger('msg:unread:change', 'reset');
+                }, 300)
             },
             initialize: function (options) {
                 var that = this;
