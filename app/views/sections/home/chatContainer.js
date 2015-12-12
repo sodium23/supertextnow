@@ -13,10 +13,16 @@
     ], function (Backbone, BaseCollection, LayerAPI, LayerSocket, Sound, CollectionView, chatMsgView, ChatController) {
         var PAGE_SIZE = 10,
             CELL_HEIGHT = 43,
+            newMessages = 0,
             Events = Backbone.Events,
             addMsg = function (msg, dir) {
-                var that = this;
-                dir === 'left' && Sound.playSound('NEW_MESSAGE');
+                var that = this,
+                    isUserFocused = $('input').is(':focus');
+                if (dir === 'left' && !isUserFocused) {
+                    Sound.playSound('NEW_MESSAGE');
+                    Events.trigger('msg:unread:change');
+                };
+
                 this.collection.add({
                     msg: msg,
                     dir: dir || 'left'
@@ -37,7 +43,7 @@
                 that.collection.add(processedMessages.reverse(), {
                     at: 0
                 });
-                that.$el.scrollTop(PAGE_SIZE*CELL_HEIGHT);
+                that.$el.scrollTop(PAGE_SIZE * CELL_HEIGHT);
             };
         return CollectionView.extend({
             className: 'chat-msgs-box',
@@ -49,7 +55,7 @@
                     var that = this,
                         lastMsg = that.collection.at(0);
                     LayerAPI.loadMessages(lastMsg && lastMsg.get('id'), PAGE_SIZE).then(function (messages) {
-                        if(messages.length < PAGE_SIZE){
+                        if (messages.length < PAGE_SIZE) {
                             that.$('.load-earlier').remove();
                         }
                         addOlderMessages.call(that, messages)

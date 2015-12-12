@@ -35,6 +35,24 @@
                         nextLetter.call(that);
                     }, 2000));
                 }
+            },
+            changeUnread = function (changeType) {
+                var title = document.title,
+                    curUnread = +(title.split('(')[1] || '0)').split(')')[0]
+                switch (changeType) {
+                    case 'reset':
+                        curUnread = 0;
+                        break;
+                    case 'decrease':
+                        curUnread--;
+                        curUnread < 0 && (curUnread = 0);
+                        break;
+                    case 'increase':
+                    default:
+                        curUnread++;
+                        break;
+                }
+                document.title = (curUnread ? '(' + curUnread + ') ' : '') + 'Supertext';
             };
         return BaseView.extend({
             template: _.template(template),
@@ -46,11 +64,13 @@
                     //                    this.jInput.val('');
                     isChatActivated = true;
                     this.jInput.attr('placeholder', 'Say Hi!');
+                    changeUnread('reset');
                 },
                 'keyup input': function (e) {
                     var that = this,
                         jTarget = $(e.target),
                         msg = jTarget.val();
+                    changeUnread('reset');
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
                     if (msg && e.keyCode == 13) {
@@ -69,13 +89,13 @@
             onRender: function () {
                 var that = this,
                     jInput;
+                that.listenTo(Events, 'msg:unread:change', changeUnread);
                 that.chatContainerView = new ChatContainerView();
                 jInput = that.jInput = that.$('input');
                 if (isChatActivated) {
                     this.$el.addClass('chat-activated');
                     jInput.attr('placeholder', 'Send a message');
-                }
-                else {
+                } else {
                     nextLetter.call(that);
                 }
 
