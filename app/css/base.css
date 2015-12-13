@@ -138,6 +138,20 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+button {
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  margin: 0.5rem;
+  min-width: 8rem;
+  padding: 0.5rem 1rem;
+  outline: none;
+  cursor: pointer; }
+  button.fb {
+    background-color: #3b5998; }
+  button.gplus {
+    background-color: #d34836; }
+
 .day-time .chat-msgs-box::after {
   color: black; }
 

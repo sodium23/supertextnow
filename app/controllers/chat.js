@@ -24,7 +24,7 @@
                 logout: {
                     handler: function () {
                         var that = this,
-                        d = $.Deferred();
+                            d = $.Deferred();
                         if (ContextService.chatConnected) {
                             LayerApi.logout().then(function () {
                                 ContextService.chatConnected = false;
@@ -46,7 +46,28 @@
                 },
                 activate: {
                     handler: function () {
-                        return ['Hey'];
+                        return ['Say Hi! or <a href="javascript:void(0)" data-handler="activate" data-action="login">login</a>'];
+                    },
+                    events: {
+                        login: function () {
+                            var that = this;
+                            processMessage.call(that, '/login');
+                        }
+                    }
+                },
+                login: {
+                    handler: function () {
+                        return ['<button class="fb" data-action="fbLogin" data-handler="login">Facebook</button><button class="gplus" data-action="googleLogin" data-handler="login">Google</button>'];
+                    },
+                    events: {
+                        fbLogin: function () {
+                            var that = this;
+                            console.log('FB Redirect');
+                        },
+                        googleLogin: function () {
+                            var that = this;
+                            console.log('Google Rediret');
+                        }
                     }
                 }
             },
@@ -119,9 +140,16 @@
                         (key === responses.length - 1) && Events.trigger('typing', 'stop');
                         //render Message
                         Events.trigger('msg:render', response, 'left');
-                    }, response.length * 50);
+                    }, getTypingTime(response));
                 });
 
+            },
+
+            getTypingTime = function (msg) {
+                var tmpDiv = $('<div/>').html(msg),
+                    sanitisedMsg = tmpDiv.text();
+//                console.log(sanitisedMsg);
+                return sanitisedMsg.length * 50;
             },
 
             isValidEmail = function (email) {
@@ -139,6 +167,16 @@
                     ContextService.chatConnected = true;
                     renderResponses.call(that, ['So whatsup!!']);
                 });
+            },
+
+            onClickAction: function (e) {
+                var that = this,
+                    jTarget = $(e.target),
+                    action = jTarget.data('action'),
+                    handler = jTarget.data('handler');
+                if (action && handler) {
+                    Operations[handler].events[action].call(that);
+                }
             }
         });
     });

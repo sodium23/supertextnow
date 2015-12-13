@@ -66,7 +66,10 @@
                 'scroll': _.debounce(function (e) {
                     var jChatCont = this.$el;
                     (jChatCont.scrollTop() + jChatCont.height() >= jChatCont[0].scrollHeight - 70) && Events.trigger('msg:unread:change', 'reset');
-                }, 300)
+                }, 300),
+                'click': function(e){
+                    this.chatController.onClickAction(e);
+                }
             },
             initialize: function (options) {
                 var that = this;
@@ -84,7 +87,7 @@
                 that.listenTo(Events, 'socket:message:create', function (msg) {
                     var dir = msg.isSelf ? 'right' : 'left';
                     _.forEach(msg.parts, function (part) {
-                        addMsg.call(that, part.body, dir);
+                        addMsg.call(that, _.escape(part.body), dir);
                     });
                 });
             }
