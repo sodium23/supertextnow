@@ -123,7 +123,7 @@
                 var operation = 'text',
                     data = [msg],
                     tokens;
-                //Check if the input is a commant(starting with "/")
+                //Check if the input is a command(starting with "/")
                 if (msg.charAt(0) === '/') {
                     tokens = msg.split('/')[1].split(' ');
                     operation = tokens[0];

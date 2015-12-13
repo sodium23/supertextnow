@@ -63,7 +63,7 @@
             template: _.template(template),
             className: 'section-cont home-cont f-h',
             events: {
-                'click input': function () {
+                'click #chat-input': function () {
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
                     !isChatActivated && Events.trigger('msg:send', '/activate');
@@ -71,7 +71,7 @@
                     this.jInput.attr('placeholder', 'Say Hi!');
                     changeUnread.call(this, 'reset');
                 },
-                'keyup input': function (e) {
+                'keyup #chat-input': function (e) {
                     var that = this,
                         jTarget = $(e.target),
                         msg = jTarget.val();
@@ -98,7 +98,7 @@
                     jInput;
                 that.listenTo(Events, 'msg:unread:change', changeUnread);
                 that.chatContainerView = new ChatContainerView();
-                jInput = that.jInput = that.$('input');
+                jInput = that.jInput = that.$('#chat-input');
                 if (isChatActivated) {
                     this.$el.addClass('chat-activated');
                     jInput.attr('placeholder', 'Send a message');

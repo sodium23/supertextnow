@@ -17,7 +17,7 @@
             Events = Backbone.Events,
             addMsg = function (msg, dir) {
                 var that = this,
-                    isUserFocused = $('input').is(':focus');
+                    isUserFocused = $('#chat-input').is(':focus');
 
                 this.collection.add({
                     msg: msg,
