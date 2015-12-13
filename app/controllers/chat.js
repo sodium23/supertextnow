@@ -62,7 +62,7 @@
                     events: {
                         fbLogin: function () {
                             var that = this;
-                            openChildWindow('facebook?code=asd');
+                            openChildWindow('facebook');
                         },
                         googleLogin: function () {
                             var that = this;
