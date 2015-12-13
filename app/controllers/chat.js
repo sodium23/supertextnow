@@ -1,4 +1,4 @@
-(function () {
+(function (W) {
     'use strict';
 
     define([
@@ -62,14 +62,18 @@
                     events: {
                         fbLogin: function () {
                             var that = this;
-                            console.log('FB Redirect');
+                            openChildWindow('facebook?code=asd');
                         },
                         googleLogin: function () {
                             var that = this;
-                            console.log('Google Rediret');
+                            openChildWindow('google');
                         }
                     }
                 }
+            },
+
+            openChildWindow = function (param) {
+                W.open('signIn.html#' + param, 'social sign-in', 'height=550,width=700,status=yes,toolbar=no,menubar=no,location=no');
             },
 
             getResponse = function (data) {
@@ -148,7 +152,7 @@
             getTypingTime = function (msg) {
                 var tmpDiv = $('<div/>').html(msg),
                     sanitisedMsg = tmpDiv.text();
-//                console.log(sanitisedMsg);
+                //                console.log(sanitisedMsg);
                 return sanitisedMsg.length * 50;
             },
 
@@ -167,6 +171,9 @@
                     ContextService.chatConnected = true;
                     renderResponses.call(that, ['So whatsup!!']);
                 });
+                W.onSocialLogin = function (queryString) {
+                    console.log('Initialize Login process with supercenter with query: '+queryString);
+                }
             },
 
             onClickAction: function (e) {
@@ -180,4 +187,4 @@
             }
         });
     });
-})();
+})(window);

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Supertext Sign-in</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="app/css/base.css">
+</head>
+
+<body>
+    <form name="fb_signin" id="signin" method="POST" action="">
+        <input type="hidden" name="scope" value="public_profile,email">
+        <button id="submit" type="submit"></button>
+    </form>
+    <script type="text/javascript">
+        var queryString = location.href.split('?')[1],
+            channel;
+        if (queryString) {
+            window.opener.onSocialLogin(queryString);
+        } else {
+            channel = window.location.hash.split('#')[1];
+            document.getElementById('signin').setAttribute('action', 'http://localhost:8080/rest/signin/' + channel);
+            document.getElementById('submit').click();
+        }
+    </script>
+</body>
+
+</html>
