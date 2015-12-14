@@ -97,7 +97,7 @@
                             userId: userId
                         });
                         ContextService.chatConnectionInitiated = true;
-                        reply = ['Awesome', 'You can type /logout to logout anytime'];
+                        reply = ['Connecting you with a wizard'];
                     } else {
                         reply = ['I didn\'t get it, Can you type your email again'];
                         ContextService.chatConnectionInitiated && (reply = ['Hold on a sec.. setting up the stage']);
@@ -174,7 +174,7 @@
                 that.listenTo(Events, 'msg:send', processMessage);
                 that.listenTo(Events, 'chat:connected', function () {
                     ContextService.chatConnected = true;
-                    renderResponses.call(that, ['So whatsup!!']);
+                    renderResponses.call(that, ['All set. Connected with wizard!', 'Type /logout to logout anytime']);
                 });
                 W.onSocialLogin = function (queryString) {
                     console.log('Initialize Login process with supercenter with query: ' + queryString);
