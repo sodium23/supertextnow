@@ -3,7 +3,7 @@
     
     define([], function(){
         var CONFIG = {
-            url: 'http://localhost:8080/rest',
+            url: 'http://104.199.153.175:8080/rest',
             headers: {
                     'Content-type': 'application/json'
                 }

@@ -10,7 +10,7 @@
                     'Content-type': 'application/json'
                 },
                 identityProviderUrl: 'https://layer-identity-provider.herokuapp.com/identity_tokens',
-                localIdentityProviderUrl: 'http://localhost:8080/rest/medium/layer/identity_token',
+                localIdentityProviderUrl: 'http://104.199.153.175:8080/rest/medium/layer/identity_token',
                 conversation: U,
             },
             sessionToken,
