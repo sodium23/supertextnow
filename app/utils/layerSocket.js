@@ -115,7 +115,7 @@
                 switch (operation) {
                     case 'create':
                         //add to cache
-                        msgData.isSelf = msgData.sender.user_id === USER_ID;
+                        msgData.isSelf = (msgData.sender || {}).user_id === USER_ID;
                         break;
                     case 'delete':
                         //destroy flag in data determines if deletion is local or global
@@ -139,7 +139,7 @@
             handleRequest = function (msg) {},
             /*  Response Event Handler */
             handleResponse = function (msg) {
-                if(changeCounter<0){
+                if (changeCounter < 0) {
                     changeCounter++;
                     return;
                 }

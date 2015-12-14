@@ -24,12 +24,42 @@
         @include transition(top 0.3s ease);
         @include transform(translate(-50%, -50%));
     }
+    .actions {
+        height: 4rem;
+        width: 40rem;
+        text-align: center;
+        background: transparent;
+        margin: auto;
+        position: absolute;
+        left: 50%;
+        top: calc( 75% - -1rem);
+        pointer-events: none;
+        display: none;
+        @include opacity(0);
+        @include transform(translateX(-50%));
+        @include transition(opacity 0.3s ease);
+        a {
+            background: $red;
+            display: inline-block;
+            padding: 1rem;
+            line-height: 3rem;
+            @include circle(5rem);
+            @include box-sizing();
+        }
+    }
+    #file-input {
+        display: none;
+    }
     &.chat-activated {
         #chat-input {
             top: calc( 75% - 3rem);
         }
         .chat-cont {
             @include opacity(1);
+        }
+        .actions {
+            @include opacity(1);
+            pointer-events: auto;
         }
     }
     @include placeholderColor(rgba(0, 0, 0, 0.3));

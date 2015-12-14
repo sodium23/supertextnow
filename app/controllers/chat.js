@@ -6,8 +6,9 @@
         'marionette',
         'cookie',
         'api/layer',
+        'api/supercenter',
         'utils/layerSocket'
-    ], function (Backbone, Marionette, Cookie, LayerApi, LayerSocket) {
+    ], function (Backbone, Marionette, Cookie, LayerAPI, SupercenterAPI, LayerSocket) {
         var Events = Backbone.Events,
             userId,
             ContextService = {
@@ -26,7 +27,7 @@
                         var that = this,
                             d = $.Deferred();
                         if (ContextService.chatConnected) {
-                            LayerApi.logout().then(function () {
+                            LayerAPI.logout().then(function () {
                                 ContextService.chatConnected = false;
                                 ContextService.chatConnectionInitiated = false;
                                 ContextService.userIdentityRequest = false;
@@ -162,6 +163,10 @@
 
                 email && (email = email.trim());
                 return re.test(email) && email;
+            },
+            onSocialLogin = function(query){
+                var channel = 'facebook';
+                query && SupercenterAPI.login(channel, query);
             };
         return Marionette.Controller.extend({
             initialize: function (options) {
@@ -172,7 +177,8 @@
                     renderResponses.call(that, ['So whatsup!!']);
                 });
                 W.onSocialLogin = function (queryString) {
-                    console.log('Initialize Login process with supercenter with query: '+queryString);
+                    console.log('Initialize Login process with supercenter with query: ' + queryString);
+                    onSocialLogin(queryString);
                 }
             },
 

@@ -482,7 +482,7 @@ button {
 
 .home-cont {
   position: relative; }
-  .home-cont input {
+  .home-cont #chat-input {
     font-family: inherit;
     font-weight: 600;
     max-width: 90%;
@@ -513,7 +513,54 @@ button {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
-  .home-cont.chat-activated input {
+  .home-cont .actions {
+    height: 4rem;
+    width: 40rem;
+    text-align: center;
+    background: transparent;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: calc( 75% - -1rem);
+    pointer-events: none;
+    display: none;
+    filter: alpha(opacity=0);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-opacity: 0;
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transform: translateX(-50%);
+    -khtml-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: opacity 0.3s ease;
+    -khtml-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease; }
+    .home-cont .actions a {
+      background: #D42C2C;
+      display: inline-block;
+      padding: 1rem;
+      line-height: 3rem;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 5rem;
+      -webkit-box-sizing: border-box;
+      -khtml-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      box-sizing: border-box; }
+  .home-cont #file-input {
+    display: none; }
+  .home-cont.chat-activated #chat-input {
     top: calc( 75% - 3rem); }
   .home-cont.chat-activated .chat-cont {
     filter: alpha(opacity=100);
@@ -524,6 +571,16 @@ button {
     -ms-opacity: 1;
     -o-opacity: 1;
     opacity: 1; }
+  .home-cont.chat-activated .actions {
+    filter: alpha(opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -webkit-opacity: 1;
+    -khtml-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    pointer-events: auto; }
   .home-cont ::-webkit-input-placeholder {
     color: rgba(0, 0, 0, 0.3); }
   .home-cont :-moz-placeholder {

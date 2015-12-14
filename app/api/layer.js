@@ -4,7 +4,7 @@
     ], function (Cookie) {
         var CONFIG = {
                 serverUrl: 'https://api.layer.com',
-                appId: 'b9c4ba3e-9b42-11e5-aeaa-d9b1000000ac',
+                appId: '8f3dbf72-9b42-11e5-9b0b-b2450c0046c4',
                 headers: {
                     'Accept': 'application/vnd.layer+json; version=1.0',
                     'Content-type': 'application/json'
@@ -134,6 +134,22 @@
                         from_id: lastMsgId
                     }
                 });
+            },
+            createContentResource: function(type, length){
+                return $.ajax({
+                    url: CONFIG.serverUrl + '/content',
+                    method: 'POST',
+                    headers: _.extend({
+                        'Upload-Content-Type': type,
+                        'Upload-Content-Length': length,
+                        'Upload-Origin': W.location.origin
+                    },CONFIG.headers),
+                    data: {
+                        page_size: pageSize,
+                        from_id: lastMsgId
+                    }
+                });
+                
             }
         }
     });
