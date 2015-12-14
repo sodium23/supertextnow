@@ -5,14 +5,16 @@
         var CONFIG = {
                 serverUrl: 'https://api.layer.com',
                 appId: '8f3dbf72-9b42-11e5-9b0b-b2450c0046c4',
+                localAppId: 'b9c4ba3e-9b42-11e5-aeaa-d9b1000000ac', 
                 headers: {
                     'Accept': 'application/vnd.layer+json; version=1.0',
                     'Content-type': 'application/json'
                 },
-                identityProviderUrl: 'https://layer-identity-provider.herokuapp.com/identity_tokens',
-                localIdentityProviderUrl: 'http://104.199.153.175:8080/rest/medium/layer/identity_token',
+                localIdentityProviderUrl: 'http://localhost:8080/rest/medium/layer/identity_token',
+                identityProviderUrl: 'http://104.199.153.175:8080/rest/medium/layer/identity_token',
                 conversation: U,
             },
+            isLocal = window.location.hostname !== 'scupids.com',
             sessionToken,
 
             getUUID = function (id) {
@@ -34,7 +36,7 @@
             getIdentityToken: function (nonce, userId) {
                 var d = new $.Deferred();
                 $.ajax({
-                        url: CONFIG.localIdentityProviderUrl,
+                        url: isLocal ? CONFIG.localIdentityProviderUrl : CONFIG.identityProviderUrl,
                         headers: {
                             "Content-type": "application/json",
                             "Accept": "application/json"
@@ -51,14 +53,15 @@
                 return d;
             },
             getSession: function (identityToken) {
-                var d = new $.Deferred();
+                var d = new $.Deferred(),
+                    appId = isLocal ? CONFIG.localAppId: CONFIG.appId;
                 $.ajax({
                         url: CONFIG.serverUrl + "/sessions",
                         method: "POST",
                         headers: CONFIG.headers,
                         data: JSON.stringify({
                             "identity_token": identityToken,
-                            "app_id": CONFIG.appId
+                            "app_id": appId
                         })
                     })
                     .then(function (data, textStatus, xhr) {
