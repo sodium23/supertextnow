@@ -5,7 +5,7 @@
         var CONFIG = {
                 serverUrl: 'https://api.layer.com',
                 appId: '8f3dbf72-9b42-11e5-9b0b-b2450c0046c4',
-                localAppId: 'b9c4ba3e-9b42-11e5-aeaa-d9b1000000ac', 
+                localAppId: 'd965d90c-9342-11e5-a03d-3f4617001ad6', 
                 headers: {
                     'Accept': 'application/vnd.layer+json; version=1.0',
                     'Content-type': 'application/json'
