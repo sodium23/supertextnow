@@ -15,7 +15,8 @@
                         // remote server allows CORS
                         return true;
                     }
-                }
+                },
+                waitSeconds: 0
             }
         }
     });
