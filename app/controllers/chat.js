@@ -97,7 +97,7 @@
                             userId: userId
                         });
                         ContextService.chatConnectionInitiated = true;
-                        reply = ['Connecting you with a wizard'];
+                        reply = ['Connecting you with our wizard'];
                     } else {
                         reply = ['I didn\'t get it, Can you type your email again'];
                         ContextService.chatConnectionInitiated && (reply = ['Hold on a sec.. setting up the stage']);

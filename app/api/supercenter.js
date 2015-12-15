@@ -1,20 +1,22 @@
-(function(){
+(function () {
     'use strict';
-    
-    define([], function(){
+
+    define([], function () {
         var CONFIG = {
-            url: 'http://104.199.153.175:8080/rest',
-            headers: {
-                    'Content-type': 'application/json'
+                prodUrl: 'http://104.199.153.175:8080/',
+                localUrl: 'http://localhost:8080/',
+                headers: {
+                    //                    'Content-type': 'application/json'
                 }
-        };
+            },
+            url = window.location.host === 'scupids.com' ? CONFIG.prodUrl : CONFIG.localUrl;
         return {
-            login: function(channel, query){
+            login: function (channel, query) {
                 return $.ajax({
-                        url: CONFIG.url + '/signin/'+channel+'?'+query,
-                        method: 'GET',
-                        headers: CONFIG.headers
-                    })
+                    url: url + 'rest/signin/' + channel + '?' + query,
+                    method: 'GET',
+                    headers: CONFIG.headers
+                })
             }
         };
     });
