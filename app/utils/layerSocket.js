@@ -154,6 +154,7 @@
                 var that = this,
                     userId = (options || {}).userId,
                     sessionToken;
+                //Uncomment this for unique user everytime
 //                    sessionToken = options.sessionToken;
 //                USER_ID = userId || 'vipul_web';
                 if (sessionToken) {
