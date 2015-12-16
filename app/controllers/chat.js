@@ -171,19 +171,11 @@
 
                 email && (email = email.trim());
                 return re.test(email) && email;
-            },
-            onSocialLogin = function (query) {
-                var channel = 'facebook';
-                query && SupercenterAPI.login(channel, query);
             };
         return Marionette.Controller.extend({
             initialize: function (options) {
                 var that = this;
                 that.listenTo(Events, 'msg:send', processMessage);
-                W.onSocialLogin = function (queryString) {
-                    console.log('Initialize Login process with supercenter with query: ' + queryString);
-                    onSocialLogin(queryString);
-                }
             },
 
             onClickAction: function (e) {

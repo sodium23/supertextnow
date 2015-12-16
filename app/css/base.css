@@ -670,6 +670,17 @@ button {
   background-image: linear-gradient(top, transparent, rgba(255, 255, 255, 0.5));
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='transparent', endColorStr='rgba(255, 255, 255, 0.5)'); }
 
+.login-dialog {
+  padding: 2.4rem 5.5rem;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
 @font-face {
   font-family: "CurseCasual";
   src: url("../resources/fonts/curseCasual.ttf"); }
@@ -809,7 +820,8 @@ p {
   -ms-filter: blur(4px);
   -o-filter: blur(4px);
   filter: blur(4px); }
-.info-open #brand, .info-open #login {
+.info-open #brand,
+.info-open #login {
   color: black;
   text-shadow: 0 0 0 black; }
 
@@ -862,6 +874,33 @@ p {
     padding-right: 0rem;
     display: block;
     margin: 0 auto; }
+
+#dialog-overlay {
+  visibility: hidden;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 800;
+  background: rgba(0, 0, 0, 0.3); }
+  #dialog-overlay.open {
+    visibility: visible; }
+  #dialog-overlay div {
+    min-width: 20rem;
+    min-height: 12rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -khtml-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 0 0 4rem -0.8rem black; }
 
 .section-cont {
   height: 100%;
