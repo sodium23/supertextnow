@@ -201,7 +201,8 @@ button {
     opacity: 0.5;
     cursor: pointer;
     color: white;
-    text-align: center; }
+    text-align: center;
+    text-shadow: 0px 0px 7px black; }
 
 .chat-msg {
   color: white;

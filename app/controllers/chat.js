@@ -47,7 +47,21 @@
                 },
                 activate: {
                     handler: function () {
-                        return ['Say Hi! or <a href="javascript:void(0)" data-handler="activate" data-action="login">login</a>'];
+                        var that = this,
+                            d = $.Deferred();
+                        SupercenterAPI.registerUser().then(function (response) {
+                            var userId = response.customerId,
+                                layerToken = response.layerToken;
+                            //connect with chat
+                            that.layerSocket = new LayerSocket({
+                                userId: userId,
+                                sessionToken: layerToken
+                            });
+                            that.listenTo(Events, 'chat:connected', function(){
+                                d.resolve(['Connected to chat']);
+                            });
+                        });
+                        return d;
                     },
                     events: {
                         login: function () {
@@ -92,10 +106,6 @@
                 } else {
                     userId = isValidEmail(msg);
                     if (!ContextService.chatConnectionInitiated && userId) {
-                        //connect with chat
-                        that.layerSocket = new LayerSocket({
-                            userId: userId
-                        });
                         ContextService.chatConnectionInitiated = true;
                         reply = ['Connecting you with our wizard'];
                     } else {
@@ -164,7 +174,7 @@
                 email && (email = email.trim());
                 return re.test(email) && email;
             },
-            onSocialLogin = function(query){
+            onSocialLogin = function (query) {
                 var channel = 'facebook';
                 query && SupercenterAPI.login(channel, query);
             };

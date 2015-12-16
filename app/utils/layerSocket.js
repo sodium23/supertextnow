@@ -153,8 +153,8 @@
             initialize: function (options) {
                 var that = this,
                     userId = (options || {}).userId,
-                    sessionToken;
-                //                USER_ID = userId || 'vipul_web';
+                    sessionToken = options.sessionToken;
+                USER_ID = userId || 'vipul_web';
                 if (sessionToken) {
                     LayerAPI.setSessionTokenHeader(sessionToken);
                     createSocketConnection.call(that, sessionToken);

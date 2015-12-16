@@ -23,6 +23,26 @@
                 });
                 
                 return d;
+            },
+            
+            registerUser: function(){
+                var d = $.Deferred();
+                $.ajax({
+                    url: url + 'app/pseudoRegister',
+                    method: 'POST',
+                    headers: CONFIG.headers
+                }).done(function(response){
+                    var socialAccounts = (response.cus || EMPTY_OBJ_READONLY).sAcnts || EMPTY_OBJ_READONLY,
+                        layerAccount = _.find(socialAccounts, function(account){
+                            return account.mT === "LAYER";
+                        });
+                    d.resolve({
+                        layerToken: response.lSTkn,
+                        customerId: (layerAccount || EMPTY_OBJ_READONLY).id
+                    });
+                });
+                
+                return d;
             }
         };
     });
