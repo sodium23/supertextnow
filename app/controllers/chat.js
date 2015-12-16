@@ -11,10 +11,9 @@
     ], function (Backbone, Marionette, Cookie, LayerAPI, SupercenterAPI, LayerSocket) {
         var Events = Backbone.Events,
             userId,
+            messageCache = [],
             ContextService = {
-                chatConnected: false,
-                chatConnectionInitiated: false,
-                userIdentityRequest: false
+                chatConnected: false
             },
             Operations = {
                 help: {
@@ -29,8 +28,6 @@
                         if (ContextService.chatConnected) {
                             LayerAPI.logout().then(function () {
                                 ContextService.chatConnected = false;
-                                ContextService.chatConnectionInitiated = false;
-                                ContextService.userIdentityRequest = false;
                                 that.layerSocket.destroy();
                                 d.resolve(['You are logged out']);
                             });
@@ -57,8 +54,13 @@
                                 userId: userId,
                                 sessionToken: layerToken
                             });
-                            that.listenTo(Events, 'chat:connected', function(){
-                                d.resolve(['Connected to chat']);
+                            that.listenTo(Events, 'chat:connected', function () {
+                                ContextService.chatConnected = true;
+                                Events.trigger('msg:clear');
+                                _.forEach(messageCache, function (msg) {
+                                    Events.trigger('layer:send', msg);
+                                });
+                                messageCache = [];
                             });
                         });
                         return d;
@@ -99,21 +101,8 @@
                     //Send to layer
                     Events.trigger('layer:send', msg);
                     return;
-                }
-                if (!ContextService.userIdentityRequest) {
-                    ContextService.userIdentityRequest = true;
-                    return ['Can I have your email id?'];
                 } else {
-                    userId = isValidEmail(msg);
-                    if (!ContextService.chatConnectionInitiated && userId) {
-                        ContextService.chatConnectionInitiated = true;
-                        reply = ['Connecting you with our wizard'];
-                    } else {
-                        reply = ['I didn\'t get it, Can you type your email again'];
-                        ContextService.chatConnectionInitiated && (reply = ['Hold on a sec.. setting up the stage']);
-                    }
-                    return reply;
-
+                    messageCache.push(msg);
                 }
             },
 
@@ -182,11 +171,6 @@
             initialize: function (options) {
                 var that = this;
                 that.listenTo(Events, 'msg:send', processMessage);
-                that.listenTo(Events, 'chat:connected', function () {
-                    ContextService.chatConnected = true;
-                    ContextService.chatConnectionInitiated = true;
-                    renderResponses.call(that, ['All set. Connected with wizard!', 'Type /logout to logout anytime']);
-                });
                 W.onSocialLogin = function (queryString) {
                     console.log('Initialize Login process with supercenter with query: ' + queryString);
                     onSocialLogin(queryString);

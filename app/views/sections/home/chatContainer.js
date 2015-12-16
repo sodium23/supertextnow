@@ -84,6 +84,9 @@
                 that.listenTo(Events, 'chat:connected', function () {
                     that.$el.prepend('<div class="load-earlier">Load Earlier messages</div>');
                 });
+                that.listenTo(Events, 'msg:clear', function () {
+                    that.collection.reset();
+                });
                 that.listenTo(Events, 'socket:message:create', function (msg) {
                     var dir = msg.isSelf ? 'right' : 'left';
                     _.forEach(msg.parts, function (part) {
