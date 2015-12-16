@@ -124,7 +124,7 @@ p {
         @include css3-prefix(filter,
         blur(4px));
     }
-    #brand {
+    #brand, #login {
         color: black;
         @include text-shadow(0,
         0,
@@ -138,6 +138,18 @@ p {
         blur(4px));
     }
 }
+#login {
+    color: white;
+    position: fixed;
+    right: 10rem;
+    z-index: $z-6;
+    text-shadow: 0px 0px 5px black;
+    padding: 3.5rem 0rem;
+    line-height: 2rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    @include transition(color 0.3s ease);
+}
 #brand {
     @extend .curse-style;
     @include text-shadow(0,
@@ -148,18 +160,17 @@ p {
     color: white;
     position: fixed;
     top: 0;
-    left: 0;
-    z-index: 500;
+    right: 0;
+    z-index: $z-6;
     font-size: 2rem;
     text-decoration: none;
-    padding: 1rem 1rem;
+    padding: 2rem;
     text-transform: uppercase;
     line-height: 1rem;
     @include transition(color 0.3s ease);
     img {
         height: 5rem;
         padding-right: 0rem;
-        padding-bottom: 1.2rem;
         display: block;
         margin: 0 auto;
     }

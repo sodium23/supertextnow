@@ -7,8 +7,9 @@
         'controllers/app',
         'routers/app',
         'views/contentViews/slide',
+        'views/sections/topNav',
         'text!templates/appWorkspace.html'
-    ], function (Backbone, LayoutView, Controller, Router, SlideView, template) {
+    ], function (Backbone, LayoutView, Controller, Router, SlideView, TopNavView, template) {
         var Events = Backbone.Events,
             DEFAULT_TAB = 'home',
 
@@ -20,11 +21,11 @@
                     contentView;
 
                 if (!(hashArray && hashArray[length])) {
-//                    tab = DEFAULT_TAB;
+                    //                    tab = DEFAULT_TAB;
                     W.location.hash = DEFAULT_TAB;
                 }
-//                that.contentView = contentView = that.controller.getView(tab);
-//                contentView && that.showChildView('content', contentView);
+                //                that.contentView = contentView = that.controller.getView(tab);
+                //                contentView && that.showChildView('content', contentView);
                 this.$el.removeClass('info-open');
                 Events.trigger('tab:rendered', tab);
             },
@@ -42,6 +43,10 @@
                 },
                 content: {
                     selector: '#content'
+                },
+                topNav: {
+                    selector: '#top-nav',
+                    regionView: TopNavView
                 }
             },
             template: template,

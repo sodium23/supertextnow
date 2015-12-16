@@ -412,7 +412,7 @@ button {
   transform: translateY(0); }
   @media screen and (max-width: 600px) {
     .info-open .sections {
-      text-align: right; } }
+      text-align: left; } }
 .info-open .nav-toggle {
   filter: alpha(opacity=0);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -809,7 +809,7 @@ p {
   -ms-filter: blur(4px);
   -o-filter: blur(4px);
   filter: blur(4px); }
-.info-open #brand {
+.info-open #brand, .info-open #login {
   color: black;
   text-shadow: 0 0 0 black; }
 
@@ -821,17 +821,34 @@ p {
   -o-filter: blur(4px);
   filter: blur(4px); }
 
+#login {
+  color: white;
+  position: fixed;
+  right: 10rem;
+  z-index: 500;
+  text-shadow: 0px 0px 5px black;
+  padding: 3.5rem 0rem;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  -webkit-transition: color 0.3s ease;
+  -khtml-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease; }
+
 #brand {
   text-shadow: 0 0 1rem black;
   text-align: center;
   color: white;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 500;
   font-size: 2rem;
   text-decoration: none;
-  padding: 1rem 1rem;
+  padding: 2rem;
   text-transform: uppercase;
   line-height: 1rem;
   -webkit-transition: color 0.3s ease;
@@ -843,7 +860,6 @@ p {
   #brand img {
     height: 5rem;
     padding-right: 0rem;
-    padding-bottom: 1.2rem;
     display: block;
     margin: 0 auto; }
 

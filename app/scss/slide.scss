@@ -64,7 +64,7 @@
     .sections {
         @include transform(translateY(0));
         @media screen and (max-width: $screen-th-2 + 100px) {
-            text-align: right;
+            text-align: left;
         }
     }
     .nav-toggle {
