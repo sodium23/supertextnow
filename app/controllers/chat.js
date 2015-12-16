@@ -174,6 +174,7 @@
                 that.listenTo(Events, 'msg:send', processMessage);
                 that.listenTo(Events, 'chat:connected', function () {
                     ContextService.chatConnected = true;
+                    ContextService.chatConnectionInitiated = true;
                     renderResponses.call(that, ['All set. Connected with wizard!', 'Type /logout to logout anytime']);
                 });
                 W.onSocialLogin = function (queryString) {

@@ -17,6 +17,11 @@
                 var material = $.material;
                 App.rootView = rootView = new WorkspaceView();
                 rootView.render();
+                $.ajaxSetup({
+                    xhrFields: {
+                        withCredentials: true
+                    }
+                })
             });
         });
 

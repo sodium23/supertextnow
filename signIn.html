@@ -15,17 +15,18 @@
     </form>
     <script type="text/javascript">
         var queryString = location.href.split('?')[1],
-            url = window.location.host === 'scupids.com' ? 'http://104.199.153.175:8080/': 'http://localhost:8080/',
+            url = window.location.host === 'scupids.com' ? 'http://104.199.153.175:8080/' : 'http://localhost:8080/',
             channel;
         if (queryString) {
             window.opener.onSocialLogin(queryString);
-//            window.close();
+            window.close();
         } else {
             channel = window.location.hash.split('#')[1];
             console.log(url);
             document.getElementById('signin').setAttribute('action', url + 'rest/signin/' + channel);
             document.getElementById('submit').click();
         }
+
     </script>
 </body>
 
