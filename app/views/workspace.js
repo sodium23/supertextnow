@@ -36,9 +36,13 @@
                 Events.trigger('info:tab:change', tab);
             },
             onSocialLogin = function (query) {
-                var channel = 'facebook';
-                Dialog.close();
-                query && SupercenterAPI.login(channel, query);
+                var that = this,
+                    channel = 'facebook';
+                that.$el.addClass('loading');
+                query && SupercenterAPI.login(channel, query).then(function () {
+                    that.$el.removeClass('loading');
+                    Dialog.close();
+                });
             };
 
         return LayoutView.extend({
@@ -73,14 +77,14 @@
                 that.listenTo(Events, 'info:open', openSlideView);
                 W.onSocialLogin = function (queryString) {
                     console.log('Initialize Login process with supercenter with query: ' + queryString);
-                    onSocialLogin(queryString);
+                    onSocialLogin.call(that, queryString);
                 }
             },
             events: {
-                'click #dialog-overlay': function(e){
+                'click #dialog-overlay': function (e) {
                     var jTarget = $(e.target),
-                    action = $(e.target).data('action');
-                    
+                        action = $(e.target).data('action');
+
                     action === 'close' && Dialog.close();
                 }
             },
