@@ -738,13 +738,13 @@ p {
     position: absolute;
     top: 0;
     left: 0;
-    height: 8rem; }
+    height: 8.2rem; }
 
 .loader-glow {
-  margin: 1rem;
-  height: 6rem;
-  width: 6rem;
-  border-radius: 6rem;
+  margin: 1.5rem;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 5rem;
   top: 0;
   animation: glow 2s infinite; }
 
@@ -848,7 +848,7 @@ p {
   z-index: 500;
   font-size: 2rem;
   text-decoration: none;
-  padding: 2rem;
+  padding: 1rem;
   text-transform: uppercase;
   line-height: 1rem;
   -webkit-transition: color 0.3s ease;
@@ -858,7 +858,7 @@ p {
   -o-transition: color 0.3s ease;
   transition: color 0.3s ease; }
   #brand img {
-    height: 5rem;
+    height: 7rem;
     padding-right: 0rem;
     display: block;
     margin: 0 auto; }

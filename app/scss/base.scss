@@ -61,12 +61,12 @@ p {
         position: absolute;
         top: 0;
         left: 0;
-        height: 8rem;
+        height: 8.2rem;
     }
 }
 .loader-glow {
-    margin: 1rem;
-    @include circle(6rem);
+    margin: 1.5rem;
+    @include circle(5rem);
     top: 0;
     animation: glow 2s infinite;
 }
@@ -164,12 +164,12 @@ p {
     z-index: $z-6;
     font-size: 2rem;
     text-decoration: none;
-    padding: 2rem;
+    padding: 1rem;
     text-transform: uppercase;
     line-height: 1rem;
     @include transition(color 0.3s ease);
     img {
-        height: 5rem;
+        height: 7rem;
         padding-right: 0rem;
         display: block;
         margin: 0 auto;

@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="142px" height="142px" viewBox="0 0 142 142" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.4.2 (15857) - http://www.bohemiancoding.com/sketch -->
+<svg width="800px" height="800px" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16044) - http://www.bohemiancoding.com/sketch -->
     <title>Untitled</title>
     <desc>Created with Sketch.</desc>
-    <defs></defs>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feMorphology radius="2" in="SourceAlpha" operator="dilate" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="50" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <path d="M26.7808836,113.213594 C37.415933,123.599645 51.960525,130 68,130 C100.5848,130 127,103.5848 127,71 C127,38.4151998 100.5848,12 68,12 C35.4151998,12 9,38.4151998 9,71 C9,87.5453252 15.8104278,102.49999 26.7808836,113.213594 Z" id="Oval-1" fill="#00DEAF" sketch:type="MSShapeGroup"></path>
-        <g id="Oval-1-+-Triangle-1" sketch:type="MSLayerGroup" transform="translate(-14.000000, -18.000000)" fill="#FFFFFF">
-            <path d="M35.6332043,126.211646 C51.9069742,146.565037 77.912079,153.272375 101.037459,145.684693 C116.45511,86.3451906 66.0117679,53.1025754 24.5988153,73.5670126 C19.4724509,94.9830109 25.2372118,112.750882 35.6332043,126.211646 Z M40.6182874,131.726561 C51.3625964,142.219313 66.0566126,148.685422 82.2608696,148.685422 C115.180431,148.685422 141.867008,121.998845 141.867008,89.0792839 C141.867008,56.1597228 115.180431,29.4731458 82.2608696,29.4731458 C49.3413085,29.4731458 22.6547315,56.1597228 22.6547315,89.0792839 C22.6547315,105.794588 29.5351263,120.90289 40.6182874,131.726561 Z" id="Oval-1" sketch:type="MSShapeGroup"></path>
-            <polygon id="Triangle-1" sketch:type="MSShapeGroup" transform="translate(138.547191, 133.637094) scale(-1, 1) rotate(-133.000000) translate(-138.547191, -133.637094) " points="137.943291 118.315259 151.59034 148.95893 125.504043 147.253149 "></polygon>
+        <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="-70" y="8" width="910" height="764"></rect>
+        <path d="M194.370145,593.180854 C243.039016,640.710239 309.599013,670 383,670 C532.116882,670 653,549.116882 653,400 C653,250.883118 532.116882,130 383,130 C233.883118,130 113,250.883118 113,400 C113,475.715895 144.166364,544.152496 194.370145,593.180854 Z" id="Oval-1" fill="#00DEAF" filter="url(#filter-1)" sketch:type="MSShapeGroup"></path>
+        <g id="Oval-1-+-Triangle-1" sketch:type="MSLayerGroup" transform="translate(9.000000, -5.000000)" fill="#FFFFFF">
+            <path d="M162.006778,573.822718 C235.995662,666.359645 354.228173,696.854637 459.367981,662.357152 C529.464511,392.569413 300.12327,241.431476 111.8388,334.473278 C88.5317246,431.841363 114.741277,512.623195 162.006778,573.822718 Z M184.671516,598.896339 C233.520642,646.601759 300.327157,676 374,676 C523.669167,676 645,554.669167 645,405 C645,255.330833 523.669167,134 374,134 C224.330833,134 103,255.330833 103,405 C103,480.996324 134.281795,549.686394 184.671516,598.896339 Z" id="Oval-1" sketch:type="MSShapeGroup"></path>
+            <polygon id="Triangle-1" sketch:type="MSShapeGroup" transform="translate(629.906417, 607.582604) scale(-1, 1) rotate(-133.000000) translate(-629.906417, -607.582604) " points="627.160776 537.9217 689.207242 677.243508 570.605592 669.488152 "></polygon>
         </g>
-        <path d="M29,73.3085181 C50.3146959,66.2574967 36.7399848,90 36.7399848,90" id="Path-1" stroke="#038F6D" stroke-width="2.2" sketch:type="MSShapeGroup"></path>
-        <path d="M56,99.3085181 C77.3146959,92.2574967 63.7399848,116 63.7399848,116" id="Path-1" stroke="#038F6D" stroke-width="2.2" sketch:type="MSShapeGroup" transform="translate(62.000000, 107.000000) scale(-1, 1) rotate(-94.000000) translate(-62.000000, -107.000000) "></path>
+        <path d="M208.194359,410.378665 C308.820992,378.607921 244.73481,485.58774 244.73481,485.58774" id="Path-1" stroke="#038F6D" stroke-width="10" sketch:type="MSShapeGroup"></path>
+        <path d="M329.119882,529.933012 C429.746515,498.162268 365.660333,605.142087 365.660333,605.142087" id="Path-1" stroke="#038F6D" stroke-width="10" sketch:type="MSShapeGroup" transform="translate(357.445869, 564.589566) scale(-1, 1) rotate(-94.000000) translate(-357.445869, -564.589566) "></path>
     </g>
 </svg>
