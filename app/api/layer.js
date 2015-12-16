@@ -72,7 +72,7 @@
                 return d;
             },
             setSessionTokenHeader: function (token) {
-                sessionToken = sessionToken;
+                sessionToken = token;
                 CONFIG.headers.Authorization = 'Layer session-token="' + token + '"';
             },
             sendMessage: function (body, mimeType) {

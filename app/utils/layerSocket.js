@@ -30,7 +30,7 @@
             },
             createSocketConnection = function (sessionToken) {
                 var that = this,
-                    socket = new WebSocket('wss://api.layer.com/websocket?session_token=' + sessionToken, 'layer-1.0');
+                    socket = that.socket = new WebSocket('wss://api.layer.com/websocket?session_token=' + sessionToken, 'layer-1.0');
                 socket.onerror = function (e) {
                     initiateAuthentication.call(that);
                 };
@@ -64,7 +64,7 @@
             },
 
             startPingPong = function (socket) {
-                W.setInterval(function () {
+                this.pingPongInterval = W.setInterval(function () {
                     socket.send(JSON.stringify({
                         "type": "request",
                         "body": {
@@ -155,8 +155,8 @@
                     userId = (options || {}).userId,
                     sessionToken;
                 //Uncomment this for unique user everytime
-//                    sessionToken = options.sessionToken;
-//                USER_ID = userId || 'vipul_web';
+                sessionToken = options.sessionToken;
+                USER_ID = userId || 'vipul_web';
                 if (sessionToken) {
                     LayerAPI.setSessionTokenHeader(sessionToken);
                     createSocketConnection.call(that, sessionToken);
@@ -167,6 +167,19 @@
 
             sendMessage: function (msg) {
                 LayerAPI.sendMessage(msg);
+            },
+            
+            resetSocket: function(){
+                var that = this,
+                    d = $.Deferred();
+                W.clearInterval(that.pingPongInterval);
+                that.socket && that.socket.close();
+                LayerAPI.logout().then(function(){
+                    console.log('Socket Destroyed');
+                    that.destroy();
+                    d.resolve();
+                });
+                return d;
             }
         });
     });

@@ -82,6 +82,7 @@
                     that.$el.toggleClass('typing', operation === 'start');
                 });
                 that.listenTo(Events, 'chat:connected', function () {
+                    that.$('.load-earlier').remove();
                     that.$el.prepend('<div class="load-earlier">Load Earlier messages</div>');
                 });
                 that.listenTo(Events, 'msg:clear', function () {

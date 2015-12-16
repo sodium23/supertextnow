@@ -1,4 +1,4 @@
-(function (W) {
+(function (W, U) {
     'use strict';
 
     define([
@@ -46,14 +46,16 @@
                     handler: function () {
                         var that = this,
                             d = $.Deferred();
-                        SupercenterAPI.registerUser({
-                            error: function(){
-                                connectLayerSocket.call(that, d);
+                        !ContextService.chatConnected && SupercenterAPI.registerUser({
+                            error: function () {
+                                connectLayerSocket.call(that);
+                                d.resolve();
                             }
                         }).then(function (response) {
                             var userId = response.customerId,
                                 layerToken = response.layerToken;
-                            connectLayerSocket.call(that, d, userId, layerToken);
+                            connectLayerSocket.call(that, userId, layerToken);
+                            d.resolve();
                         });
                         return d;
                     },
@@ -81,21 +83,25 @@
                 }
             },
 
-            connectLayerSocket = function (d, userId, layerToken) {
+            initializeSocket = function (userId, layerToken) {
                 var that = this;
                 that.layerSocket = new LayerSocket({
                     userId: userId,
                     sessionToken: layerToken
                 });
-                that.listenTo(Events, 'chat:connected', function () {
-                    ContextService.chatConnected = true;
-                    Events.trigger('msg:clear');
-                    _.forEach(messageCache, function (msg) {
-                        Events.trigger('layer:send', msg);
+            },
+
+            connectLayerSocket = function (userId, layerToken) {
+                var that = this;
+                if (that.layerSocket) {
+                    that.layerSocket.resetSocket().then(function () {
+                        initializeSocket.call(that, userId, layerToken);
+                        that.layerSocket = U;
                     });
-                    messageCache = [];
-                    d.resolve();
-                });
+                } else {
+                    initializeSocket.call(that, userId, layerToken);
+                }
+
             },
 
             openChildWindow = function (param) {
@@ -176,6 +182,18 @@
             initialize: function (options) {
                 var that = this;
                 that.listenTo(Events, 'msg:send', processMessage);
+                that.listenTo(Events, 'user:logged-in', function (data) {
+                    ContextService.chatConnected = false;
+                    connectLayerSocket.call(that, data.lUId, data.lSTkn);
+                });
+                that.listenTo(Events, 'chat:connected', function () {
+                    ContextService.chatConnected = true;
+                    Events.trigger('msg:clear');
+                    _.forEach(messageCache, function (msg) {
+                        Events.trigger('layer:send', msg);
+                    });
+                    messageCache = [];
+                });
             },
 
             onClickAction: function (e) {

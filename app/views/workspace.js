@@ -38,7 +38,7 @@
             onSocialLogin = function (query) {
                 var channel = 'facebook';
                 Dialog.close();
-//                query && SupercenterAPI.login(channel, query);
+                query && SupercenterAPI.login(channel, query);
             };
 
         return LayoutView.extend({
