@@ -46,22 +46,14 @@
                     handler: function () {
                         var that = this,
                             d = $.Deferred();
-                        SupercenterAPI.registerUser().then(function (response) {
+                        SupercenterAPI.registerUser({
+                            error: function(){
+                                connectLayerSocket.call(that, d);
+                            }
+                        }).then(function (response) {
                             var userId = response.customerId,
                                 layerToken = response.layerToken;
-                            //connect with chat
-                            that.layerSocket = new LayerSocket({
-                                userId: userId,
-                                sessionToken: layerToken
-                            });
-                            that.listenTo(Events, 'chat:connected', function () {
-                                ContextService.chatConnected = true;
-                                Events.trigger('msg:clear');
-                                _.forEach(messageCache, function (msg) {
-                                    Events.trigger('layer:send', msg);
-                                });
-                                messageCache = [];
-                            });
+                            connectLayerSocket.call(that, d, userId, layerToken);
                         });
                         return d;
                     },
@@ -87,6 +79,23 @@
                         }
                     }
                 }
+            },
+
+            connectLayerSocket = function (d, userId, layerToken) {
+                var that = this;
+                that.layerSocket = new LayerSocket({
+                    userId: userId,
+                    sessionToken: layerToken
+                });
+                that.listenTo(Events, 'chat:connected', function () {
+                    ContextService.chatConnected = true;
+                    Events.trigger('msg:clear');
+                    _.forEach(messageCache, function (msg) {
+                        Events.trigger('layer:send', msg);
+                    });
+                    messageCache = [];
+                    d.resolve();
+                });
             },
 
             openChildWindow = function (param) {

@@ -25,12 +25,13 @@
                 return d;
             },
             
-            registerUser: function(){
+            registerUser: function(options){
                 var d = $.Deferred();
                 $.ajax({
                     url: url + 'app/pseudoRegister',
                     method: 'POST',
-                    headers: CONFIG.headers
+                    headers: CONFIG.headers,
+                    error: options.error,
                 }).done(function(response){
                     var socialAccounts = (response.cus || EMPTY_OBJ_READONLY).sAcnts || EMPTY_OBJ_READONLY,
                         layerAccount = _.find(socialAccounts, function(account){
