@@ -16,7 +16,7 @@
                         return true;
                     }
                 },
-                waitSeconds: 0
+                waitSeconds: 100
             }
         }
     });
