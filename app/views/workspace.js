@@ -39,9 +39,9 @@
                 var that = this,
                     channel = 'facebook';
                 that.$el.addClass('loading');
+                Dialog.close();
                 query && SupercenterAPI.login(channel, query).then(function () {
                     that.$el.removeClass('loading');
-                    Dialog.close();
                 });
             };
 

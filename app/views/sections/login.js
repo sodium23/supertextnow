@@ -3,8 +3,9 @@
 
     define([
         'views/base',
+        'utils/dialog',
         'text!templates/sections/login.html'
-    ], function (BaseView, template) {
+    ], function (BaseView, Dialog, template) {
         var onClickAction = function (e) {
                 var jTarget = $(e.target).closest('[data-action]'),
                     action = jTarget.data('action');
@@ -13,6 +14,7 @@
                     case 'facebook':
                     case 'google':
                         openChildWindow(action);
+                        Dialog.close();
                         break;
                     default:
                         break;
