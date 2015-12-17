@@ -64,16 +64,21 @@
     .control-error {
         display: none;
         position: absolute;
-        @include circle(1rem);
+        @include circle(1.2rem);
         right: 0;
         top: 0.5rem;
         background-color: $red;
+        color: white;
+        font-size: 1rem;
+        line-height: 1.6rem;
+        text-align: center;
     }
     &.error {
         .control-error {
             display: block;
         }
-        input, .control-label{
+        input,
+        .control-label {
             color: $red;
             border-color: $red;
         }

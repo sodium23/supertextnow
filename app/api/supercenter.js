@@ -32,7 +32,11 @@
             login: function (username, password) {
                 var d = $.Deferred();
                 $.ajax({
-                    url: url + 'app/register' + '?username=9650012345&password=test',
+                    url: url + 'app/signin',
+                    data: {
+                        username: username,
+                        password: password
+                    },
                     contentType: 'application/json',
                     method: 'GET'
                 }).done(function (response) {

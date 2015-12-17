@@ -744,15 +744,20 @@ button {
   .control-field .control-error {
     display: none;
     position: absolute;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 1rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 1.2rem;
     right: 0;
     top: 0.5rem;
-    background-color: #D42C2C; }
+    background-color: #D42C2C;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6rem;
+    text-align: center; }
   .control-field.error .control-error {
     display: block; }
-  .control-field.error input, .control-field.error .control-label {
+  .control-field.error input,
+  .control-field.error .control-label {
     color: #D42C2C;
     border-color: #D42C2C; }
 
