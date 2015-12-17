@@ -29,14 +29,11 @@
                 return d;
             },
 
-            login: function (username, password) {
+            login: function (data) {
                 var d = $.Deferred();
                 $.ajax({
                     url: url + 'app/signin',
-                    data: {
-                        username: username,
-                        password: password
-                    },
+                    data: data,
                     contentType: 'application/json',
                     method: 'GET'
                 }).done(function (response) {
@@ -46,17 +43,12 @@
                 return d;
             },
 
-            signUp: function (username, password) {
+            signUp: function (data) {
                 var d = $.Deferred();
                 $.ajax({
                     url: url + 'app/register',
                     contentType: 'application/json',
-                    data: JSON.stringify({
-                        n: 'Vipul Login',
-                        eAddr: 'vipul261@gmail.com',
-                        pPhn: '919650012345',
-                        pwd: 'test'
-                    }),
+                    data: JSON.stringify(data),
                     method: 'POST'
                 }).done(function (response) {
                     console.log(response);

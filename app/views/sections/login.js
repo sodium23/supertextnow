@@ -23,12 +23,12 @@
                     case 'signup':
                         data = prepareAndValidate.call(that, 'sign-up');
                         console.log(data);
-                        //                        data && SupercenterAPI.signUp(data);
+                        data && SupercenterAPI.signUp(data);
                         break;
                     case 'login':
                         data = prepareAndValidate.call(that, 'sign-in');
                         console.log(data);
-                        //                        data && SupercenterAPI.login('test', 'test');
+                        data && SupercenterAPI.login(data);
                         break;
                     case 'facebook':
                     case 'google':
@@ -41,12 +41,12 @@
             },
             prepareAndValidate = function (context) {
                 var that = this,
-                    hasValidationError = !!that.$('.'+context+' .error').length,
+                    hasValidationError = !!that.$('.' + context + ' .error').length,
                     data = {};
-                _.forEach(that.$('.'+context+' .control-field input'), function (inputElem) {
+                _.forEach(that.$('.' + context + ' .control-field input'), function (inputElem) {
                     var jInput = $(inputElem),
                         value = jInput.val();
-                    _.isObject(data) && value ? (data[jInput.data('key')] = value) : (data=false);
+                    _.isObject(data) && value ? (data[jInput.data('key')] = value) : (data = false);
                 });
                 if (_.isEmpty(data) || hasValidationError) {
                     return false;
