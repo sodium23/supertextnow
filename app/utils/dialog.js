@@ -2,9 +2,8 @@
     'use strict';
     
     define([
-        'jquery',
-        'marionette'
-    ], function($, Marionette){
+        'jquery'
+    ], function($){
         var dialogContentView;
         return {
             show: function(dialogView){

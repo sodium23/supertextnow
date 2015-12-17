@@ -31,28 +31,51 @@
     width: 60%;
 }
 .button {}
-.sign-in, .sign-in-header {
+.sign-in,
+.sign-in-header {
     display: none;
 }
 .sign-in-active {
-    .sign-up, .sign-up-header {
+    .sign-up,
+    .sign-up-header {
         display: none;
     }
-    .sign-in, .sign-in-header {
+    .sign-in,
+    .sign-in-header {
         display: block;
     }
 }
 .control-field {
     margin: 1rem 0;
+    position: relative;
     input {
         font-size: 1.2rem;
         line-height: 2rem;
         width: 100%;
         outline: none;
         font-family: "ItcMed", "Helvetica";
+        border: 1px solid #aaa;
+        padding: 0.1rem 0.5rem;
         @include box-sizing();
     }
     button {
         background-color: $brand-purple;
+    }
+    .control-error {
+        display: none;
+        position: absolute;
+        @include circle(1rem);
+        right: 0;
+        top: 0.5rem;
+        background-color: $red;
+    }
+    &.error {
+        .control-error {
+            display: block;
+        }
+        input, .control-label{
+            color: $red;
+            border-color: $red;
+        }
     }
 }

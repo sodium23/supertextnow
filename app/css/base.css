@@ -711,22 +711,28 @@ button {
   padding: 1rem 3rem;
   width: 60%; }
 
-.sign-in, .sign-in-header {
+.sign-in,
+.sign-in-header {
   display: none; }
 
-.sign-in-active .sign-up, .sign-in-active .sign-up-header {
+.sign-in-active .sign-up,
+.sign-in-active .sign-up-header {
   display: none; }
-.sign-in-active .sign-in, .sign-in-active .sign-in-header {
+.sign-in-active .sign-in,
+.sign-in-active .sign-in-header {
   display: block; }
 
 .control-field {
-  margin: 1rem 0; }
+  margin: 1rem 0;
+  position: relative; }
   .control-field input {
     font-size: 1.2rem;
     line-height: 2rem;
     width: 100%;
     outline: none;
     font-family: "ItcMed", "Helvetica";
+    border: 1px solid #aaa;
+    padding: 0.1rem 0.5rem;
     -webkit-box-sizing: border-box;
     -khtml-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -735,6 +741,20 @@ button {
     box-sizing: border-box; }
   .control-field button {
     background-color: #4a0d7d; }
+  .control-field .control-error {
+    display: none;
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 1rem;
+    right: 0;
+    top: 0.5rem;
+    background-color: #D42C2C; }
+  .control-field.error .control-error {
+    display: block; }
+  .control-field.error input, .control-field.error .control-label {
+    color: #D42C2C;
+    border-color: #D42C2C; }
 
 @font-face {
   font-family: "CurseCasual";

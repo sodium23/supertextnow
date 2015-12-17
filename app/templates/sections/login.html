@@ -13,54 +13,61 @@
     <!--<button class="gplus" data-action="google" data-handler="login">Google</button>-->
 </div>
 <div class="native sign-in-section">
-    <div class="sign-in">
-        <div class="control-field">
-            <div class="control-label">Email/Mobile No.</div>
-            <div class="control-input">
-                <input tabindex="1" type="text" />
-            </div>
-        </div>
-        <div class="control-field">
-            <div class="control-label">Password</div>
-            <div class="control-input">
-                <input tabindex="2" type="text" />
-            </div>
-        </div>
-        <div class="control-field">
-            <div class="control-input">
-                <button  tabindex="3">Sign In</button>
-            </div>
-        </div>
-    </div>
-    <div class="sign-up">
+    <div class="sign-up control-form">
         <div class="control-field">
             <div class="control-label">Full Name</div>
             <div class="control-input">
-                <input tabindex="4" type="text" />
+                <input data-key="n" tabindex="1" type="text" data-type="name"/>
             </div>
+            <div class="control-error"></div>
         </div>
         <div class="control-field">
             <div class="control-label">Email</div>
             <div class="control-input">
-                <input tabindex="5" type="text" />
+                <input data-key="eAddr" tabindex="2" type="text" data-type="email"/>
             </div>
+            <div class="control-error"></div>
         </div>
         <div class="control-field">
             <div class="control-label">Mobile No.</div>
             <div class="control-input">
-                <input tabindex="6" type="text" />
+                <input data-key="pPhn" tabindex="3" type="text" data-type="mob"/>
             </div>
+            <div class="control-error"></div>
         </div>
         <div class="control-field">
             <div class="control-label">Password</div>
             <div class="control-input">
-                <input tabindex="7" type="text" />
+                <input data-key="pwd" tabindex="4" type="password" data-type="pwd"/>
             </div>
+            <div class="control-error"></div>
         </div>
         <div class="control-field">
             <div class="control-input">
-                <button tabindex="8">Sign Up</button>
+                <button tabindex="5" data-action="signup">Sign Up</button>
             </div>
+        </div>
+    </div>
+    <div class="sign-in control-form">
+        <div class="control-field">
+            <div class="control-label">Email/Mobile No.</div>
+            <div class="control-input">
+                <input data-key="pPhn" tabindex="1" type="text" data-type="mob|email"/>
+            </div>
+            <div class="control-error"></div>
+        </div>
+        <div class="control-field">
+            <div class="control-label">Password</div>
+            <div class="control-input">
+                <input data-key="pwd" tabindex="2" type="password" data-type="pwd"/>
+            </div>
+            <div class="control-error"></div>
+        </div>
+        <div class="control-field">
+            <div class="control-input">
+                <button tabindex="3" data-action="login">Sign In</button>
+            </div>
+            <div class="control-error"></div>
         </div>
     </div>
 </div>

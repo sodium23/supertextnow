@@ -40,7 +40,7 @@
                     channel = 'facebook';
                 that.$el.addClass('loading');
                 Dialog.close();
-                query && SupercenterAPI.login(channel, query).then(function () {
+                query && SupercenterAPI.socialLogin(channel, query).then(function () {
                     that.$el.removeClass('loading');
                 });
             };

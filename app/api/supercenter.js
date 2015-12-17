@@ -15,7 +15,7 @@
             EMPTY_OBJ_READONLY = {},
             url = window.location.host === 'scupids.com' ? CONFIG.prodUrl : CONFIG.localUrl;
         return {
-            login: function (channel, query) {
+            socialLogin: function (channel, query) {
                 var d = $.Deferred();
                 $.ajax({
                     url: url + 'signin/' + channel + '?' + query,
@@ -26,6 +26,38 @@
                     d.resolve();
                 });
 
+                return d;
+            },
+
+            login: function (username, password) {
+                var d = $.Deferred();
+                $.ajax({
+                    url: url + 'app/register' + '?username=9650012345&password=test',
+                    contentType: 'application/json',
+                    method: 'GET'
+                }).done(function (response) {
+                    console.log(response);
+                    d.resolve();
+                });
+                return d;
+            },
+
+            signUp: function (username, password) {
+                var d = $.Deferred();
+                $.ajax({
+                    url: url + 'app/register',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        n: 'Vipul Login',
+                        eAddr: 'vipul261@gmail.com',
+                        pPhn: '919650012345',
+                        pwd: 'test'
+                    }),
+                    method: 'POST'
+                }).done(function (response) {
+                    console.log(response);
+                    d.resolve();
+                });
                 return d;
             },
 
