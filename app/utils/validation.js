@@ -11,7 +11,7 @@
             validateInput: function(text, type){
                 var error;
                 text = text.trim();
-                REGEX[type] && !REGEX[type].test(text) && (error = 'invalid');
+                text && REGEX[type] && !REGEX[type].test(text) && (error = 'invalid');
                 
                 return {
                     text: text,

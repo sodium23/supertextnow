@@ -19,6 +19,7 @@
                 switch (action) {
                     case 'toggle-form':
                         that.$el.toggleClass('sign-in-active');
+                        that.$(that.$el.hasClass('sign-in-active') ? '.sign-in' : '.sign-up').find('[tabindex="1"]').focus();
                         break;
                     case 'signup':
                         data = prepareAndValidate.call(that, 'sign-up');
@@ -87,7 +88,7 @@
             onRender: function () {
                 var that = this;
                 _.defer(function () {
-                    that.$('.sign-up').find('[tabindex="1"]').focus()
+                    that.$('.sign-up').find('[tabindex="1"]').focus();
                 });
             }
         });
