@@ -1,6 +1,58 @@
 .login-dialog {
-    padding: 2.4rem 5.5rem;
-    width: 100%;
+    padding: 2.5rem;
+    width: 50rem;
+    clear: both;
+    overflow: hidden;
     height: 100%;
     @include box-sizing();
+    color: $font-color;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+.sign-in-section {
+    @include box-sizing();
+    display: inline-block;
+    float: left;
+    padding: 1rem;
+}
+.sign-header {
+    margin-bottom: 3rem;
+}
+.social-sign-in {
+    width: 40%;
+    padding-bottom: 14rem;
+    border-right: 1px solid #ddd;
+}
+.social-title {
+    margin-bottom: 2rem;
+}
+.native {
+    padding: 1rem 3rem;
+    width: 60%;
+}
+.button {}
+.sign-in, .sign-in-header {
+    display: none;
+}
+.sign-in-active {
+    .sign-up, .sign-up-header {
+        display: none;
+    }
+    .sign-in, .sign-in-header {
+        display: block;
+    }
+}
+.control-field {
+    margin: 1rem 0;
+    input {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        width: 100%;
+        outline: none;
+        font-family: "ItcMed", "Helvetica";
+        @include box-sizing();
+    }
+    button {
+        background-color: $brand-purple;
+    }
 }

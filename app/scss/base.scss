@@ -46,9 +46,9 @@ p {
 #workspace {
     height: 100%;
     font-size: 1.5rem;
-    @include background-radial(#4a0d7d,
+    @include background-radial($brand-purple,
     0%,
-    #37075b,
+    $brand-dark-purple,
     80%);
     @include transition(background 0.3s ease);
     position: relative;
@@ -191,15 +191,13 @@ p {
     top: 0px;
     width: 100%;
     height: 100%;
-    text-align: center;
     z-index: $z-7;
     background: rgba(0, 0, 0, 0.3);
     &.open {
         visibility: visible;
     }
-    div {
+    .dialog-content {
         min-width: 20rem;
-        min-height: 12rem;
         position: absolute;
         top: 50%;
         left: 50%;

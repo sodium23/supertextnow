@@ -7,10 +7,14 @@
         'text!templates/sections/login.html'
     ], function (BaseView, Dialog, template) {
         var onClickAction = function (e) {
-                var jTarget = $(e.target).closest('[data-action]'),
+                var that = this,
+                    jTarget = $(e.target).closest('[data-action]'),
                     action = jTarget.data('action');
 
                 switch (action) {
+                    case 'toggle-form':
+                        that.$el.toggleClass('sign-in-active');
+                        break;
                     case 'facebook':
                     case 'google':
                         openChildWindow(action);
