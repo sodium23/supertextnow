@@ -14,6 +14,7 @@
                 var that = this,
                     jTarget = $(e.target).closest('[data-action]'),
                     action = jTarget.data('action'),
+                    jWorkspace = $('#workspace'),
                     data;
 
                 switch (action) {
@@ -23,13 +24,19 @@
                         break;
                     case 'signup':
                         data = prepareAndValidate.call(that, 'sign-up');
-                        console.log(data);
-                        data && SupercenterAPI.signUp(data);
+                        jWorkspace.addClass('loading');
+                        data && SupercenterAPI.signUp(data).then(function () {
+                            jWorkspace.removeClass('loading');
+                            Dialog.close();
+                        });;
                         break;
                     case 'login':
                         data = prepareAndValidate.call(that, 'sign-in');
-                        console.log(data);
-                        data && SupercenterAPI.login(data);
+                        jWorkspace.addClass('loading');
+                        data && SupercenterAPI.login(data).then(function(){
+                            jWorkspace.removeClass('loading');
+                            Dialog.close();
+                        });
                         break;
                     case 'facebook':
                     case 'google':

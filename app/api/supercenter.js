@@ -37,7 +37,7 @@
                     contentType: 'application/json',
                     method: 'GET'
                 }).done(function (response) {
-                    console.log(response);
+                    Events.trigger('user:logged-in', response);
                     d.resolve();
                 });
                 return d;
@@ -51,7 +51,7 @@
                     data: JSON.stringify(data),
                     method: 'POST'
                 }).done(function (response) {
-                    console.log(response);
+                    Events.trigger('user:logged-in', response);
                     d.resolve();
                 });
                 return d;
