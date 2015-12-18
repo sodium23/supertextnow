@@ -60,7 +60,8 @@
                         value = jInput.val();
                     _.isObject(data) && value ? (data[jInput.data('key')] = value) : (data = false);
                     validateField.call(that,{
-                        jInput: jInput
+                        jInput: jInput,
+                        modify: true
                     });
                 });
                 if (_.isEmpty(data) || hasValidationError) {
@@ -77,9 +78,13 @@
                     value = jTarget.val(),
                     typeData = jTarget.data('type') || '',
                     types = typeData.split('|'),
+                    modify = !!e.modify,
                     isValid;
                 _.forEach(types, function (type) {
-                    !isValid && (isValid = !Validation.validateInput(value, type).error);
+                    var validatedInput = Validation.validateInput(value, type),
+                        hasError = validatedInput.error;
+                    modify && !hasError && jTarget.val(validatedInput.text);
+                    !isValid && (isValid = !hasError);
                 });
                 !value && (isValid = false);
                 jTarget.closest('.control-field').toggleClass('error', !isValid);
