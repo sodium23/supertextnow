@@ -4,11 +4,10 @@
     define([
         'backbone',
         'marionette',
-        'cookie',
         'api/layer',
         'api/supercenter',
         'utils/layerSocket'
-    ], function (Backbone, Marionette, Cookie, LayerAPI, SupercenterAPI, LayerSocket) {
+    ], function (Backbone, Marionette, LayerAPI, SupercenterAPI, LayerSocket) {
         var Events = Backbone.Events,
             userId,
             messageCache = [],
@@ -52,10 +51,7 @@
                                 connectLayerSocket.call(that);
                                 d.resolve();
                             }
-                        }).then(function (response) {
-                            var userId = response.customerId,
-                                layerToken = response.layerToken;
-                            connectLayerSocket.call(that, userId, layerToken);
+                        }).then(function () {
                             d.resolve();
                         });
                         return d;

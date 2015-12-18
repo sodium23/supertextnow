@@ -30,7 +30,6 @@
             },
 
             login: function (data) {
-                var d = $.Deferred();
                 return $.ajax({
                     url: url + 'rest/app/signin',
                     data: data,
@@ -40,7 +39,6 @@
                     Events.trigger('user:logged-in', response);
                     d.resolve();
                 });
-//                return d;
             },
             
             logout: function(){
@@ -55,7 +53,6 @@
             },
 
             signUp: function (data) {
-                var d = $.Deferred();
                 return $.ajax({
                     url: url + 'rest/app/register',
                     contentType: 'application/json',
@@ -65,7 +62,6 @@
                     Events.trigger('user:logged-in', response);
                     d.resolve();
                 });
-//                return d;
             },
 
             registerUser: function (options) {
@@ -76,14 +72,8 @@
                     headers: CONFIG.headers,
                     error: options.error,
                 }).done(function (response) {
-                    var socialAccounts = (response.cus || EMPTY_OBJ_READONLY).sAcnts || EMPTY_OBJ_READONLY,
-                        layerAccount = _.find(socialAccounts, function (account) {
-                            return account.mT === "LAYER";
-                        });
-                    d.resolve({
-                        layerToken: response.lSTkn,
-                        customerId: (layerAccount || EMPTY_OBJ_READONLY).id
-                    });
+                    Events.trigger('user:logged-in', response);
+                    d.resolve();
                 });
 
                 return d;

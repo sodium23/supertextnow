@@ -1,7 +1,5 @@
 (function (W, U) {
-    define([
-        'cookie'
-    ], function (Cookie) {
+    define([], function () {
         var CONFIG = {
                 serverUrl: 'https://api.layer.com',
                 appId: '8f3dbf72-9b42-11e5-9b0b-b2450c0046c4',
