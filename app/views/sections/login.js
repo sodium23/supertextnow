@@ -27,9 +27,10 @@
                         if (data) {
                             jWorkspace.addClass('loading');
                             SupercenterAPI.signUp(data).then(function () {
-                                jWorkspace.removeClass('loading');
                                 Dialog.close();
-                            });;
+                            }).always(function(){
+                                jWorkspace.removeClass('loading');
+                            });
                         }
                         break;
                     case 'login':
@@ -37,8 +38,9 @@
                         if (data) {
                             jWorkspace.addClass('loading');
                             SupercenterAPI.login(data).then(function () {
-                                jWorkspace.removeClass('loading');
                                 Dialog.close();
+                            }).always(function(){
+                                jWorkspace.removeClass('loading');
                             });
                         }
                         break;

@@ -31,7 +31,7 @@
 
             login: function (data) {
                 var d = $.Deferred();
-                $.ajax({
+                return $.ajax({
                     url: url + 'rest/app/signin',
                     data: data,
                     contentType: 'application/json',
@@ -40,7 +40,7 @@
                     Events.trigger('user:logged-in', response);
                     d.resolve();
                 });
-                return d;
+//                return d;
             },
             
             logout: function(){
@@ -56,7 +56,7 @@
 
             signUp: function (data) {
                 var d = $.Deferred();
-                $.ajax({
+                return $.ajax({
                     url: url + 'rest/app/register',
                     contentType: 'application/json',
                     data: JSON.stringify(data),
@@ -65,7 +65,7 @@
                     Events.trigger('user:logged-in', response);
                     d.resolve();
                 });
-                return d;
+//                return d;
             },
 
             registerUser: function (options) {
