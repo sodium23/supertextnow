@@ -48,8 +48,7 @@
                             d = $.Deferred();
                         !ContextService.chatConnected && SupercenterAPI.registerUser({
                             error: function () {
-                                connectLayerSocket.call(that);
-                                d.resolve();
+                                d.resolve(['Oops!', 'Seems like we are out of magic powder', 'Please try again later']);
                             }
                         }).then(function () {
                             d.resolve();
