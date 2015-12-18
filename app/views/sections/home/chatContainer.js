@@ -15,13 +15,14 @@
             CELL_HEIGHT = 43,
             newMessages = 0,
             Events = Backbone.Events,
-            addMsg = function (msg, dir) {
+            addMsg = function (msg, dir, id) {
                 var that = this,
                     isUserFocused = $('#chat-input').is(':focus');
 
                 this.collection.add({
                     msg: msg,
-                    dir: dir || 'left'
+                    dir: dir || 'left',
+                    id: id
                 });
 
                 if (dir === 'left' && !isUserFocused) {
@@ -91,7 +92,7 @@
                 that.listenTo(Events, 'socket:message:create', function (msg) {
                     var dir = msg.isSelf ? 'right' : 'left';
                     _.forEach(msg.parts, function (part) {
-                        addMsg.call(that, _.escape(part.body), dir);
+                        addMsg.call(that, _.escape(part.body), dir, msg.id);
                     });
                 });
             }
