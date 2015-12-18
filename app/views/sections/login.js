@@ -24,7 +24,7 @@
                         break;
                     case 'signup':
                         data = prepareAndValidate.call(that, 'sign-up');
-                        jWorkspace.addClass('loading');
+                        data && jWorkspace.addClass('loading');
                         data && SupercenterAPI.signUp(data).then(function () {
                             jWorkspace.removeClass('loading');
                             Dialog.close();
@@ -32,7 +32,7 @@
                         break;
                     case 'login':
                         data = prepareAndValidate.call(that, 'sign-in');
-                        jWorkspace.addClass('loading');
+                        data && jWorkspace.addClass('loading');
                         data && SupercenterAPI.login(data).then(function(){
                             jWorkspace.removeClass('loading');
                             Dialog.close();
