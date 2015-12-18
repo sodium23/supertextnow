@@ -17,6 +17,7 @@
 }
 .sign-header {
     margin-bottom: 3rem;
+    font-size: 1.2rem;
 }
 .social-sign-in {
     width: 40%;
@@ -89,7 +90,7 @@
     .sign-header {
         margin-bottom: 1rem;
     }
-    .login-dialog{
+    .login-dialog {
         width: 100%;
     }
     .social-sign-in {
@@ -111,5 +112,14 @@
     }
     .native {
         width: 100%;
+    }
+}
+@media screen and (max-width: $screen-th-1) {
+    .sign-header {
+        margin-bottom: 0;
+    }
+    .login-dialog {
+        height: 100%;
+        padding: 1rem;
     }
 }

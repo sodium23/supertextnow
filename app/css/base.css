@@ -697,7 +697,8 @@ button {
   padding: 1rem; }
 
 .sign-header {
-  margin-bottom: 3rem; }
+  margin-bottom: 3rem;
+  font-size: 1.2rem; }
 
 .social-sign-in {
   width: 40%;
@@ -788,6 +789,13 @@ button {
 
   .native {
     width: 100%; } }
+@media screen and (max-width: 1000px) {
+  .sign-header {
+    margin-bottom: 0; }
+
+  .login-dialog {
+    height: 100%;
+    padding: 1rem; } }
 @font-face {
   font-family: "CurseCasual";
   src: url("../resources/fonts/curseCasual.ttf"); }
@@ -1049,6 +1057,9 @@ p {
     @media screen and (max-width: 500px) {
       #dialog-overlay .dialog-content {
         width: 80%; } }
+    @media screen and (max-width: 1000px) {
+      #dialog-overlay .dialog-content {
+        max-height: 90%; } }
 
 .section-cont {
   height: 100%;

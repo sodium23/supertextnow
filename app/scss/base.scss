@@ -242,6 +242,9 @@ p {
         @media screen and (max-width: $screen-th-2) {
             width: 80%;
         }
+        @media screen and (max-width: $screen-th-1) {
+            max-height: 90%;
+        }
     }
 }
 .section-cont {
