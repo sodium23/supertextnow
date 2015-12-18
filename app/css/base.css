@@ -900,8 +900,8 @@ p {
   -ms-filter: blur(4px);
   -o-filter: blur(4px);
   filter: blur(4px); }
-.info-open #brand,
-.info-open #login {
+.info-open #brand .nav-label,
+.info-open #login .nav-label {
   color: black;
   text-shadow: 0 0 0 black; }
 
@@ -914,21 +914,59 @@ p {
   filter: blur(4px); }
 
 #login {
-  color: white;
   position: fixed;
-  right: 10rem;
+  right: 8rem;
   z-index: 500;
-  text-shadow: 0px 0px 5px black;
-  padding: 3.5rem 0rem;
+  margin: 2.5rem 0rem;
   line-height: 2rem;
   font-size: 1.5rem;
-  text-decoration: none;
-  -webkit-transition: color 0.3s ease;
-  -khtml-transition: color 0.3s ease;
-  -moz-transition: color 0.3s ease;
-  -ms-transition: color 0.3s ease;
-  -o-transition: color 0.3s ease;
-  transition: color 0.3s ease; }
+  -webkit-transition: background 0.3s ease;
+  -khtml-transition: background 0.3s ease;
+  -moz-transition: background 0.3s ease;
+  -ms-transition: background 0.3s ease;
+  -o-transition: background 0.3s ease;
+  transition: background 0.3s ease; }
+  #login .nav-label {
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    text-decoration: none;
+    padding: 1rem;
+    display: inline-block;
+    -webkit-transition: color 0.3s ease;
+    -khtml-transition: color 0.3s ease;
+    -moz-transition: color 0.3s ease;
+    -ms-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease; }
+  #login.open-dropdown {
+    background-color: white; }
+    #login.open-dropdown .nav-label {
+      color: #4d4d4d;
+      text-shadow: none; }
+    #login.open-dropdown .dropdown {
+      color: #4d4d4d;
+      height: 3rem; }
+  #login .dropdown {
+    height: 0rem;
+    overflow: hidden;
+    -webkit-transition: height 0.3s ease;
+    -khtml-transition: height 0.3s ease;
+    -moz-transition: height 0.3s ease;
+    -ms-transition: height 0.3s ease;
+    -o-transition: height 0.3s ease;
+    transition: height 0.3s ease; }
+    #login .dropdown li {
+      margin: 0 1rem;
+      border-bottom: 1px solid #ddd;
+      min-width: 7rem; }
+      #login .dropdown li:last-child {
+        border: none; }
+    #login .dropdown a {
+      text-decoration: none;
+      color: #4d4d4d;
+      padding: 0.5rem 0;
+      display: inline-block;
+      width: 100%; }
 
 #brand {
   text-shadow: 0 0 1rem black;

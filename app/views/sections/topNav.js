@@ -18,7 +18,7 @@
 
                 switch (action) {
                     case 'login':
-                        isLoggedin ? showSettingsDialog.call(that): showLoginDialog.call(that);
+                        isLoggedin ? showDropdown.call(that): showLoginDialog.call(that);
                         break;
                     default:
                         break;
@@ -28,7 +28,10 @@
                 var that = this;
                 Dialog.show(new LoginView());
             },
-            showSettingsDialog = function () {};
+            showDropdown = function () {
+                var that = this;
+                that.$('#login').toggleClass('open-dropdown');
+            };
 
         return BaseView.extend({
             template: _.template(template),
@@ -42,7 +45,7 @@
                     data = data || EMPTY_OBJ_READONLY;
                     var customer = data.cus || EMPTY_OBJ_READONLY;
                     isLoggedin = true;
-                    that.$('#login').text(customer.n || 'Welcome');
+                    that.$('.nav-label').text(customer.n || 'Welcome');
                 });
             }
         });
