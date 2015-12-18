@@ -9,7 +9,7 @@
         'text!templates/sections/login.html'
     ], function (BaseView, Dialog, Validation, SupercenterAPI, template) {
         var typingTimer,
-            doneTypingInterval = 3000,
+            doneTypingInterval = 1500,
             onClickAction = function (e) {
                 var that = this,
                     jTarget = $(e.target).closest('[data-action]'),
@@ -24,19 +24,23 @@
                         break;
                     case 'signup':
                         data = prepareAndValidate.call(that, 'sign-up');
-                        data && jWorkspace.addClass('loading');
-                        data && SupercenterAPI.signUp(data).then(function () {
-                            jWorkspace.removeClass('loading');
-                            Dialog.close();
-                        });;
+                        if (data) {
+                            jWorkspace.addClass('loading');
+                            SupercenterAPI.signUp(data).then(function () {
+                                jWorkspace.removeClass('loading');
+                                Dialog.close();
+                            });;
+                        }
                         break;
                     case 'login':
                         data = prepareAndValidate.call(that, 'sign-in');
-                        data && jWorkspace.addClass('loading');
-                        data && SupercenterAPI.login(data).then(function(){
-                            jWorkspace.removeClass('loading');
-                            Dialog.close();
-                        });
+                        if (data) {
+                            jWorkspace.addClass('loading');
+                            SupercenterAPI.login(data).then(function () {
+                                jWorkspace.removeClass('loading');
+                                Dialog.close();
+                            });
+                        }
                         break;
                     case 'facebook':
                     case 'google':
@@ -55,6 +59,9 @@
                     var jInput = $(inputElem),
                         value = jInput.val();
                     _.isObject(data) && value ? (data[jInput.data('key')] = value) : (data = false);
+                    validateField.call(that,{
+                        jInput: jInput
+                    });
                 });
                 if (_.isEmpty(data) || hasValidationError) {
                     return false;
@@ -66,7 +73,7 @@
             },
             validateField = function (e) {
                 var that = this,
-                    jTarget = $(e.target),
+                    jTarget = e.jInput || $(e.target),
                     value = jTarget.val(),
                     typeData = jTarget.data('type') || '',
                     types = typeData.split('|'),
@@ -74,6 +81,7 @@
                 _.forEach(types, function (type) {
                     !isValid && (isValid = !Validation.validateInput(value, type).error);
                 });
+                !value && (isValid = false);
                 jTarget.closest('.control-field').toggleClass('error', !isValid);
             }
         return BaseView.extend({
