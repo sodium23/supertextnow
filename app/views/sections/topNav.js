@@ -45,12 +45,16 @@
             initialize: function (options) {
                 var that = this;
                 BaseView.prototype.initialize.call(that, options);
-                that.listenTo(Events, 'user:logged-in', function (data) {
+                that.listenTo(Events, 'user:logged-in user:load:session', function (data) {
                     data = data || EMPTY_OBJ_READONLY;
-                    var customer = data.cus || EMPTY_OBJ_READONLY;
+                    var customer = data.cus || EMPTY_OBJ_READONLY,
+                        name = data.name;
                     isLoggedin = true;
-                    that.$('.nav-label').text(customer.n || 'Welcome');
+                    that.$('.nav-label').text(name || customer.n || 'Welcome');
                 });
+            },
+            onRender: function(){
+                Events.trigger('nav:initialized');
             }
         });
     });

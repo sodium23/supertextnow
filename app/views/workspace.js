@@ -5,13 +5,14 @@
         'backbone',
         'views/layout',
         'controllers/app',
+        'controllers/session',
         'routers/app',
         'views/contentViews/slide',
         'views/sections/topNav',
         'api/supercenter',
         'utils/dialog',
         'text!templates/appWorkspace.html'
-    ], function (Backbone, LayoutView, Controller, Router, SlideView, TopNavView, SupercenterAPI, Dialog, template) {
+    ], function (Backbone, LayoutView, Controller, SessionController, Router, SlideView, TopNavView, SupercenterAPI, Dialog, template) {
         var Events = Backbone.Events,
             DEFAULT_TAB = 'home',
 
@@ -72,9 +73,13 @@
                     controller: that.controller = new Controller()
                 });
                 that.infoView = new SlideView();
+                that.sessionController = new SessionController();
 
                 that.listenTo(Events, 'tab:change', setContentView);
                 that.listenTo(Events, 'info:open', openSlideView);
+                that.listenTo(Events, 'nav:initialized', function(){
+                    that.sessionController.load();
+                });
                 W.onSocialLogin = function (queryString) {
                     console.log('Initialize Login process with supercenter with query: ' + queryString);
                     onSocialLogin.call(that, queryString);

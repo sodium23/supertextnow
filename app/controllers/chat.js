@@ -183,7 +183,11 @@
                     ContextService.chatConnected = false;
                     connectLayerSocket.call(that, data.lUId, data.lSTkn);
                 });
+                that.listenTo(Events, 'user:load:session', function(data){
+                    connectLayerSocket.call(that, data.id, data.token);
+                });
                 that.listenTo(Events, 'chat:connected', function () {
+                    $('#workspace').removeClass('loading');
                     ContextService.chatConnected = true;
                     Events.trigger('msg:clear');
                     _.forEach(messageCache, function (msg) {
