@@ -4,7 +4,8 @@
         'marionette',
         'backbone'
     ], function (Cookie, Marionette, Backbone) {
-        var Events = Backbone.Events,
+        var DUMMY_NAME = '-_-DUMMY-_-',
+            Events = Backbone.Events,
 
             getCookieName = function (name) {
                 return 'STXT_' + name.toUpperCase();
@@ -24,9 +25,10 @@
             },
 
             setSession = function (data) {
+                var isDummy = data.isDummy;
                 token = data.lSTkn;
                 id = data.lUId;
-                name = (data.cus || {}).n;
+                name = isDummy ? DUMMY_NAME : (data.cus || {}).n;
 
                 token && setCookie('token', token);
                 name && setCookie('name', name);
@@ -44,10 +46,12 @@
             },
 
             getSession = function () {
+                var name = getCookie('name');
                 return {
                     token: getCookie('token'),
                     name: getCookie('name'),
-                    id: getCookie('id')
+                    id: getCookie('id'),
+                    isDummy: name === DUMMY_NAME
                 }
             },
 

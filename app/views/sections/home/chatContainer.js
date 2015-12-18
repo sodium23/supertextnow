@@ -12,7 +12,7 @@
         'controllers/chat'
     ], function (Backbone, BaseCollection, LayerAPI, LayerSocket, Sound, CollectionView, chatMsgView, ChatController) {
         var PAGE_SIZE = 10,
-            CELL_HEIGHT = 43,
+            CELL_HEIGHT = 41,
             newMessages = 0,
             Events = Backbone.Events,
             addMsg = function (msg, dir, id) {
@@ -46,7 +46,7 @@
                 that.collection.add(processedMessages.reverse(), {
                     at: 0
                 });
-                that.$el.scrollTop(PAGE_SIZE * CELL_HEIGHT);
+                that.$el.scrollTop(processedMessages.length * CELL_HEIGHT);
             };
         return CollectionView.extend({
             className: 'chat-msgs-box',
@@ -68,7 +68,7 @@
                     var jChatCont = this.$el;
                     (jChatCont.scrollTop() + jChatCont.height() >= jChatCont[0].scrollHeight - 70) && Events.trigger('msg:unread:change', 'reset');
                 }, 300),
-                'click': function(e){
+                'click': function (e) {
                     this.chatController.onClickAction(e);
                 }
             },
