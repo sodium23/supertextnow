@@ -187,6 +187,9 @@ p {
             padding: 0.5rem 0;
             display: inline-block;
             width: 100%;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }

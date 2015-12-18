@@ -967,6 +967,8 @@ p {
       padding: 0.5rem 0;
       display: inline-block;
       width: 100%; }
+      #login .dropdown a:hover {
+        text-decoration: underline; }
 
 #brand {
   text-shadow: 0 0 1rem black;

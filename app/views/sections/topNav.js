@@ -8,7 +8,7 @@
         'api/supercenter',
         'views/sections/login',
         'text!templates/sections/topNav.html'
-    ], function (Backbone, BaseView, Dialog, SupercenterAPI,LoginView, template) {
+    ], function (Backbone, BaseView, Dialog, SupercenterAPI, LoginView, template) {
         var EMPTY_OBJ_READONLY = {},
             Events = Backbone.Events,
             isLoggedin = false,
@@ -19,7 +19,7 @@
 
                 switch (action) {
                     case 'login':
-                        isLoggedin ? showDropdown.call(that): showLoginDialog.call(that);
+                        isLoggedin ? showDropdown.call(that) : showLoginDialog.call(that);
                         break;
                     case 'logout':
                         isLoggedin && Events.trigger('user:logout');
@@ -47,13 +47,14 @@
                 BaseView.prototype.initialize.call(that, options);
                 that.listenTo(Events, 'user:logged-in user:load:session', function (data) {
                     data = data || EMPTY_OBJ_READONLY;
-                    var customer = data.cus || EMPTY_OBJ_READONLY,
+                    var isDummy = data.isDummy,
+                        customer = data.cus || EMPTY_OBJ_READONLY,
                         name = data.name;
-                    isLoggedin = true;
-                    that.$('.nav-label').text(name || customer.n || 'Welcome');
+                    !isDummy && (isLoggedin = true);
+                    isLoggedin && that.$('.nav-label').text(name || customer.n || 'Welcome');
                 });
             },
-            onRender: function(){
+            onRender: function () {
                 Events.trigger('nav:initialized');
             }
         });

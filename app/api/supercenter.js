@@ -72,7 +72,7 @@
                     headers: CONFIG.headers,
                     error: options.error,
                 }).done(function (response) {
-                    Events.trigger('user:logged-in', response);
+                    Events.trigger('user:logged-in', _.extend({isDummy:true},response));
                     d.resolve();
                 });
 
