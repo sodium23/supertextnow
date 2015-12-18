@@ -485,7 +485,7 @@ button {
   .home-cont #chat-input {
     font-family: inherit;
     font-weight: 600;
-    max-width: 90%;
+    max-width: 85%;
     display: block;
     margin: auto;
     width: 40rem;
@@ -761,6 +761,33 @@ button {
     color: #D42C2C;
     border-color: #D42C2C; }
 
+@media screen and (max-width: 500px) {
+  .login-dialog,
+  .sign-header {
+    margin-bottom: 1rem; }
+
+  .login-dialog {
+    width: 100%; }
+
+  .social-sign-in {
+    padding: 0;
+    float: none;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    padding-bottom: 1rem;
+    border-right: none;
+    border-bottom: 1px solid #ddd; }
+
+  .fb {
+    margin: 0.5rem 2rem; }
+
+  .social-title {
+    float: left;
+    margin: 0; }
+
+  .native {
+    width: 100%; } }
 @font-face {
   font-family: "CurseCasual";
   src: url("../resources/fonts/curseCasual.ttf"); }
@@ -1019,6 +1046,9 @@ p {
     transform: translate(-50%, -50%);
     background: white;
     box-shadow: 0 0 4rem -0.8rem black; }
+    @media screen and (max-width: 500px) {
+      #dialog-overlay .dialog-content {
+        width: 80%; } }
 
 .section-cont {
   height: 100%;

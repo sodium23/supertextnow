@@ -84,3 +84,32 @@
         }
     }
 }
+@media screen and (max-width: $screen-th-2) {
+    .login-dialog,
+    .sign-header {
+        margin-bottom: 1rem;
+    }
+    .login-dialog{
+        width: 100%;
+    }
+    .social-sign-in {
+        padding: 0;
+        float: none;
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        padding-bottom: 1rem;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    .fb {
+        margin: 0.5rem 2rem;
+    }
+    .social-title {
+        float: left;
+        margin: 0;
+    }
+    .native {
+        width: 100%;
+    }
+}

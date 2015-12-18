@@ -217,13 +217,6 @@ p {
         display: block;
         margin: 0 auto;
     }
-    @media screen and (max-width: $screen-th-1) {
-        //        font-size: 2.5rem;
-        //        img {
-        //            @include box-sizing();
-        //            padding: 0.5rem;
-        //        }
-    }
 }
 #dialog-overlay {
     visibility: hidden;
@@ -246,6 +239,9 @@ p {
         -50%));
         background: white;
         box-shadow: 0 0 4rem -0.8rem black;
+        @media screen and (max-width: $screen-th-2) {
+            width: 80%;
+        }
     }
 }
 .section-cont {
