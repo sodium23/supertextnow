@@ -30,6 +30,7 @@
                                 ContextService.chatConnected = false;
                                 that.layerSocket.destroy();
                                 d.resolve(['You are logged out']);
+                                SupercenterAPI.logout();
                             });
                         } else {
                             d.resolve(['You are not logged in', 'Enter your email to login']);
@@ -193,6 +194,11 @@
                         Events.trigger('layer:send', msg);
                     });
                     messageCache = [];
+                });
+                that.listenTo(Events, 'user:logout', function () {
+                    $.when(that.layerSocket && that.layerSocket.resetSocket()).always(function(){
+                        SupercenterAPI.logout();
+                    });
                 });
             },
 

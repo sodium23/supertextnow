@@ -1,4 +1,4 @@
-(function () {
+(function (W) {
     'use strict';
 
     define([
@@ -6,8 +6,8 @@
     ], function (Backbone) {
         var Events = Backbone.Events,
             CONFIG = {
-                prodUrl: 'http://104.199.153.175:8080/rest/',
-                localUrl: 'http://localhost:8080/rest/',
+                prodUrl: 'http://104.199.153.175:8080/',
+                localUrl: 'http://localhost:8080/',
                 headers: {
                     'Content-type': 'application/json'
                 }
@@ -18,7 +18,7 @@
             socialLogin: function (channel, query) {
                 var d = $.Deferred();
                 $.ajax({
-                    url: url + 'signin/' + channel + '?' + query,
+                    url: url + 'rest/signin/' + channel + '?' + query,
                     method: 'GET',
                     headers: CONFIG.headers
                 }).done(function (response) {
@@ -32,7 +32,7 @@
             login: function (data) {
                 var d = $.Deferred();
                 $.ajax({
-                    url: url + 'app/signin',
+                    url: url + 'rest/app/signin',
                     data: data,
                     contentType: 'application/json',
                     method: 'GET'
@@ -42,11 +42,22 @@
                 });
                 return d;
             },
+            
+            logout: function(){
+                var d = $.Deferred();
+                $.ajax({
+                    url: url + 'logout',
+                    method: 'GET'
+                }).done(function (response) {
+                    W.location.reload();
+                });
+                return d;
+            },
 
             signUp: function (data) {
                 var d = $.Deferred();
                 $.ajax({
-                    url: url + 'app/register',
+                    url: url + 'rest/app/register',
                     contentType: 'application/json',
                     data: JSON.stringify(data),
                     method: 'POST'
@@ -60,7 +71,7 @@
             registerUser: function (options) {
                 var d = $.Deferred();
                 $.ajax({
-                    url: url + 'app/pseudoRegister',
+                    url: url + 'rest/app/pseudoRegister',
                     method: 'POST',
                     headers: CONFIG.headers,
                     error: options.error,
@@ -79,4 +90,4 @@
             }
         };
     });
-})();
+})(window);

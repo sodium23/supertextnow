@@ -5,9 +5,10 @@
         'backbone',
         'views/base',
         'utils/dialog',
+        'api/supercenter',
         'views/sections/login',
         'text!templates/sections/topNav.html'
-    ], function (Backbone, BaseView, Dialog, LoginView, template) {
+    ], function (Backbone, BaseView, Dialog, SupercenterAPI,LoginView, template) {
         var EMPTY_OBJ_READONLY = {},
             Events = Backbone.Events,
             isLoggedin = false,
@@ -19,6 +20,9 @@
                 switch (action) {
                     case 'login':
                         isLoggedin ? showDropdown.call(that): showLoginDialog.call(that);
+                        break;
+                    case 'logout':
+                        isLoggedin && Events.trigger('user:logout');
                         break;
                     default:
                         break;
