@@ -42,6 +42,7 @@
                         return getResponse.call(this, data)
                     }
                 },
+                //Add Theme specific handling here
                 activate: {
                     handler: function () {
                         var that = this,
