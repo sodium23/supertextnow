@@ -28,7 +28,7 @@
                 var isDummy = data.isDummy;
                 token = data.lSTkn;
                 id = data.lUId;
-                name = isDummy ? DUMMY_NAME : (data.cus || {}).n;
+                name = isDummy ? DUMMY_NAME : (data.cus || {}).n || 'Welcome';
 
                 token && setCookie('token', token);
                 name && setCookie('name', name);
