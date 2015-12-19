@@ -9,24 +9,9 @@
         var USER_ID = 'vipul_web',
             PING_PONG_TIME = 30000,
             changeCounter = -1,
-            //        var USER_ID = 'frodo_the_dodo',
             Events = Backbone.Events,
             initiateAuthentication = function () {
-                var that = this;
-                _.forEach(that.timeouts, clearTimeout);
-                LayerAPI.getNonce()
-
-                // Use the nonce to get an identity token
-                .then(function (nonce) {
-                    return LayerAPI.getIdentityToken(nonce, USER_ID);
-                })
-
-                // Use the identity token to get a session
-                .then(function (identityToken) {
-                    return LayerAPI.getSession(identityToken);
-                })
-
-                .then(_.bind(createSocketConnection, that));
+                console.log('FAILED TO AUTHENTICATE SESSION or WEBSOCKET DISCONNECTED');
             },
             createSocketConnection = function (sessionToken) {
                 var that = this,
