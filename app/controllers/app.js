@@ -8,8 +8,8 @@
 
         return Marionette.Controller.extend({
 
-            renderView: function () {
-                Backbone.Events.trigger('tab:change');
+            renderHome: function () {
+                Backbone.Events.trigger('tab:home');
             },
             renderInfo: function (tab) {
                 Backbone.Events.trigger('info:open', tab);

@@ -9,28 +9,40 @@
         'routers/app',
         'views/contentViews/slide',
         'views/sections/topNav',
+        'contentViews/home',
         'api/supercenter',
         'utils/dialog',
         'text!templates/appWorkspace.html'
-    ], function (Backbone, LayoutView, Controller, SessionController, Router, SlideView, TopNavView, SupercenterAPI, Dialog, template) {
+    ], function (Backbone, LayoutView, Controller, SessionController, Router, SlideView, TopNavView, HomeView, SupercenterAPI, Dialog, template) {
         var Events = Backbone.Events,
-            DEFAULT_TAB = 'home',
+            theme = '',
+            THEMES = {
+                santa: {
+                    hash: 'santa'
+                }
+            },
 
-            setContentView = function () {
+            renderHome = function () {
                 var that = this,
                     hashArray = W.location.hash.split('#'),
-                    length = hashArray.length - 1,
-                    tab = (hashArray && hashArray[length]),
-                    contentView;
+                    index = hashArray.length - 1,
+                    urlTheme = hashArray[index];
 
-                if (!(hashArray && hashArray[length])) {
-                    //                    tab = DEFAULT_TAB;
-                    W.location.hash = DEFAULT_TAB;
+                if (!(hashArray)) {
+                    W.location.hash = theme;
+                } else {
+                    theme = hashArray[index];
                 }
-                //                that.contentView = contentView = that.controller.getView(tab);
-                //                contentView && that.showChildView('content', contentView);
+
+                if (!that.homeView) {
+                    that.homeView = new HomeView({
+                        theme: theme
+                    });
+                    that.showChildView('content', that.homeView);
+                } else {
+                    Events.trigger('load:theme', theme);
+                }
                 this.$el.removeClass('info-open');
-                Events.trigger('tab:rendered', tab);
             },
             openSlideView = function (tab) {
                 this.$el.addClass('info-open');
@@ -75,9 +87,9 @@
                 that.infoView = new SlideView();
                 that.sessionController = new SessionController();
 
-                that.listenTo(Events, 'tab:change', setContentView);
+                that.listenTo(Events, 'tab:home', renderHome);
                 that.listenTo(Events, 'info:open', openSlideView);
-                that.listenTo(Events, 'nav:initialized', function(){
+                that.listenTo(Events, 'nav:initialized', function () {
                     that.sessionController.load();
                 });
                 W.onSocialLogin = function (queryString) {
@@ -95,7 +107,7 @@
             },
             onRender: function () {
                 var that = this;
-                that.showChildView('content', that.controller.getView('home'));
+                //                that.showChildView('content', that.controller.getView('home'));
                 that.onBeforeShow();
                 Backbone.history.loadUrl();
             }

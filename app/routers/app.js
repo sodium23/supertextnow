@@ -8,7 +8,7 @@
 
             appRoutes: {
                 'info/:tab': "renderInfo",
-                '*default': "renderView"
+                '*default': "renderHome"
             }
         });
 

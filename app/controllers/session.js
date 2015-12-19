@@ -67,7 +67,6 @@
                 var session = getSession();
                 if (session.token && session.id) {
                     console.log('SESSION LOAD');
-                    $('#workspace').addClass('loading');
                     Events.trigger('user:load:session', session)
                 };
             }

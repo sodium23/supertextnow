@@ -1,4 +1,4 @@
-(function () {
+(function (U) {
     'use strict';
     define([
         'backbone',
@@ -56,17 +56,26 @@
                         break;
                 }
                 document.title = (curUnread ? '(' + curUnread + ') ' : '') + 'Supertext';
-                that.$el.toggleClass('unread', curUnread>0 && !allMsgsSeen);
+                that.$el.toggleClass('unread', curUnread > 0 && !allMsgsSeen);
 
+            },
+
+            loadTheme = function (theme) {
+                var that = this,
+                    jEl = that.$el;
+                jEl.removeClass(that.theme);
+                theme && jEl.addClass(theme)
+                that.theme = theme;
             };
         return BaseView.extend({
             template: _.template(template),
             className: 'section-cont home-cont f-h',
             events: {
                 'click #chat-input': function () {
+                    var that = this;
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
-                    !isChatActivated && Events.trigger('msg:send', '/activate');
+                    !isChatActivated && Events.trigger('msg:send', '/activate', that.theme);
                     isChatActivated = true;
                     this.jInput.attr('placeholder', 'Say Hi!');
                     changeUnread.call(this, 'reset');
@@ -75,8 +84,8 @@
                     var that = this,
                         jTarget = $(e.target),
                         msg = jTarget.val();
-                    !isChatActivated && Events.trigger('msg:send', '/activate');
-                    isChatActivated  = true;
+                    !isChatActivated && Events.trigger('msg:send', '/activate', that.theme);
+                    isChatActivated = true;
                     changeUnread.call(that, 'reset');
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
@@ -93,6 +102,13 @@
                     fileName: isDay ? 'day' : 'night'
                 };
             },
+            initialize: function (options) {
+                var that = this;
+                that.theme = options.theme;
+                BaseView.prototype.initialize.call(that, options);
+                that.listenTo(Events, 'load:theme', loadTheme);
+
+            },
             onRender: function () {
                 var that = this,
                     jInput;
@@ -105,6 +121,7 @@
                 } else {
                     nextLetter.call(that);
                 }
+                that.$el.addClass(that.theme);
 
                 that.$('.chat-cont').html(that.chatContainerView.render().$el);
                 that.jChatBox = that.$('.chat-msgs-box');
