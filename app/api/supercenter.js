@@ -37,7 +37,6 @@
                     method: 'GET'
                 }).done(function (response) {
                     Events.trigger('user:logged-in', response);
-                    d.resolve();
                 });
             },
             
@@ -60,7 +59,6 @@
                     method: 'POST'
                 }).done(function (response) {
                     Events.trigger('user:logged-in', response);
-                    d.resolve();
                 });
             },
 
