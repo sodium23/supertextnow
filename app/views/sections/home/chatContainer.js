@@ -37,9 +37,10 @@
             addOlderMessages = function (messages) {
                 var that = this,
                     processedMessages = _.map(messages, function (message) {
+                        var isAgentMsg = message.sender.user_id === 'supertext';
                         return {
-                            msg: message.parts[0].body,
-                            dir: (message.sender.user_id === 'supertext') ? 'left' : 'right',
+                            msg: sanitizeMessage(message.parts[0].body, isAgentMsg),
+                            dir: isAgentMsg ? 'left' : 'right',
                             id: message.id
                         }
                     });
@@ -47,6 +48,14 @@
                     at: 0
                 });
                 that.$el.scrollTop(processedMessages.length * CELL_HEIGHT);
+            },
+            sanitizeMessage = function(msg, isAgentMsg){
+                if(isAgentMsg){
+                    if(msg === 'Ask For Authentication'){
+                        msg = 'Login Requested'
+                    }
+                }
+                return _.escape(msg);
             };
         return CollectionView.extend({
             className: 'chat-msgs-box',
@@ -76,8 +85,8 @@
                 var that = this;
                 CollectionView.prototype.initialize.call(that, options);
                 that.chatController = new ChatController();
-                that.listenTo(Events, 'msg:render', function (msg, dir) {
-                    addMsg.call(that, msg, dir);
+                that.listenTo(Events, 'msg:render', function (msg, dir, id) {
+                    addMsg.call(that, msg, dir, id);
                 });
                 that.listenTo(Events, 'typing', function (operation) {
                     that.$el.toggleClass('typing', operation === 'start');
@@ -89,12 +98,12 @@
                 that.listenTo(Events, 'msg:clear', function () {
                     that.collection.reset();
                 });
-                that.listenTo(Events, 'socket:message:create', function (msg) {
-                    var dir = msg.isSelf ? 'right' : 'left';
-                    _.forEach(msg.parts, function (part) {
-                        addMsg.call(that, _.escape(part.body), dir, msg.id);
-                    });
-                });
+//                that.listenTo(Events, 'socket:message:create', function (msg) {
+//                    var dir = msg.isSelf ? 'right' : 'left';
+//                    _.forEach(msg.parts, function (part) {
+//                        addMsg.call(that, _.escape(part.body), dir, msg.id);
+//                    });
+//                });
             }
         });
 

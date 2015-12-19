@@ -149,7 +149,9 @@ button {
   button.fb {
     background-color: #3b5998; }
   button.gplus {
-    background-color: #d34836; }
+    background-color: #db4a39; }
+  button.login-btn {
+    background-color: #FF9900; }
 
 .day-time .chat-msgs-box::after {
   color: black; }

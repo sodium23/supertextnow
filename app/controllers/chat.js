@@ -5,9 +5,11 @@
         'backbone',
         'marionette',
         'api/layer',
+        'utils/dialog',
         'api/supercenter',
-        'utils/layerSocket'
-    ], function (Backbone, Marionette, LayerAPI, SupercenterAPI, LayerSocket) {
+        'utils/layerSocket',
+        'views/sections/login'
+    ], function (Backbone, Marionette, LayerAPI, Dialog, SupercenterAPI, LayerSocket, LoginView) {
         var Events = Backbone.Events,
             userId,
             messageCache = [],
@@ -65,16 +67,11 @@
                 },
                 login: {
                     handler: function () {
-                        return ['<button class="fb" data-action="fbLogin" data-handler="login">Facebook</button><button class="gplus" data-action="googleLogin" data-handler="login">Google</button>'];
+                        return ['<button class="login-btn" data-action="openLoginDialog" data-handler="login">Login/Signup</button>'];
                     },
                     events: {
-                        fbLogin: function () {
-                            var that = this;
-                            openChildWindow('facebook');
-                        },
-                        googleLogin: function () {
-                            var that = this;
-                            openChildWindow('google');
+                        openLoginDialog: function () {
+                            Dialog.show(new LoginView());
                         }
                     }
                 }
@@ -99,10 +96,6 @@
                     initializeSocket.call(that, userId, layerToken);
                 }
 
-            },
-
-            openChildWindow = function (param) {
-                W.open('signIn.html#' + param, 'social sign-in', 'height=550,width=700,status=yes,toolbar=no,menubar=no,location=no');
             },
 
             getResponse = function (data) {
@@ -174,6 +167,19 @@
 
                 email && (email = email.trim());
                 return re.test(email) && email;
+            },
+            sanitizeMsg = function(text, isAgentMsg){
+                var msg;
+                if(isAgentMsg){
+                    if(text === 'Ask For Authentication'){
+                        Events.trigger('msg:send', '/login');
+                        return;
+                    }
+                    msg = _.escape(text);
+                }else{
+                    msg = _.escape(text);
+                }
+                return msg;
             };
         return Marionette.Controller.extend({
             initialize: function (options) {
@@ -198,6 +204,14 @@
                 that.listenTo(Events, 'user:logout', function () {
                     $.when(that.layerSocket && that.layerSocket.resetSocket()).always(function(){
                         SupercenterAPI.logout();
+                    });
+                });
+                that.listenTo(Events, 'socket:message:create', function(msg){
+                    var isAgentMsg = !msg.isSelf,
+                    dir = !isAgentMsg ? 'right' : 'left';
+                    _.forEach(msg.parts, function (part) {
+                        var processedMsg = sanitizeMsg.call(that, part.body, isAgentMsg);
+                        processedMsg && Events.trigger('msg:render', processedMsg, dir, msg.id);
                     });
                 });
             },

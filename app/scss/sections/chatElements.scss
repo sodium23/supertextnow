@@ -7,9 +7,12 @@ button {
     outline: none;
     cursor: pointer;
     &.fb {
-        background-color: #3b5998;
+        background-color: $blueFacebook;
     }
     &.gplus {
-        background-color: #d34836;
+        background-color: $redGoogle;
+    }
+    &.login-btn{
+        background-color: $amber;
     }
 }
