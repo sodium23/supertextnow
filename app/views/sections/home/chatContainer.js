@@ -98,12 +98,7 @@
                 that.listenTo(Events, 'msg:clear', function () {
                     that.collection.reset();
                 });
-//                that.listenTo(Events, 'socket:message:create', function (msg) {
-//                    var dir = msg.isSelf ? 'right' : 'left';
-//                    _.forEach(msg.parts, function (part) {
-//                        addMsg.call(that, _.escape(part.body), dir, msg.id);
-//                    });
-//                });
+                Events.trigger('chat:initialized');
             }
         });
 

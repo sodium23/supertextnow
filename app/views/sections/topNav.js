@@ -53,9 +53,6 @@
                     !isDummy && (isLoggedin = true);
                     isLoggedin && that.$('.nav-label').text(name || customer.n || 'Welcome');
                 });
-            },
-            onRender: function () {
-                Events.trigger('nav:initialized');
             }
         });
     });

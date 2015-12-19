@@ -107,13 +107,12 @@
                 that.theme = options.theme;
                 BaseView.prototype.initialize.call(that, options);
                 that.listenTo(Events, 'load:theme', loadTheme);
-
+                that.chatContainerView = new ChatContainerView();
             },
             onRender: function () {
                 var that = this,
                     jInput;
                 that.listenTo(Events, 'msg:unread:change', changeUnread);
-                that.chatContainerView = new ChatContainerView();
                 jInput = that.jInput = that.$('#chat-input');
                 if (isChatActivated) {
                     this.$el.addClass('chat-activated');

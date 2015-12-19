@@ -14,7 +14,8 @@
             userId,
             messageCache = [],
             ContextService = {
-                chatConnected: false
+                chatConnected: false,
+                chatInitialized: false
             },
             Operations = {
                 help: {
@@ -29,6 +30,7 @@
                         if (ContextService.chatConnected) {
                             LayerAPI.logout().then(function () {
                                 ContextService.chatConnected = false;
+                                ContextService.chatInitialized = false;
                                 that.layerSocket.destroy();
                                 d.resolve(['You are logged out']);
                                 SupercenterAPI.logout();
@@ -49,7 +51,7 @@
                     handler: function () {
                         var that = this,
                             d = $.Deferred();
-                        !ContextService.chatConnected && SupercenterAPI.registerUser({
+                        !ContextService.chatInitialized && SupercenterAPI.registerUser({
                             error: function () {
                                 d.resolve(['Oops!', 'Seems like we are out of magic powder', 'Please try again later']);
                             }
@@ -79,6 +81,7 @@
 
             initializeSocket = function (userId, layerToken) {
                 var that = this;
+                ContextService.chatInitialized = true;
                 that.layerSocket = new LayerSocket({
                     userId: userId,
                     sessionToken: layerToken
@@ -187,6 +190,7 @@
                 that.listenTo(Events, 'msg:send', processMessage);
                 that.listenTo(Events, 'user:logged-in', function (data) {
                     ContextService.chatConnected = false;
+                    ContextService.chatInitialized = false;
                     connectLayerSocket.call(that, data.lUId, data.lSTkn);
                 });
                 that.listenTo(Events, 'user:load:session', function(data){

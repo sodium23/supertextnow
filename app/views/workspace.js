@@ -85,7 +85,7 @@
 
                 that.listenTo(Events, 'tab:home', renderHome);
                 that.listenTo(Events, 'info:open', openSlideView);
-                that.listenTo(Events, 'nav:initialized', function () {
+                that.listenTo(Events, 'chat:initialized', function () {
                     that.sessionController.load();
                 });
                 W.onSocialLogin = function (queryString) {
