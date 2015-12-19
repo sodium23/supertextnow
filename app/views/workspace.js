@@ -17,9 +17,7 @@
         var Events = Backbone.Events,
             theme = '',
             THEMES = {
-                santa: {
-                    hash: 'santa'
-                }
+                santa: 'santa'
             },
 
             renderHome = function () {
@@ -27,13 +25,11 @@
                     hashArray = W.location.hash.split('#'),
                     index = hashArray.length - 1,
                     urlTheme = hashArray[index];
-
-                if (!(hashArray)) {
-                    W.location.hash = theme;
-                } else {
-                    theme = hashArray[index];
+                if(urlTheme){
+                    urlTheme = THEMES[urlTheme] || theme;
+                    W.location.hash = urlTheme;
                 }
-
+                theme = urlTheme;
                 if (!that.homeView) {
                     that.homeView = new HomeView({
                         theme: theme
