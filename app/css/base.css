@@ -480,6 +480,11 @@ button {
   -o-transition: transform 0.3s ease, opacity 0.2s ease;
   transition: transform 0.3s ease, opacity 0.2s ease; }
 
+.home-cont.santa {
+  background: #D42C2C; }
+  .home-cont.santa video {
+    display: none; }
+
 .home-cont {
   position: relative; }
   .home-cont #chat-input {

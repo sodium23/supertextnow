@@ -1,0 +1,8 @@
+.home-cont{
+    &.santa{
+        background: $red;
+        video{
+            display: none;
+        }
+    }
+}
