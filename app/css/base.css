@@ -1084,7 +1084,7 @@ p {
   float: left; }
 
 .hide {
-  display: none; }
+  display: none !important; }
 
 .loading #loader {
   position: absolute;

@@ -49,13 +49,25 @@
                 });
                 that.$el.scrollTop(processedMessages.length * CELL_HEIGHT);
             },
-            sanitizeMessage = function(msg, isAgentMsg){
-                if(isAgentMsg){
-                    if(msg === 'Ask For Authentication'){
+            sanitizeMessage = function (msg, isAgentMsg) {
+                if (isAgentMsg) {
+                    if (msg === 'Ask For Authentication') {
                         msg = 'Login Requested'
                     }
                 }
                 return _.escape(msg);
+            },
+            onClickLoadEarlier = function () {
+                var that = this,
+                    lastMsg = that.collection.at(0),
+                    jLoadEarlier = $('.load-earlier');
+                return LayerAPI.loadMessages(lastMsg && lastMsg.get('id'), PAGE_SIZE).then(function (messages) {
+                    jLoadEarlier.removeClass('hide');
+                    if (messages.length < PAGE_SIZE) {
+                        jLoadEarlier.remove();
+                    }
+                    addOlderMessages.call(that, messages)
+                });
             };
         return CollectionView.extend({
             className: 'chat-msgs-box',
@@ -63,16 +75,7 @@
             liveChatInitiated: false,
             collection: new BaseCollection(),
             events: {
-                'click .load-earlier': function () {
-                    var that = this,
-                        lastMsg = that.collection.at(0);
-                    LayerAPI.loadMessages(lastMsg && lastMsg.get('id'), PAGE_SIZE).then(function (messages) {
-                        if (messages.length < PAGE_SIZE) {
-                            that.$('.load-earlier').remove();
-                        }
-                        addOlderMessages.call(that, messages)
-                    });
-                },
+                'click .load-earlier': onClickLoadEarlier,
                 'scroll': _.debounce(function (e) {
                     var jChatCont = this.$el;
                     (jChatCont.scrollTop() + jChatCont.height() >= jChatCont[0].scrollHeight - 70) && Events.trigger('msg:unread:change', 'reset');
@@ -93,7 +96,8 @@
                 });
                 that.listenTo(Events, 'chat:connected', function () {
                     that.$('.load-earlier').remove();
-                    that.$el.prepend('<div class="load-earlier">Load Earlier messages</div>');
+                    that.$el.prepend('<div class="load-earlier hide">Load Earlier messages</div>');
+                    onClickLoadEarlier.call(that);
                 });
                 that.listenTo(Events, 'msg:clear', function () {
                     that.collection.reset();
