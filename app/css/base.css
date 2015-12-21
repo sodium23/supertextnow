@@ -483,7 +483,9 @@ button {
   transition: transform 0.3s ease, opacity 0.2s ease; }
 
 .home-cont.santa {
-  background: #D42C2C; }
+  background-color: #3c2b4e;
+  background-image: url("../resources/imgs/santa3.gif");
+  background-repeat: no-repeat; }
   .home-cont.santa video {
     display: none; }
 

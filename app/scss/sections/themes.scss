@@ -1,6 +1,14 @@
+$deer-gif: url('../resources/imgs/santa1.gif');
+$deer-color: #f4cf3f;
+$gift-gif: url('../resources/imgs/santa2.gif');
+$gift-color: #d42c30;
+$santa-gif: url('../resources/imgs/santa3.gif');
+$santa-color: #3c2b4e;
 .home-cont{
     &.santa{
-        background: $red;
+        background-color: $santa-color;
+        background-image: $santa-gif;
+        background-repeat: no-repeat;
         video{
             display: none;
         }
