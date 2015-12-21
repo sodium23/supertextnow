@@ -76,8 +76,8 @@
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
                     !isChatActivated && Events.trigger('msg:send', '/activate', that.theme);
+                    !isChatActivated && this.jInput.attr('placeholder', 'Say Hi!');
                     isChatActivated = true;
-                    this.jInput.attr('placeholder', 'Say Hi!');
                     changeUnread.call(this, 'reset');
                 },
                 'keyup #chat-input': function (e) {
@@ -87,12 +87,12 @@
                     !isChatActivated && Events.trigger('msg:send', '/activate', that.theme);
                     isChatActivated = true;
                     changeUnread.call(that, 'reset');
+                    jTarget.attr('placeholder', '');
                     _.forEach(timeouts, clearTimeout);
                     this.$el.addClass('chat-activated');
                     if (msg && e.keyCode == 13) {
                         Events.trigger('msg:send', msg);
                         jTarget.val('');
-                        jTarget.attr('placeholder', 'Send a message');
                     }
                 }
             },
