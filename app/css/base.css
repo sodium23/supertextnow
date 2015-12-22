@@ -832,6 +832,32 @@ h3 {
 p {
   margin: 1rem 0; }
 
+h2 {
+  font-size: 2rem;
+  margin: 5rem 0 2rem; }
+
+h1 {
+  font-size: 3rem;
+  margin: 4rem 0 2rem;
+  text-align: center; }
+
+ul {
+  list-style: disc; }
+
+li {
+  list-style: disc outside none;
+  display: list-item;
+  margin-left: 3em; }
+
+p.italic {
+  margin: 2rem 0;
+  font-style: italic; }
+
+.date {
+  font-size: 1.3rem;
+  color: #9f9f9f;
+  font-style: italic; }
+
 .page-full-height {
   height: 100%; }
 
